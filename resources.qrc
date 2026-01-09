@@ -1,0 +1,128 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>icons/Liquid glass/icons8-add-trash-100.png</file>
+    <file>icons/Liquid glass/icons8-clear-symbol-100.png</file>
+    <file>icons/Liquid glass/icons8-close-100.png</file>
+    <file>icons/Liquid glass/icons8-close-program-100.png</file>
+    <file>icons/Liquid glass/icons8-close-window-100.png</file>
+    <file>icons/Liquid glass/icons8-delete-100.png</file>
+    <file>icons/Liquid glass/icons8-delete-100-2.png</file>
+    <file>icons/Liquid glass/icons8-delete-100-3.png</file>
+    <file>icons/Liquid glass/icons8-delete-100-4.png</file>
+    <file>icons/Liquid glass/icons8-delete-100-5.png</file>
+    <file>icons/Liquid glass/icons8-delete-100-6.png</file>
+    <file>icons/Liquid glass/icons8-delete-100-7.png</file>
+    <file>icons/Liquid glass/icons8-delete-document-100.png</file>
+    <file>icons/Liquid glass/icons8-delete-from-cloud-100.png</file>
+    <file>icons/Liquid glass/icons8-delete-graph-report-100.png</file>
+    <file>icons/Liquid glass/icons8-delete-message-100.png</file>
+    <file>icons/Liquid glass/icons8-delete-pie-chart-report-100.png</file>
+    <file>icons/Liquid glass/icons8-remove-image-100.png</file>
+    <file>icons/Liquid glass/icons8-back-100.png</file>
+    <file>icons/Liquid glass/icons8-back-100-2.png</file>
+    <file>icons/Liquid glass/icons8-back-100-3.png</file>
+    <file>icons/Liquid glass/icons8-back-100-4.png</file>
+    <file>icons/Liquid glass/icons8-back-100-5.png</file>
+    <file>icons/Liquid glass/icons8-cancel-100.png</file>
+    <file>icons/Liquid glass/icons8-cancel-100-2.png</file>
+    <file>icons/Liquid glass/icons8-cancel-100-3.png</file>
+    <file>icons/Liquid glass/icons8-cancel-100-4.png</file>
+    <file>icons/Liquid glass/icons8-cancel-100-5.png</file>
+    <file>icons/Liquid glass/icons8-cancel-100-6.png</file>
+    <file>icons/Liquid glass/icons8-cancel-subscription-100.png</file>
+    <file>icons/Liquid glass/icons8-delete-from-cloud-100.png</file>
+    <file>icons/Liquid glass/icons8-download-96.png</file>
+    <file>icons/Liquid glass/icons8-export-96.png</file>
+    <file>icons/utils/icons8-logout.gif</file>
+    <file>icons/utils/icons8-menu-100-33.png</file>
+    <file>icons/utils/icons8-search-150.png</file>
+    <file>icons/utils/refresh (1).png</file>
+    <file>icons/utils/refresh.png</file>
+    <file>icons/utils/access-card.png</file>
+    <file>icons/utils/back.png</file>
+    <file>icons/utils/check.png</file>
+    <file>icons/utils/left.png</file>
+    <file>icons/utils/registered.png</file>
+    <file>icons/utils/verification.png</file>
+    <file>icons/utils/verified.png</file>
+    <file>icons/book/add book.png</file>
+    <file>icons/book/add learner.png</file>
+    <file>icons/composite/transact up.png</file>
+    <file>icons/utils/user_.png</file>
+    <file>icons/utils/learner.png</file>
+    <file>icons/composite/books down.png</file>
+    <file>icons/composite/books icon.png</file>
+    <file>icons/composite/books up.png</file>
+    <file>icons/composite/learners down.png</file>
+    <file>icons/composite/learners icon.png</file>
+    <file>icons/composite/learners up.png</file>
+    <file>icons/composite/reports down.png</file>
+    <file>icons/composite/reports icon.png</file>
+    <file>icons/composite/reports up.png</file>
+    <file>icons/composite/transact down.png</file>
+    <file>icons/composite/transact icon.png</file>
+    <file>icons/composite/transact up.png</file>
+    <file>icons/book/book_2_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/book/book_3_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/book/book_4_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/book/book_5_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/book/book_6_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/book/book_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/Liquid glass/icons8-add-96 (1).png</file>
+    <file>icons/Liquid glass/icons8-add-96.png</file>
+    <file>icons/Liquid glass/icons8-add-image-96.png</file>
+    <file>icons/Liquid glass/icons8-gear-96.png</file>
+    <file>icons/Liquid glass/icons8-group-96 (1).png</file>
+    <file>icons/Liquid glass/icons8-group-96.png</file>
+    <file>icons/Liquid glass/icons8-home-96 (1).png</file>
+    <file>icons/Liquid glass/icons8-home-96.png</file>
+    <file>icons/Liquid glass/icons8-menu-96.png</file>
+    <file>icons/Liquid glass/icons8-report-96.png</file>
+    <file>icons/Liquid glass/icons8-report-card-96.png</file>
+    <file>icons/Liquid glass/icons8-save-96.png</file>
+    <file>icons/Liquid glass/icons8-school-96 (1).png</file>
+    <file>icons/Liquid glass/icons8-school-96.png</file>
+    <file>icons/Liquid glass/icons8-transaction-96.png</file>
+    <file>icons/utils/account.png</file>
+    <file>icons/utils/app_registration_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/utils/arrow_back_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/utils/arrow_back_ios_new_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/utils/arrow_forward_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/utils/delete_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/utils/edit.png</file>
+    <file>icons/utils/forgot-password.png</file>
+    <file>icons/utils/form.png</file>
+    <file>icons/utils/home_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/utils/icons8-books-64.png</file>
+    <file>icons/utils/icons8-books-96.png</file>
+    <file>icons/utils/icons8-user-96.png</file>
+    <file>icons/utils/info.png</file>
+    <file>icons/utils/ink_pen_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/utils/login (1).png</file>
+    <file>icons/utils/login.png</file>
+    <file>icons/utils/log-in.png</file>
+    <file>icons/utils/login_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/utils/logout_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/utils/manage_search_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/utils/memory.png</file>
+    <file>icons/utils/menu_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/utils/more_vert_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/utils/person.png</file>
+    <file>icons/utils/profile.png</file>
+    <file>icons/utils/profile-picture.png</file>
+    <file>icons/utils/receipt_long_40dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.svg</file>
+    <file>icons/utils/register (1).png</file>
+    <file>icons/utils/register.png</file>
+    <file>icons/utils/registered.png</file>
+    <file>icons/utils/remove_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/utils/school_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/utils/search_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/utils/security.png</file>
+    <file>icons/utils/settings_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/utils/sort_40dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.svg</file>
+    <file>icons/utils/swap_horiz_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/utils/undo_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</file>
+    <file>icons/utils/user (1).png</file>
+    <file>icons/utils/user.png</file>
+  </qresource>
+</RCC>

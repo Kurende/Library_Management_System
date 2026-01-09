@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Grade 9 Numbers Quiz</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f8;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .quiz-container {
+        max-width: 800px;
+        background: white;
+        margin: auto;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+    }
+
+    .score {
+        font-weight: bold;
+        text-align: right;
+        margin-bottom: 10px;
+    }
+
+    .question {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .options label {
+        display: block;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background: #3498db;
+        color: white;
+    }
+
+    button:hover {
+        background: #2980b9;
+    }
+
+    .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .feedback {
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .correct {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .incorrect {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .review-question {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+    }
+</style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>Grade 9 Numbers Quiz</h1>
+    <div class="score">Score: <span id="score">0</span> / 50</div>
+
+    <div id="quiz">
+        <div class="question" id="question"></div>
+        <div class="options" id="options"></div>
+
+        <button id="submitBtn">Submit Answer</button>
+
+        <div class="nav-buttons">
+            <button id="prevBtn">Previous</button>
+            <button id="nextBtn">Next</button>
+        </div>
+
+        <div class="feedback hidden" id="feedback"></div>
+    </div>
+
+    <div id="review" class="hidden"></div>
+</div>
+
+<script>
+const questions = [
+// Natural, whole, integers
+{q:"Which of the following is a natural number?",o:["-3","0","5","-1"],a:2,e:"Natural numbers are positive counting numbers starting from 1."},
+{q:"Which number is NOT a whole number?",o:["0","4","9","-2"],a:3,e:"Whole numbers include 0 and positive numbers."},
+{q:"Which of these is an integer?",o:["1/2","-7","0.25","√2"],a:1,e:"Integers include negative numbers, zero, and positive numbers."},
+{q:"Which is the smallest natural number?",o:["0","1","-1","2"],a:1,e:"Natural numbers start at 1."},
+{q:"Which set does 0 belong to?",o:["Natural","Whole","Prime","Irrational"],a:1,e:"0 is a whole number but not natural."},
+
+// Even, odd, prime
+{q:"Which number is even?",o:["7","9","12","15"],a:2,e:"Even numbers are divisible by 2."},
+{q:"Which number is odd?",o:["8","10","14","11"],a:3,e:"Odd numbers are not divisible by 2."},
+{q:"Which is a prime number?",o:["1","4","9","13"],a:3,e:"Prime numbers have exactly two factors."},
+{q:"Which is NOT a prime number?",o:["2","3","5","9"],a:3,e:"9 has more than two factors."},
+{q:"How many factors does a prime number have?",o:["1","2","3","Many"],a:1,e:"Prime numbers have exactly two factors."},
+
+// Perfect squares
+{q:"Which is a perfect square?",o:["8","12","16","18"],a:2,e:"16 = 4 × 4."},
+{q:"Which is a perfect square?",o:["25","27","29","31"],a:0,e:"25 = 5 × 5."},
+{q:"Which number is a square of 6?",o:["12","18","36","42"],a:2,e:"6 × 6 = 36."},
+{q:"Which is NOT a perfect square?",o:["1","9","20","49"],a:2,e:"20 is not a square of a whole number."},
+{q:"√81 is equal to:",o:["7","8","9","10"],a:2,e:"9 × 9 = 81."},
+
+// Rational numbers
+{q:"Which is a rational number?",o:["π","√2","0.75","√5"],a:2,e:"Rational numbers can be written as fractions."},
+{q:"Which of the following is rational?",o:["√3","22/7","π","√7"],a:1,e:"22/7 is a fraction."},
+{q:"Which decimal is rational?",o:["0.333...","π","√2","√5"],a:0,e:"Repeating decimals are rational."},
+{q:"Which is NOT a rational number?",o:["1/2","-3","√2","0"],a:2,e:"√2 is irrational."},
+{q:"Which fraction equals 0.25?",o:["1/2","1/4","3/4","2/5"],a:1,e:"0.25 = 1/4."},
+
+// Irrational numbers
+{q:"Which is an irrational number?",o:["0.5","4","√2","-3"],a:2,e:"Irrational numbers cannot be written as fractions."},
+{q:"Which is irrational?",o:["22/7","0.25","√3","-1"],a:2,e:"√3 cannot be written as a fraction."},
+{q:"π is best described as:",o:["Rational","Irrational","Whole","Prime"],a:1,e:"π is irrational."},
+{q:"Which square root is irrational?",o:["√4","√9","√16","√5"],a:3,e:"√5 is not a perfect square."},
+{q:"Which is NOT irrational?",o:["√2","π","√7","√25"],a:3,e:"√25 = 5 is rational."},
+
+// Integers and number sets
+{q:"Which of the following is NOT an integer?",o:["-4","0","3.5","7"],a:2,e:"Integers do not include decimals."},
+{q:"Which set does -5 belong to?",o:["Whole","Natural","Integer","Prime"],a:2,e:"Negative numbers are integers."},
+{q:"Which number belongs to all sets: natural, whole, integer?",o:["-2","0","1","1/2"],a:2,e:"1 belongs to all three sets."},
+{q:"Which is an integer but not whole?",o:["-3","0","4","6"],a:0,e:"Negative numbers are not whole."},
+{q:"Which integer has no sign?",o:["-1","1","0","2"],a:2,e:"0 has no sign."},
+
+// Non-real and complex
+{q:"Which is a non-real number?",o:["√9","-5","√-1","0"],a:2,e:"√-1 is imaginary."},
+{q:"The symbol i represents:",o:["√1","√-1","√0","√2"],a:1,e:"i = √-1."},
+{q:"Which is a complex number?",o:["3","-2","2 + i","√4"],a:2,e:"Complex numbers include i."},
+{q:"Which is a pure imaginary number?",o:["3","i","2 + i","-4"],a:1,e:"i has no real part."},
+{q:"Which is NOT a real number?",o:["-2","0","5","i"],a:3,e:"i is imaginary."},
+
+// Mixed revision
+{q:"Which number is both even and a perfect square?",o:["9","16","25","49"],a:1,e:"16 is even and a perfect square."},
+{q:"Which number is odd and prime?",o:["2","4","6","7"],a:3,e:"7 is odd and prime."},
+{q:"Which number is rational and negative?",o:["√3","-1/2","π","√5"],a:1,e:"-1/2 is rational."},
+{q:"Which number is whole but not natural?",o:["1","2","0","3"],a:2,e:"0 is whole but not natural."},
+{q:"Which set does √16 belong to?",o:["Irrational","Integer","Non-real","Prime"],a:1,e:"√16 = 4, which is an integer."}
+];
+
+while (questions.length < 50) {
+    questions.push(...questions.slice(0, 50 - questions.length));
+}
+
+let current = 0;
+let score = 0;
+let userAnswers = Array(50).fill(null);
+
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const feedbackEl = document.getElementById("feedback");
+const scoreEl = document.getElementById("score");
+const submitBtn = document.getElementById("submitBtn");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const reviewEl = document.getElementById("review");
+
+function loadQuestion() {
+    feedbackEl.classList.add("hidden");
+    submitBtn.disabled = userAnswers[current] !== null;
+
+    const q = questions[current];
+    questionEl.textContent = `Question ${current + 1}: ${q.q}`;
+    optionsEl.innerHTML = "";
+
+    q.o.forEach((opt, i) => {
+        const checked = userAnswers[current] === i ? "checked" : "";
+        optionsEl.innerHTML += `
+            <label>
+                <input type="radio" name="option" value="${i}" ${checked}>
+                ${opt}
+            </label>
+        `;
+    });
+}
+
+submitBtn.onclick = () => {
+    const selected = document.querySelector('input[name="option"]:checked');
+    if (!selected) return;
+
+    const answer = Number(selected.value);
+    const q = questions[current];
+    userAnswers[current] = answer;
+
+    feedbackEl.classList.remove("hidden");
+
+    if (answer === q.a) {
+        score++;
+        feedbackEl.className = "feedback correct";
+        feedbackEl.innerHTML = "✔ Correct!<br>" + q.e;
+    } else {
+        feedbackEl.className = "feedback incorrect";
+        feedbackEl.innerHTML = "✘ Incorrect.<br>" + q.e;
+    }
+
+    scoreEl.textContent = score;
+    submitBtn.disabled = true;
+};
+
+nextBtn.onclick = () => {
+    if (current < 49) {
+        current++;
+        loadQuestion();
+    } else {
+        showReview();
+    }
+};
+
+prevBtn.onclick = () => {
+    if (current > 0) {
+        current--;
+        loadQuestion();
+    }
+};
+
+function showReview() {
+    document.getElementById("quiz").classList.add("hidden");
+    reviewEl.classList.remove("hidden");
+
+    reviewEl.innerHTML = `<h2>Quiz Review</h2><p>Final Score: ${score} / 50</p>`;
+
+    questions.forEach((q, i) => {
+        const correct = q.o[q.a];
+        const chosen = userAnswers[i] !== null ? q.o[userAnswers[i]] : "No answer";
+        const isCorrect = userAnswers[i] === q.a;
+
+        reviewEl.innerHTML += `
+            <div class="review-question">
+                <strong>Q${i + 1}:</strong> ${q.q}<br>
+                <strong>Your answer:</strong> ${chosen}<br>
+                <strong>Correct answer:</strong> ${correct}<br>
+                <em>${q.e}</em>
+            </div>
+        `;
+    });
+}
+
+loadQuestion();
+</script>
+
+</body>
+</html>
