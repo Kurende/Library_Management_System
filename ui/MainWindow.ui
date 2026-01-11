@@ -2973,7 +2973,7 @@ color:white;}</string>
                    <enum>QFrame::Shadow::Raised</enum>
                   </property>
                   <property name="currentIndex">
-                   <number>3</number>
+                   <number>2</number>
                   </property>
                   <widget class="QWidget" name="page_dashboard">
                    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -3832,7 +3832,7 @@ color:#fefefe;}</string>
 </string>
                       </property>
                       <property name="currentIndex">
-                       <number>1</number>
+                       <number>0</number>
                       </property>
                       <widget class="QWidget" name="page_addViewBooks">
                        <layout class="QHBoxLayout" name="horizontalLayout_21">
@@ -5041,13 +5041,7 @@ QComboBox{color:white;}</string>
                             </font>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">QPushButton{border: 1px solid rgb(120, 130, 150);
-background-color:#254559;
-padding: 3px;
-font:bold;
-border-radius:3px;
-color:white;
-}
+                            <string notr="true">
 QPushButton:hover{
 background-color:#6093BF}
 
@@ -5170,7 +5164,7 @@ padding: 2px;
                                <string/>
                               </property>
                               <property name="placeholderText">
-                               <string>Full Names</string>
+                               <string>First Name(s)</string>
                               </property>
                              </widget>
                             </item>
@@ -5195,7 +5189,7 @@ padding: 2px;
                                <string/>
                               </property>
                               <property name="placeholderText">
-                               <string>Surnames</string>
+                               <string>Surname</string>
                               </property>
                              </widget>
                             </item>
@@ -5787,7 +5781,7 @@ background-color:#011526;
                                     <second>0</second>
                                     <year>2024</year>
                                     <month>12</month>
-                                    <day>12</day>
+                                    <day>11</day>
                                    </datetime>
                                   </property>
                                   <property name="displayFormat">
@@ -5850,7 +5844,7 @@ background-color:#011526;
                                     <second>0</second>
                                     <year>2025</year>
                                     <month>8</month>
-                                    <day>25</day>
+                                    <day>24</day>
                                    </datetime>
                                   </property>
                                   <property name="displayFormat">
@@ -7267,7 +7261,7 @@ QLabel{color:white;}
                                 <property name="geometry">
                                  <rect>
                                   <x>0</x>
-                                  <y>-161</y>
+                                  <y>0</y>
                                   <width>1004</width>
                                   <height>1041</height>
                                  </rect>
@@ -7277,10 +7271,10 @@ QLabel{color:white;}
                                   <widget class="QWidget" name="widget_borrowBookBackground" native="true">
                                    <layout class="QVBoxLayout" name="verticalLayout_109">
                                     <property name="leftMargin">
-                                     <number>90</number>
+                                     <number>9</number>
                                     </property>
                                     <property name="rightMargin">
-                                     <number>90</number>
+                                     <number>9</number>
                                     </property>
                                     <item>
                                      <layout class="QVBoxLayout" name="verticalLayout_102">
@@ -8249,7 +8243,7 @@ padding: 2px;
                                     <string/>
                                    </property>
                                    <property name="placeholderText">
-                                    <string>Learner ID/Book Code</string>
+                                    <string>Book Code</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -8577,7 +8571,7 @@ border-radius:3px;
                          </widget>
                         </item>
                         <item>
-                         <widget class="QScrollArea" name="scrollArea_7">
+                         <widget class="QScrollArea" name="scrollArea_reports">
                           <property name="widgetResizable">
                            <bool>true</bool>
                           </property>
@@ -8689,6 +8683,9 @@ padding: 3px;
                                   <font>
                                    <bold>true</bold>
                                   </font>
+                                 </property>
+                                 <property name="styleSheet">
+                                  <string notr="true"/>
                                  </property>
                                  <property name="text">
                                   <string>REPORT TYPE</string>
@@ -9084,6 +9081,308 @@ border-radius:3px;
                     </item>
                    </layout>
                   </widget>
+                  <widget class="QWidget" name="page_payments">
+                   <layout class="QVBoxLayout" name="verticalLayout_69">
+                    <item>
+                     <widget class="QScrollArea" name="scrollArea_payments">
+                      <property name="styleSheet">
+                       <string notr="true">background-color:#011526;</string>
+                      </property>
+                      <property name="widgetResizable">
+                       <bool>true</bool>
+                      </property>
+                      <widget class="QWidget" name="scrollAreaWidgetContents_3">
+                       <property name="geometry">
+                        <rect>
+                         <x>0</x>
+                         <y>0</y>
+                         <width>1042</width>
+                         <height>955</height>
+                        </rect>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_63">
+                        <item>
+                         <widget class="QWidget" name="widget_paymentsBackground" native="true">
+                          <property name="styleSheet">
+                           <string notr="true">QPushButton{border: 1px solid rgb(120, 130, 150);
+background-color:#254559;
+padding: 3px;
+font:bold;
+border-radius:3px;
+color:white;
+}
+QRadioButton
+{color:white;}
+QPushButton:hover{
+background-color:#6093BF}
+
+QLineEdit
+{border-bottom: 1px solid rgb(120, 130, 150);
+border-top: none; 
+border-left: none;
+border-right: none;
+padding:3px;
+color:white;
+background-color:#011526;}
+QLineEdit:focus {
+border-bottom: 2px solid rgb(122, 132, 152);  
+padding: 2px;
+}
+QComboBox, QDoubleSpinBox{
+color:white;
+background-color:#011526;
+}
+QLabel{color:white;}
+
+QGroupBox {
+    border: 1px solid white;
+    border-radius: 6px;      /* optional, rounded corners */
+    margin-top: 10px;        /* space for the title */
+}
+
+QGroupBox::title {
+    color: white;
+    subcontrol-origin: margin;
+    subcontrol-position: top left; /* can be top center, top right */
+    padding: 0 5px;
+}
+
+</string>
+                          </property>
+                          <layout class="QVBoxLayout" name="verticalLayout_67">
+                           <item>
+                            <layout class="QVBoxLayout" name="verticalLayout_57">
+                             <property name="spacing">
+                              <number>25</number>
+                             </property>
+                             <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                              <widget class="QLabel" name="label_paymentsTitle">
+                               <property name="font">
+                                <font>
+                                 <pointsize>12</pointsize>
+                                </font>
+                               </property>
+                               <property name="text">
+                                <string>PAYMENT MANAGEMENT</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QGroupBox" name="groupBox_searchLearner">
+                               <property name="title">
+                                <string>SEARCH LEARNER</string>
+                               </property>
+                               <layout class="QVBoxLayout" name="verticalLayout_70">
+                                <property name="spacing">
+                                 <number>15</number>
+                                </property>
+                                <item>
+                                 <widget class="QLineEdit" name="lineEdit_paymentLearnerId">
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>400</width>
+                                    <height>16777215</height>
+                                   </size>
+                                  </property>
+                                  <property name="placeholderText">
+                                   <string>Learner ID</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item>
+                                 <widget class="QPushButton" name="pushButton_findLearnerPayment">
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>100</width>
+                                    <height>16777215</height>
+                                   </size>
+                                  </property>
+                                  <property name="text">
+                                   <string>Search Learner</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item>
+                                 <widget class="QLabel" name="label_learnerInfo">
+                                  <property name="text">
+                                   <string/>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item>
+                                 <layout class="QHBoxLayout" name="horizontalLayout_42">
+                                  <property name="spacing">
+                                   <number>0</number>
+                                  </property>
+                                  <item>
+                                   <widget class="QLabel" name="label_4">
+                                    <property name="maximumSize">
+                                     <size>
+                                      <width>150</width>
+                                      <height>16777215</height>
+                                     </size>
+                                    </property>
+                                    <property name="text">
+                                     <string>Total outstanding             :</string>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                  <item>
+                                   <widget class="QLabel" name="label_totalOutstanding">
+                                    <property name="text">
+                                     <string/>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                 </layout>
+                                </item>
+                               </layout>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QGroupBox" name="groupBox_lostBooks">
+                               <property name="title">
+                                <string>LOST BOOKS</string>
+                               </property>
+                               <layout class="QVBoxLayout" name="verticalLayout_71">
+                                <property name="spacing">
+                                 <number>15</number>
+                                </property>
+                                <item alignment="Qt::AlignmentFlag::AlignTop">
+                                 <widget class="QTableWidget" name="tableWidget_lostBooks">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>0</width>
+                                    <height>500</height>
+                                   </size>
+                                  </property>
+                                  <property name="styleSheet">
+                                   <string notr="true">background-color: rgb(255, 255, 255);</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QGroupBox" name="groupBox_paymentSummary">
+                               <property name="title">
+                                <string>PAYMENT SUMMARY</string>
+                               </property>
+                               <layout class="QVBoxLayout" name="verticalLayout_73">
+                                <property name="spacing">
+                                 <number>15</number>
+                                </property>
+                                <property name="topMargin">
+                                 <number>9</number>
+                                </property>
+                                <item>
+                                 <layout class="QHBoxLayout" name="horizontalLayout_47">
+                                  <property name="spacing">
+                                   <number>0</number>
+                                  </property>
+                                  <item>
+                                   <widget class="QLabel" name="label_9">
+                                    <property name="maximumSize">
+                                     <size>
+                                      <width>120</width>
+                                      <height>16777215</height>
+                                     </size>
+                                    </property>
+                                    <property name="text">
+                                     <string>Items selected         :</string>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                  <item>
+                                   <widget class="QLabel" name="label_selectedItems">
+                                    <property name="text">
+                                     <string/>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                 </layout>
+                                </item>
+                                <item>
+                                 <layout class="QHBoxLayout" name="horizontalLayout_48">
+                                  <property name="spacing">
+                                   <number>0</number>
+                                  </property>
+                                  <item>
+                                   <widget class="QLabel" name="label_11">
+                                    <property name="maximumSize">
+                                     <size>
+                                      <width>120</width>
+                                      <height>16777215</height>
+                                     </size>
+                                    </property>
+                                    <property name="text">
+                                     <string>Amount to pay        :</string>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                  <item>
+                                   <widget class="QLabel" name="label_amountToPay">
+                                    <property name="text">
+                                     <string/>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                 </layout>
+                                </item>
+                               </layout>
+                              </widget>
+                             </item>
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_40">
+                               <item>
+                                <widget class="QPushButton" name="pushButton_selectAllBooks">
+                                 <property name="text">
+                                  <string>Select all</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QPushButton" name="pushButton_deselectAllBooks">
+                                 <property name="text">
+                                  <string>Deselect all</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QPushButton" name="pushButton_processPayment">
+                                 <property name="text">
+                                  <string>Process Payment</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QPushButton" name="pushButton_viewReceipt">
+                                 <property name="text">
+                                  <string>View Receipt</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QPushButton" name="pushButton_clearPayment">
+                                 <property name="text">
+                                  <string>Clear Receipt</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                            </layout>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
                   <widget class="QWidget" name="page_usersManagement">
                    <layout class="QVBoxLayout" name="verticalLayout_30">
                     <item>
@@ -9101,6 +9400,9 @@ border-radius:3px;
                    <layout class="QVBoxLayout" name="verticalLayout_32">
                     <item>
                      <widget class="QStackedWidget" name="stackedWidget_settingsPages">
+                      <property name="currentIndex">
+                       <number>1</number>
+                      </property>
                       <widget class="QWidget" name="page_"/>
                       <widget class="QWidget" name="page_4"/>
                      </widget>
