@@ -242,6 +242,10 @@ Library_Management_System/
 │   ├── Learner.h
 │   ├── Book.cpp                     # Book entity
 │   ├── Book.h
+│   ├── Payments.cpp                     # Payments entity
+│   ├── Payments.h
+│   ├── PaymentsItem.cpp                     # PaymentsItem entity
+│   ├── PaymentsItem.h
 │   ├── Transaction.cpp              # Transaction entity
 │   └── Transaction.h
 │
