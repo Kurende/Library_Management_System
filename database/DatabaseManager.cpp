@@ -1197,3 +1197,278 @@ QVector<Transaction> DatabaseManager::getActiveTransactionsByLearnerId(int learn
     
     return transactions;
 }
+
+bool DatabaseManager::createPaymentTables() {
+    QSqlQuery query(m_database);
+
+    // Create payments table
+    QString createPaymentsTable = R"(
+        CREATE TABLE IF NOT EXISTS payments (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            receipt_no TEXT UNIQUE NOT NULL,
+            learner_id INTEGER NOT NULL,
+            amount REAL NOT NULL,
+            processed_by INTEGER NOT NULL,
+            payment_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+            notes TEXT,
+            FOREIGN KEY (learner_id) REFERENCES learners(id),
+            FOREIGN KEY (processed_by) REFERENCES users(id)
+        )
+    )";
+
+    if (!query.exec(createPaymentsTable)) {
+        qDebug() << "Error creating payments table:" << query.lastError().text();
+        return false;
+    }
+
+    // Create payment_items table
+    QString createPaymentItemsTable = R"(
+        CREATE TABLE IF NOT EXISTS payment_items (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            payment_id INTEGER NOT NULL,
+            transaction_id INTEGER NOT NULL,
+            book_id INTEGER NOT NULL,
+            amount REAL NOT NULL,
+            FOREIGN KEY (payment_id) REFERENCES payments(id),
+            FOREIGN KEY (transaction_id) REFERENCES transactions(id),
+            FOREIGN KEY (book_id) REFERENCES books(id)
+        )
+    )";
+
+    if (!query.exec(createPaymentItemsTable)) {
+        qDebug() << "Error creating payment_items table:" << query.lastError().text();
+        return false;
+    }
+
+    return true;
+}
+
+bool DatabaseManager::processPayment(Payment& payment, const QVector<int>& transactionIds) {
+    if (transactionIds.isEmpty()) {
+        m_lastError = "No transactions selected for payment";
+        return false;
+    }
+
+    // Start transaction
+    if (!m_database.transaction()) {
+        m_lastError = "Failed to start database transaction";
+        return false;
+    }
+
+    QSqlQuery query(m_database);
+
+    try {
+        // Generate receipt number if not set
+        if (payment.getReceiptNo().isEmpty()) {
+            payment.setReceiptNo(payment.generateReceiptNo());
+        }
+
+        // Insert payment record
+        query.prepare(R"(
+            INSERT INTO payments (receipt_no, learner_id, amount, processed_by, notes)
+            VALUES (:receipt_no, :learner_id, :amount, :processed_by, :notes)
+        )");
+
+        query.bindValue(":receipt_no", payment.getReceiptNo());
+        query.bindValue(":learner_id", payment.getLearnerId());
+        query.bindValue(":amount", payment.getAmount());
+        query.bindValue(":processed_by", payment.getProcessedBy());
+        query.bindValue(":notes", payment.getNotes());
+
+        if (!query.exec()) {
+            throw std::runtime_error(query.lastError().text().toStdString());
+        }
+
+        int paymentId = query.lastInsertId().toInt();
+        payment.setId(paymentId);
+
+        // Process each transaction
+        for (int transId : transactionIds) {
+            // Get transaction details
+            Transaction trans = getTransactionById(transId);
+            if (trans.getId() == -1) {
+                throw std::runtime_error("Transaction not found");
+            }
+
+            // Get book price
+            Book book = getBookById(trans.getBookId());
+            if (book.getId() == -1) {
+                throw std::runtime_error("Book not found");
+            }
+
+            // Insert payment item
+            query.prepare(R"(
+                INSERT INTO payment_items (payment_id, transaction_id, book_id, amount)
+                VALUES (:payment_id, :transaction_id, :book_id, :amount)
+            )");
+
+            query.bindValue(":payment_id", paymentId);
+            query.bindValue(":transaction_id", transId);
+            query.bindValue(":book_id", trans.getBookId());
+            query.bindValue(":amount", book.getPrice());
+
+            if (!query.exec()) {
+                throw std::runtime_error(query.lastError().text().toStdString());
+            }
+
+            // Update transaction status to "Paid" (we'll add this status)
+            query.prepare(R"(
+                UPDATE transactions
+                SET status = 'Paid', notes = 'Payment processed - Receipt: ' || :receipt_no
+                WHERE id = :id
+            )");
+
+            query.bindValue(":receipt_no", payment.getReceiptNo());
+            query.bindValue(":id", transId);
+
+            if (!query.exec()) {
+                throw std::runtime_error(query.lastError().text().toStdString());
+            }
+        }
+
+        // Commit transaction
+        if (!m_database.commit()) {
+            throw std::runtime_error("Failed to commit transaction");
+        }
+
+        return true;
+
+    } catch (const std::exception& e) {
+        m_database.rollback();
+        m_lastError = QString("Payment processing failed: %1").arg(e.what());
+        qDebug() << m_lastError;
+        return false;
+    }
+}
+
+QVector<Transaction> DatabaseManager::getUnpaidLostTransactionsByLearnerId(int learnerId) {
+    QVector<Transaction> transactions;
+    QSqlQuery query(m_database);
+
+    query.prepare(R"(
+        SELECT * FROM transactions
+        WHERE learner_id = :learner_id
+        AND status = 'Lost'
+        ORDER BY return_date DESC
+    )");
+
+    query.bindValue(":learner_id", learnerId);
+
+    if (!query.exec()) {
+        qDebug() << "Error getting unpaid lost transactions:" << query.lastError().text();
+        return transactions;
+    }
+
+    while (query.next()) {
+        Transaction trans;
+        trans.setId(query.value("id").toInt());
+        trans.setLearnerId(query.value("learner_id").toInt());
+        trans.setBookId(query.value("book_id").toInt());
+        trans.setBorrowDate(query.value("borrow_date").toDate());
+        trans.setDueDate(query.value("due_date").toDate());
+        trans.setReturnDate(query.value("return_date").toDate());
+        trans.setStatus(Transaction::stringToStatus(query.value("status").toString()));
+
+        transactions.append(trans);
+    }
+
+    return transactions;
+}
+
+double DatabaseManager::getTotalOutstandingFees(int learnerId) {
+    double total = 0.0;
+    QSqlQuery query(m_database);
+
+    query.prepare(R"(
+        SELECT SUM(b.price) as total
+        FROM transactions t
+        JOIN books b ON t.book_id = b.id
+        WHERE t.learner_id = :learner_id
+        AND t.status = 'Lost'
+    )");
+
+    query.bindValue(":learner_id", learnerId);
+
+    if (query.exec() && query.next()) {
+        total = query.value("total").toDouble();
+    }
+
+    return total;
+}
+
+Payment DatabaseManager::getPaymentById(int id) {
+    Payment payment;
+    QSqlQuery query(m_database);
+
+    query.prepare("SELECT * FROM payments WHERE id = :id");
+    query.bindValue(":id", id);
+
+    if (query.exec() && query.next()) {
+        payment.setId(query.value("id").toInt());
+        payment.setReceiptNo(query.value("receipt_no").toString());
+        payment.setLearnerId(query.value("learner_id").toInt());
+        payment.setAmount(query.value("amount").toDouble());
+        payment.setProcessedBy(query.value("processed_by").toInt());
+        payment.setPaymentDate(query.value("payment_date").toDateTime());
+        payment.setNotes(query.value("notes").toString());
+    }
+
+    return payment;
+}
+
+QVector<Payment> DatabaseManager::getPaymentsByLearnerId(int learnerId) {
+    QVector<Payment> payments;
+    QSqlQuery query(m_database);
+
+    query.prepare(R"(
+        SELECT * FROM payments
+        WHERE learner_id = :learner_id
+        ORDER BY payment_date DESC
+    )");
+
+    query.bindValue(":learner_id", learnerId);
+
+    if (!query.exec()) {
+        qDebug() << "Error getting payments:" << query.lastError().text();
+        return payments;
+    }
+
+    while (query.next()) {
+        Payment payment;
+        payment.setId(query.value("id").toInt());
+        payment.setReceiptNo(query.value("receipt_no").toString());
+        payment.setLearnerId(query.value("learner_id").toInt());
+        payment.setAmount(query.value("amount").toDouble());
+        payment.setProcessedBy(query.value("processed_by").toInt());
+        payment.setPaymentDate(query.value("payment_date").toDateTime());
+        payment.setNotes(query.value("notes").toString());
+        payments.append(payment);
+    }
+
+    return payments;
+}
+
+QVector<PaymentItem> DatabaseManager::getPaymentItems(int paymentId) {
+    QVector<PaymentItem> items;
+    QSqlQuery query(m_database);
+
+    query.prepare("SELECT * FROM payment_items WHERE payment_id = :payment_id");
+    query.bindValue(":payment_id", paymentId);
+
+    if (!query.exec()) {
+        qDebug() << "Error getting payment items:" << query.lastError().text();
+        return items;
+    }
+
+    while (query.next()) {
+        PaymentItem item;
+        item.setId(query.value("id").toInt());
+        item.setPaymentId(query.value("payment_id").toInt());
+        item.setTransactionId(query.value("transaction_id").toInt());
+        item.setBookId(query.value("book_id").toInt());
+        item.setAmount(query.value("amount").toDouble());
+        items.append(item);
+    }
+
+    return items;
+}

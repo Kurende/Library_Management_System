@@ -44,6 +44,7 @@ private slots:
     void on_pushButton_logoutSidebar_clicked();
     void on_pushButton_logoutTopBar_clicked();
     void on_pushButton_toogleMenu_clicked();
+    //void on_pushButton_makePaymentSidebar_clicked();
     
     // Sidebar sub-menus
     void on_pushButton_booksIconSection_clicked();

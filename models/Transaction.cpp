@@ -39,6 +39,7 @@ QString Transaction::statusToString(Status status) {
         case Status::Active: return "Active";
         case Status::Returned: return "Returned";
         case Status::Lost: return "Lost";
+        case Status::Paid: return "Paid";
         default: return "Active";
     }
 }

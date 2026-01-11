@@ -11,7 +11,8 @@ public:
     enum class Status {
         Active,      // Book is currently borrowed
         Returned,    // Book was returned
-        Lost         // Book was marked as lost
+        Lost,         // Book was marked as lost
+        Paid
     };
 
     // Constructors

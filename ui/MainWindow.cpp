@@ -9,6 +9,9 @@
 #include <QFileDialog>
 #include <QTextDocument>
 #include <User.h>
+#include <QSqlRecord>
+#include <QDateTime>
+#include <QFile>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

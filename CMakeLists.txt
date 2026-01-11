@@ -55,6 +55,8 @@ set(PROJECT_RESOURCES
 add_executable(Library_Management_System
     ${PROJECT_SOURCES}
     ${PROJECT_RESOURCES}
+    models/Payments.h models/Payments.cpp
+    models/PaymentItem.h models/PaymentItem.cpp
 )
 
 # Link Qt libraries

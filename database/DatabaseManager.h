@@ -10,6 +10,8 @@
 #include "Learner.h"
 #include "Book.h"
 #include "Transaction.h"
+#include "Payments.h"
+#include "PaymentItem.h"
 
 class DatabaseManager {
 public:
@@ -88,6 +90,24 @@ public:
         int overdueBooks;
     };
     DashboardStats getDashboardStats();
+
+    //Payments
+    // Create payment tables
+    bool createPaymentTables();
+
+    // Payment operations
+    bool processPayment(Payment& payment, const QVector<int>& transactionIds);
+    Payment getPaymentById(int id);
+    QVector<Payment> getPaymentsByLearnerId(int learnerId);
+    QVector<PaymentItem> getPaymentItems(int paymentId);
+
+    // Get lost transactions that haven't been paid for
+    QVector<Transaction> getUnpaidLostTransactionsByLearnerId(int learnerId);
+
+    // Calculate total outstanding fees for a learner
+    double getTotalOutstandingFees(int learnerId);
+
+
     
     // Recent transactions for dashboard
     QVector<Transaction> getRecentTransactions(int limit = 10);
