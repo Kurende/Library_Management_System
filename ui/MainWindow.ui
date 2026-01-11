@@ -2973,7 +2973,7 @@ color:white;}</string>
                    <enum>QFrame::Shadow::Raised</enum>
                   </property>
                   <property name="currentIndex">
-                   <number>2</number>
+                   <number>4</number>
                   </property>
                   <widget class="QWidget" name="page_dashboard">
                    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -7162,7 +7162,7 @@ background-color:#6093BF;}</string>
 </string>
                       </property>
                       <property name="currentIndex">
-                       <number>2</number>
+                       <number>1</number>
                       </property>
                       <widget class="QWidget" name="page_borrowBook">
                        <layout class="QVBoxLayout" name="verticalLayout_95">
@@ -8179,7 +8179,7 @@ QLabel{color:white;}
                                      </property>
                                      <property name="maximumSize">
                                       <size>
-                                       <width>68</width>
+                                       <width>150</width>
                                        <height>20</height>
                                       </size>
                                      </property>
@@ -8189,7 +8189,7 @@ QLabel{color:white;}
                                       </font>
                                      </property>
                                      <property name="text">
-                                      <string>Search by:</string>
+                                      <string/>
                                      </property>
                                     </widget>
                                    </item>
@@ -8581,14 +8581,34 @@ border-radius:3px;
                              <x>0</x>
                              <y>0</y>
                              <width>1024</width>
-                             <height>1307</height>
+                             <height>1303</height>
                             </rect>
                            </property>
                            <layout class="QVBoxLayout" name="verticalLayout_180">
                             <item>
                              <widget class="QWidget" name="widget_reportBackground" native="true">
                               <property name="styleSheet">
-                               <string notr="true">QPushButton{border: 1px solid rgb(120, 130, 150);
+                               <string notr="true">QRadioButton {
+    color: white;
+    spacing: 5px;  /* Space between indicator and text */
+}
+
+QRadioButton::indicator {
+    border: 2px solid white;
+    border-radius: 6px;
+    width: 12px;
+    height: 12px;
+    background-color: transparent;
+}
+
+QRadioButton::indicator:checked {
+    background-color: white;
+}
+
+QRadioButton::indicator:hover {
+    border: 2px solid #CCCCCC; 
+}
+QPushButton{border: 1px solid rgb(120, 130, 150);
 background-color:#254559;
 padding: 3px;
 font:bold;
@@ -8704,7 +8724,7 @@ padding: 3px;
                                    </property>
                                    <property name="maximumSize">
                                     <size>
-                                     <width>115</width>
+                                     <width>90</width>
                                      <height>20</height>
                                     </size>
                                    </property>
@@ -8714,7 +8734,7 @@ padding: 3px;
                                     </font>
                                    </property>
                                    <property name="text">
-                                    <string>Select Report Type:</string>
+                                    <string>Report Type  :</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -9403,8 +9423,8 @@ QGroupBox::title {
                       <property name="currentIndex">
                        <number>1</number>
                       </property>
-                      <widget class="QWidget" name="page_"/>
-                      <widget class="QWidget" name="page_4"/>
+                      <widget class="QWidget" name="page_adminSettings"/>
+                      <widget class="QWidget" name="page_ordinaryUserSettings"/>
                      </widget>
                     </item>
                    </layout>
