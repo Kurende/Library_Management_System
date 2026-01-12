@@ -3832,7 +3832,7 @@ color:#fefefe;}</string>
 </string>
                       </property>
                       <property name="currentIndex">
-                       <number>0</number>
+                       <number>1</number>
                       </property>
                       <widget class="QWidget" name="page_addViewBooks">
                        <layout class="QHBoxLayout" name="horizontalLayout_21">
@@ -5007,7 +5007,7 @@ border-radius:3px;
                   <widget class="QWidget" name="page_LearnerManagement">
                    <layout class="QVBoxLayout" name="verticalLayout_122">
                     <item>
-                     <widget class="QStackedWidget" name="stackedWidget_learnersPages_2">
+                     <widget class="QStackedWidget" name="stackedWidget_learnersPages">
                       <property name="styleSheet">
                        <string notr="true">QStackedWidget{
 background-color:#011526;
@@ -5019,7 +5019,7 @@ QPushButton{color:white;}
 QComboBox{color:white;}</string>
                       </property>
                       <property name="currentIndex">
-                       <number>0</number>
+                       <number>1</number>
                       </property>
                       <widget class="QWidget" name="page_addViewLearnerInfo">
                        <layout class="QVBoxLayout" name="verticalLayout_197">
@@ -5781,7 +5781,7 @@ background-color:#011526;
                                     <second>0</second>
                                     <year>2024</year>
                                     <month>12</month>
-                                    <day>11</day>
+                                    <day>10</day>
                                    </datetime>
                                   </property>
                                   <property name="displayFormat">
@@ -5844,7 +5844,7 @@ background-color:#011526;
                                     <second>0</second>
                                     <year>2025</year>
                                     <month>8</month>
-                                    <day>24</day>
+                                    <day>23</day>
                                    </datetime>
                                   </property>
                                   <property name="displayFormat">
@@ -6173,7 +6173,7 @@ background-color:#254559;
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QStackedWidget" name="stackedWidget_learnersPages">
+                        <widget class="QStackedWidget" name="stackedWidget_learnersProfile">
                          <property name="styleSheet">
                           <string notr="true">QStackedWidget{
 background-color:#011526;
@@ -7262,7 +7262,7 @@ QLabel{color:white;}
                                  <rect>
                                   <x>0</x>
                                   <y>0</y>
-                                  <width>1004</width>
+                                  <width>266</width>
                                   <height>1041</height>
                                  </rect>
                                 </property>
@@ -8580,7 +8580,7 @@ border-radius:3px;
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>1024</width>
+                             <width>265</width>
                              <height>1303</height>
                             </rect>
                            </property>
@@ -9116,7 +9116,7 @@ border-radius:3px;
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>1042</width>
+                         <width>461</width>
                          <height>955</height>
                         </rect>
                        </property>
