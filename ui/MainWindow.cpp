@@ -52,11 +52,11 @@ void MainWindow::initializeUI() {
     ui->lineEdit_loginPassword->setEchoMode(QLineEdit::Password);
     ui->lineEdit_regPassword->setEchoMode(QLineEdit::Password);
     ui->lineEdit_regRepeatPassword->setEchoMode(QLineEdit::Password);
-    ui->lineEdit_retrieveNewPassword->setEchoMode(QLineEdit::Password);
-    ui->lineEdit_retrieveConfirmPassword->setEchoMode(QLineEdit::Password);
+    ui->lineEdit_resetNewPassword->setEchoMode(QLineEdit::Password);
+    ui->lineEdit_resetConfirmPassword->setEchoMode(QLineEdit::Password);
     
     // Initialize password reset frames
-    ui->frame_retrieveSecurityQuestionCard->setVisible(false);
+    ui->frame_resetSecurityQuestionCard->setVisible(false);
     ui->frame_newPassword->setVisible(false);
 }
 
@@ -77,9 +77,9 @@ void MainWindow::setupComboBoxes() {
     ui->comboBox_filterLearnerGrade->addItems(grades);
     
     // Subject combo boxes
-    QStringList subjects = {"Mathematics", "Physical Sciences", "Life Sciences", 
-                           "English", "Afrikaans", "History", "Geography", 
-                           "Accounting", "Business Studies", "Economics"};
+    QStringList subjects = {"Mathematics", "Physical Sciences", "Life Sciences", "History", "Geography", "Business Studies", "Economics",
+                            "Life Orientation", "Creative Arts", "Economic Management Sciences", "Natural Sciences", "Accounting",
+                            "English", "Afrikaans", "Sepedi", "Xhitsonga"};
     
     ui->comboBox_bookSubject->addItems(subjects);
     ui->comboBox_editBookSubject->addItems(subjects);
@@ -262,8 +262,8 @@ void MainWindow::on_pushButton_forgotPassword_clicked() {
     showResetPasswordPage();
 }
 
-void MainWindow::on_pushButton_retrieveVerifyEmail_clicked() {
-    QString email = ui->lineEdit_retrieveEmail->text().trimmed();
+void MainWindow::on_pushButton_resetVerifyEmail_clicked() {
+    QString email = ui->lineEdit_resetEmail->text().trimmed();
     
     if (email.isEmpty()) {
         showErrorMessage("Please enter your email address");
@@ -274,17 +274,17 @@ void MainWindow::on_pushButton_retrieveVerifyEmail_clicked() {
         m_currentEmail = email;
         QString question = AuthManager::instance().getSecurityQuestion(email);
         
-        ui->label_retrieveSecurityQuestion->setText(question);
-        ui->frame_retrieveSecurityQuestionCard->setVisible(true);
-        ui->lineEdit_retrieveEmail->setEnabled(false);
-        ui->pushButton_retrieveVerifyEmail->setEnabled(false);
+        ui->label_resetSecurityQuestion->setText(question);
+        ui->frame_resetSecurityQuestionCard->setVisible(true);
+        ui->lineEdit_resetEmail->setEnabled(false);
+        ui->pushButton_resetVerifyEmail->setEnabled(false);
     } else {
         showErrorMessage(AuthManager::instance().getLastError());
     }
 }
 
-void MainWindow::on_pushButton_retrieveVerifyAnswer_clicked() {
-    QString answer = ui->lineEdit_retrieveSecurityAnswer->text().trimmed();
+void MainWindow::on_pushButton_resetVerifyAnswer_clicked() {
+    QString answer = ui->lineEdit_resetSecurityAnswer->text().trimmed();
     
     if (answer.isEmpty()) {
         showErrorMessage("Please enter your security answer");
@@ -293,52 +293,52 @@ void MainWindow::on_pushButton_retrieveVerifyAnswer_clicked() {
     
     if (AuthManager::instance().verifySecurityAnswer(m_currentEmail, answer)) {
         ui->frame_newPassword->setVisible(true);
-        ui->frame_retrieveSecurityQuestionCard->setEnabled(false);
-        ui->pushButton_retrieveVerifyAnswer->setEnabled(false);
+        ui->frame_resetSecurityQuestionCard->setEnabled(false);
+        ui->pushButton_resetVerifyAnswer->setEnabled(false);
     } else {
         showErrorMessage(AuthManager::instance().getLastError());
     }
 }
 
-void MainWindow::on_pushButton_retrieveSubmit_clicked() {
+void MainWindow::on_pushButton_resetSubmit_clicked() {
     if (!validatePasswordResetForm()) {
         return;
     }
     
-    QString newPassword = ui->lineEdit_retrieveNewPassword->text();
+    QString newPassword = ui->lineEdit_resetNewPassword->text();
     
     if (AuthManager::instance().resetPassword(m_currentEmail, newPassword)) {
         showSuccessMessage("Password reset successful! You can now login with your new password.");
         showLoginPage();
         
         // Clear reset form
-        ui->lineEdit_retrieveEmail->clear();
-        ui->lineEdit_retrieveSecurityAnswer->clear();
-        ui->lineEdit_retrieveNewPassword->clear();
-        ui->lineEdit_retrieveConfirmPassword->clear();
-        ui->frame_retrieveSecurityQuestionCard->setVisible(false);
+        ui->lineEdit_resetEmail->clear();
+        ui->lineEdit_resetSecurityAnswer->clear();
+        ui->lineEdit_resetNewPassword->clear();
+        ui->lineEdit_resetConfirmPassword->clear();
+        ui->frame_resetSecurityQuestionCard->setVisible(false);
         ui->frame_newPassword->setVisible(false);
-        ui->lineEdit_retrieveEmail->setEnabled(true);
-        ui->pushButton_retrieveVerifyEmail->setEnabled(true);
-        ui->pushButton_retrieveVerifyAnswer->setEnabled(true);
+        ui->lineEdit_resetEmail->setEnabled(true);
+        ui->pushButton_resetVerifyEmail->setEnabled(true);
+        ui->pushButton_resetVerifyAnswer->setEnabled(true);
     } else {
         showErrorMessage(AuthManager::instance().getLastError());
     }
 }
 
-void MainWindow::on_pushButton_retrieveCancel_clicked() {
+void MainWindow::on_pushButton_resetCancel_clicked() {
     showLoginPage();
     
     // Clear and reset form
-    ui->lineEdit_retrieveEmail->clear();
-    ui->lineEdit_retrieveSecurityAnswer->clear();
-    ui->lineEdit_retrieveNewPassword->clear();
-    ui->lineEdit_retrieveConfirmPassword->clear();
-    ui->frame_retrieveSecurityQuestionCard->setVisible(false);
+    ui->lineEdit_resetEmail->clear();
+    ui->lineEdit_resetSecurityAnswer->clear();
+    ui->lineEdit_resetNewPassword->clear();
+    ui->lineEdit_resetConfirmPassword->clear();
+    ui->frame_resetSecurityQuestionCard->setVisible(false);
     ui->frame_newPassword->setVisible(false);
-    ui->lineEdit_retrieveEmail->setEnabled(true);
-    ui->pushButton_retrieveVerifyEmail->setEnabled(true);
-    ui->pushButton_retrieveVerifyAnswer->setEnabled(true);
+    ui->lineEdit_resetEmail->setEnabled(true);
+    ui->pushButton_resetVerifyEmail->setEnabled(true);
+    ui->pushButton_resetVerifyAnswer->setEnabled(true);
 }
 
 // ==================== Navigation ====================
@@ -445,22 +445,22 @@ void MainWindow::showUpdateBookPage() {
 }
 
 void MainWindow::showLearnersPage() {
-    ui->stackedWidget_learnersPages_2->setCurrentWidget(ui->page_addViewLearnerInfo);
+    ui->stackedWidget_learnersPages->setCurrentWidget(ui->page_addViewLearnerInfo);
 }
 
 void MainWindow::showAddLearnerPage() {
-    ui->stackedWidget_learnersPages_2->setCurrentWidget(ui->page_addViewLearnerInfo);
+    ui->stackedWidget_learnersPages->setCurrentWidget(ui->page_addViewLearnerInfo);
     ui->page_mainContent->setCurrentWidget(ui->page_LearnerManagement);
 }
 
 void MainWindow::showLearnerProfilePage() {
     ui->stackedWidget_learnersPages->setCurrentWidget(ui->page_Profile);
-    ui->stackedWidget_learnersPages_2->setCurrentWidget(ui->page_learnerProfile);
+    ui->stackedWidget_learnersPages->setCurrentWidget(ui->page_learnerProfile);
     ui->page_mainContent->setCurrentWidget(ui->page_LearnerManagement);
 }
 
 void MainWindow::showUpdateLearnerPage() {
-    ui->stackedWidget_learnersPages_2->setCurrentWidget(ui->page_updateLearnerInfo);
+    ui->stackedWidget_learnersPages->setCurrentWidget(ui->page_updateLearnerInfo);
     ui->page_mainContent->setCurrentWidget(ui->page_LearnerManagement);
 }
 
@@ -1305,8 +1305,8 @@ bool MainWindow::validateRegistrationForm() {
 }
 
 bool MainWindow::validatePasswordResetForm() {
-    QString newPassword = ui->lineEdit_retrieveNewPassword->text();
-    QString confirmPassword = ui->lineEdit_retrieveConfirmPassword->text();
+    QString newPassword = ui->lineEdit_resetNewPassword->text();
+    QString confirmPassword = ui->lineEdit_resetConfirmPassword->text();
     
     if (newPassword != confirmPassword) {
         showErrorMessage("Passwords do not match");

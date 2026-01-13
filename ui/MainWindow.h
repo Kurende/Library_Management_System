@@ -28,10 +28,10 @@ private slots:
     void on_pushButton_registerSubmit_clicked();
     
     // Password Reset
-    void on_pushButton_retrieveVerifyEmail_clicked();
-    void on_pushButton_retrieveVerifyAnswer_clicked();
-    void on_pushButton_retrieveSubmit_clicked();
-    void on_pushButton_retrieveCancel_clicked();
+    void on_pushButton_resetVerifyEmail_clicked();
+    void on_pushButton_resetVerifyAnswer_clicked();
+    void on_pushButton_resetSubmit_clicked();
+    void on_pushButton_resetCancel_clicked();
     
     // ==================== Navigation ====================
     void on_pushButton_homeIconSection_clicked();
