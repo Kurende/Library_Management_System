@@ -12,6 +12,7 @@
 #include <QSqlRecord>
 #include <QDateTime>
 #include <QFile>
+#include <QIcon>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -34,9 +35,10 @@ MainWindow::~MainWindow() {
 // ==================== Initialization ====================
 
 void MainWindow::initializeUI() {
+
     // Set window properties
     setWindowTitle("Library Management System");
-    
+
     // Setup combo boxes
     setupComboBoxes();
     
@@ -44,9 +46,21 @@ void MainWindow::initializeUI() {
     setupTableHeaders();
     
     // Set default date values
-    ui->dateEdit_borrowDate->setDate(QDate::currentDate());
-    ui->dateEdit_dueDate->setDate(Transaction::calculateDueDate(QDate::currentDate()));
-    ui->dateEdit_returnDate->setDate(QDate::currentDate());
+    //Get the current date and the current year
+    QDate today = QDate::currentDate();
+    int currentYear = today.year();
+
+    //Set the Borrow and Return dates to today
+    ui->dateEdit_borrowDate->setDate(today);
+    ui->dateEdit_returnDate->setDate(today);
+
+    //Set the Due Date to November 28th of the current year
+    ui->dateEdit_dueDate->setDate(QDate(currentYear, 11, 28));
+
+    //Set all widgets to Read-Only
+    ui->dateEdit_borrowDate->setReadOnly(true);
+    ui->dateEdit_dueDate->setReadOnly(true);
+    ui->dateEdit_returnDate->setReadOnly(true);
     
     // Hide password fields
     ui->lineEdit_loginPassword->setEchoMode(QLineEdit::Password);
@@ -58,6 +72,7 @@ void MainWindow::initializeUI() {
     // Initialize password reset frames
     ui->frame_resetSecurityQuestionCard->setVisible(false);
     ui->frame_newPassword->setVisible(false);
+
 }
 
 void MainWindow::setupConnections() {
@@ -125,7 +140,7 @@ void MainWindow::setupTableHeaders() {
     ui->tableWidget_books->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget_books->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tableWidget_books->horizontalHeader()->setStretchLastSection(true);
-    ui->tableWidget_books->setColumnHidden(0, true); // Hide ID column
+    ui->tableWidget_books->setColumnHidden(0, false); // Hide ID column
     
     // Learners table
     ui->tableWidget_viewLearnersList->setColumnCount(6);
@@ -135,7 +150,7 @@ void MainWindow::setupTableHeaders() {
     ui->tableWidget_viewLearnersList->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget_viewLearnersList->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tableWidget_viewLearnersList->horizontalHeader()->setStretchLastSection(true);
-    ui->tableWidget_viewLearnersList->setColumnHidden(0, true); // Hide ID column
+    ui->tableWidget_viewLearnersList->setColumnHidden(0, false); // Hide ID column
     
     // Transactions table
     ui->tableWidget_transactionHistory->setColumnCount(7);
@@ -144,7 +159,7 @@ void MainWindow::setupTableHeaders() {
     });
     ui->tableWidget_transactionHistory->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget_transactionHistory->horizontalHeader()->setStretchLastSection(true);
-    ui->tableWidget_transactionHistory->setColumnHidden(0, true);
+    ui->tableWidget_transactionHistory->setColumnHidden(0, false);
     
     // Return books table
     ui->tableWidget_returnBooks->setColumnCount(6);
@@ -228,7 +243,7 @@ void MainWindow::on_pushButton_registerSubmit_clicked() {
     if (!validateRegistrationForm()) {
         return;
     }
-    
+
     // Create user object
     User newUser;
     // Use email as username since it's unique and doesn't contain spaces
@@ -242,13 +257,21 @@ void MainWindow::on_pushButton_registerSubmit_clicked() {
     newUser.setRole(User::stringToRole(ui->QComboBox_regRole->currentText()));
     newUser.setSecurityQuestion(ui->QComboBox_securityQuestion->currentText());
     newUser.setSecurityAnswer(ui->lineEdit_regSecurityAnswer->text().trimmed());
-    
+
     QString password = ui->lineEdit_regPassword->text();
-    
+
     if (AuthManager::instance().registerUser(newUser, password)) {
-        showSuccessMessage("Registration successful! You can now login using your email address: " + email);
-        showLoginPage();
-        clearRegistrationForm();
+        // Automatically log in the user after successful registration
+        if (AuthManager::instance().login(email, password)) {
+            showSuccessMessage("Registration successful! Welcome, " + newUser.getName() + "!");
+            clearRegistrationForm();
+            showHomePage();
+        } else {
+
+            showSuccessMessage("Registration successful! Please login using your email address: " + email);
+            showLoginPage();
+            clearRegistrationForm();
+        }
     } else {
         showErrorMessage(AuthManager::instance().getLastError());
     }
@@ -454,7 +477,7 @@ void MainWindow::showAddLearnerPage() {
 }
 
 void MainWindow::showLearnerProfilePage() {
-    ui->stackedWidget_learnersPages->setCurrentWidget(ui->page_Profile);
+    ui->stackedWidget_learnersPages->setCurrentWidget(ui->page_profile);
     ui->stackedWidget_learnersPages->setCurrentWidget(ui->page_learnerProfile);
     ui->page_mainContent->setCurrentWidget(ui->page_LearnerManagement);
 }
@@ -535,10 +558,9 @@ void MainWindow::on_pushButton_updateBookInfoSidebar_clicked() {
     loadBookDetails(m_selectedBookId);
 }
 
-void MainWindow::on_pushButton_availableBooksSidebar_clicked() {
+void MainWindow::on_pushButton_allBooksSidebar_clicked() {
     showAddBookPage();
-    QVector<Book> availableBooks = DatabaseManager::instance().getBooksByStatus(Book::Status::Available);
-    populateBooksTable(availableBooks);
+    loadAllBooks();
 }
 
 void MainWindow::on_pushButton_confirmAdd_clicked() {
@@ -835,7 +857,7 @@ void MainWindow::on_pushButton_viewTransactionRecord_clicked() {
 
 // Update Learner
 
-void MainWindow::on_pushButton__editLearnerConfirm_clicked() {
+void MainWindow::on_pushButton_editLearnerConfirm_clicked() {
     if (m_selectedLearnerId == -1) {
         showErrorMessage("No learner selected for update");
         return;
