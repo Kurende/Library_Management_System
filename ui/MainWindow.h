@@ -60,7 +60,7 @@ private slots:
     // ==================== Book Management ====================
     void on_pushButton_addBookSidebar_clicked();
     void on_pushButton_updateBookInfoSidebar_clicked();
-    void on_pushButton_availableBooksSidebar_clicked();
+    void on_pushButton_allBooksSidebar_clicked();
     void on_pushButton_confirmAdd_clicked();
     void on_pushButton_clearForm_clicked();
     void on_pushButton_copyFromISBN_clicked();
@@ -94,7 +94,7 @@ private slots:
     void on_pushButton_viewTransactionRecord_clicked();
     
     // Update Learner
-    void on_pushButton__editLearnerConfirm_clicked();
+    void on_pushButton_editLearnerConfirm_clicked();
     void on_pushButton_editLearnerCancel_clicked();
     
     // ==================== Transaction Management ====================
