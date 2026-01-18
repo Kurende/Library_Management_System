@@ -18,7 +18,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget_mainPages">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page_login">
        <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -93,7 +93,7 @@ border-radius: 8px;
                    <number>0</number>
                   </property>
                   <property name="topMargin">
-                   <number>25</number>
+                   <number>20</number>
                   </property>
                   <property name="bottomMargin">
                    <number>25</number>
@@ -240,7 +240,7 @@ padding: 2px;
                   <property name="sizeHint" stdset="0">
                    <size>
                     <width>20</width>
-                    <height>19</height>
+                    <height>51</height>
                    </size>
                   </property>
                  </spacer>
@@ -325,7 +325,7 @@ background-color:#6093BF;}</string>
                   <property name="sizeHint" stdset="0">
                    <size>
                     <width>20</width>
-                    <height>19</height>
+                    <height>16</height>
                    </size>
                   </property>
                  </spacer>
@@ -423,7 +423,7 @@ color:#6093BF;}
                     <property name="sizeHint" stdset="0">
                      <size>
                       <width>20</width>
-                      <height>74</height>
+                      <height>44</height>
                      </size>
                     </property>
                    </spacer>
@@ -5878,7 +5878,7 @@ background-color:#011526;
                                     <second>0</second>
                                     <year>2024</year>
                                     <month>12</month>
-                                    <day>8</day>
+                                    <day>7</day>
                                    </datetime>
                                   </property>
                                   <property name="displayFormat">
@@ -5941,7 +5941,7 @@ background-color:#011526;
                                     <second>0</second>
                                     <year>2025</year>
                                     <month>8</month>
-                                    <day>21</day>
+                                    <day>20</day>
                                    </datetime>
                                   </property>
                                   <property name="displayFormat">
@@ -7359,7 +7359,7 @@ QLabel{color:white;}
                                  <rect>
                                   <x>0</x>
                                   <y>0</y>
-                                  <width>1004</width>
+                                  <width>266</width>
                                   <height>1041</height>
                                  </rect>
                                 </property>
@@ -8179,7 +8179,7 @@ border-radius:3px;
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>1024</width>
+                             <width>388</width>
                              <height>795</height>
                             </rect>
                            </property>
@@ -8677,7 +8677,7 @@ border-radius:3px;
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>1024</width>
+                             <width>265</width>
                              <height>1303</height>
                             </rect>
                            </property>
@@ -9213,7 +9213,7 @@ border-radius:3px;
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>1042</width>
+                         <width>461</width>
                          <height>955</height>
                         </rect>
                        </property>
