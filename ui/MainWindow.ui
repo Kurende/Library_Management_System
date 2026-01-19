@@ -18,7 +18,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget_mainPages">
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="page_login">
        <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -1958,6 +1958,38 @@ background-color:#6093BF}
                   <number>2</number>
                  </property>
                  <item>
+                  <widget class="QPushButton" name="pushButton_usersIconSection">
+                   <property name="minimumSize">
+                    <size>
+                     <width>40</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>40</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="../resources.qrc">
+                     <normaloff>:/icons/icons/utils/icons8-user-96.png</normaloff>:/icons/icons/utils/icons8-user-96.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>30</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="checkable">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
                   <widget class="QPushButton" name="pushButton_settingsIconSection">
                    <property name="minimumSize">
                     <size>
@@ -2506,7 +2538,7 @@ color:#6093BF;}</string>
                          </property>
                          <property name="styleSheet">
                           <string notr="true">QPushButton{
-padding-left:18;
+padding-left:-5;
 background-color:#011526;
 color:rgb(252, 251, 244);
 font:13px bold;}
@@ -2515,7 +2547,7 @@ QPushButton:hover{
 color:#6093BF;}</string>
                          </property>
                          <property name="text">
-                          <string>Available Books</string>
+                          <string>View Books</string>
                          </property>
                          <property name="flat">
                           <bool>true</bool>
@@ -2863,6 +2895,43 @@ color:#6093BF;}</string>
                  <property name="spacing">
                   <number>2</number>
                  </property>
+                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                  <widget class="QPushButton" name="pushButton_usersSidebar">
+                   <property name="minimumSize">
+                    <size>
+                     <width>100</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton{color:white;
+
+}</string>
+                   </property>
+                   <property name="text">
+                    <string>Users   </string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="../resources.qrc">
+                     <normaloff>:/icons/icons/utils/icons8-user-96.png</normaloff>:/icons/icons/utils/icons8-user-96.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>30</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="checkable">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
                   <widget class="QPushButton" name="pushButton_settingsSidebar">
                    <property name="minimumSize">
@@ -5878,7 +5947,7 @@ background-color:#011526;
                                     <second>0</second>
                                     <year>2024</year>
                                     <month>12</month>
-                                    <day>7</day>
+                                    <day>6</day>
                                    </datetime>
                                   </property>
                                   <property name="displayFormat">
@@ -5941,7 +6010,7 @@ background-color:#011526;
                                     <second>0</second>
                                     <year>2025</year>
                                     <month>8</month>
-                                    <day>20</day>
+                                    <day>19</day>
                                    </datetime>
                                   </property>
                                   <property name="displayFormat">
@@ -7359,7 +7428,7 @@ QLabel{color:white;}
                                  <rect>
                                   <x>0</x>
                                   <y>0</y>
-                                  <width>266</width>
+                                  <width>1004</width>
                                   <height>1041</height>
                                  </rect>
                                 </property>
@@ -9213,7 +9282,7 @@ border-radius:3px;
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>461</width>
+                         <width>1042</width>
                          <height>955</height>
                         </rect>
                        </property>
@@ -9505,10 +9574,10 @@ QGroupBox::title {
                     <item>
                      <widget class="QStackedWidget" name="stackedWidget_usersPages">
                       <property name="currentIndex">
-                       <number>1</number>
+                       <number>0</number>
                       </property>
-                      <widget class="QWidget" name="page"/>
-                      <widget class="QWidget" name="page_2">
+                      <widget class="QWidget" name="page_adminSettings"/>
+                      <widget class="QWidget" name="page_userProfile">
                        <layout class="QVBoxLayout" name="verticalLayout_92">
                         <item>
                          <layout class="QHBoxLayout" name="horizontalLayout_55">
@@ -9952,7 +10021,7 @@ color:#6093BF;}
                                       </size>
                                      </property>
                                      <property name="text">
-                                      <string>a</string>
+                                      <string/>
                                      </property>
                                     </widget>
                                    </item>
@@ -9999,7 +10068,7 @@ color:#6093BF;}
                                       </size>
                                      </property>
                                      <property name="text">
-                                      <string>a</string>
+                                      <string/>
                                      </property>
                                     </widget>
                                    </item>
@@ -10046,7 +10115,7 @@ color:#6093BF;}
                                       </size>
                                      </property>
                                      <property name="text">
-                                      <string>a</string>
+                                      <string/>
                                      </property>
                                     </widget>
                                    </item>
@@ -10093,7 +10162,7 @@ color:#6093BF;}
                                       </size>
                                      </property>
                                      <property name="text">
-                                      <string>a</string>
+                                      <string/>
                                      </property>
                                     </widget>
                                    </item>
@@ -10140,7 +10209,7 @@ color:#6093BF;}
                                       </size>
                                      </property>
                                      <property name="text">
-                                      <string>a</string>
+                                      <string/>
                                      </property>
                                     </widget>
                                    </item>
@@ -10181,7 +10250,7 @@ color:#6093BF;}
                                       </size>
                                      </property>
                                      <property name="text">
-                                      <string>a</string>
+                                      <string/>
                                      </property>
                                     </widget>
                                    </item>
@@ -10228,7 +10297,7 @@ color:#6093BF;}
                                       </size>
                                      </property>
                                      <property name="text">
-                                      <string>a</string>
+                                      <string/>
                                      </property>
                                     </widget>
                                    </item>
@@ -10612,10 +10681,10 @@ background-color:#6093BF;}</string>
                     <item>
                      <widget class="QStackedWidget" name="stackedWidget_settingsPages">
                       <property name="currentIndex">
-                       <number>0</number>
+                       <number>1</number>
                       </property>
                       <widget class="QWidget" name="page_adminSettings"/>
-                      <widget class="QWidget" name="page_ordinaryUserSettings"/>
+                      <widget class="QWidget" name="page_userSettings"/>
                      </widget>
                     </item>
                    </layout>
