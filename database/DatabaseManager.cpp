@@ -3,7 +3,9 @@
 #include <QSqlRecord>
 #include <QDebug>
 #include <QFile>
-#include <QDate>
+#include "utils/Encryption.h"
+#include <QSqlQuery>
+#include <QDateTime>
 
 DatabaseManager& DatabaseManager::instance() {
     static DatabaseManager instance;
@@ -114,6 +116,28 @@ bool DatabaseManager::createTables() {
         setLastError("Failed to create transactions table: " + query.lastError().text());
         return false;
     }
+
+    // Create user_activity_logs table
+    QString createActivityLogTable = R"(
+        CREATE TABLE IF NOT EXISTS user_activity_logs (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            action_type TEXT NOT NULL,
+            action_details TEXT,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id)
+        )
+    )";
+
+    if (!query.exec(createActivityLogTable)) {
+        qCritical() << "Failed to create user_activity_logs table:" << query.lastError().text();
+        return false;
+    }
+
+    // Add password_changed_at and last_login columns to users table if they don't exist
+    query.exec("ALTER TABLE users ADD COLUMN password_changed_at DATETIME");
+    query.exec("ALTER TABLE users ADD COLUMN last_login DATETIME");
+
     
     return true;
 }
@@ -1472,3 +1496,133 @@ QVector<PaymentItem> DatabaseManager::getPaymentItems(int paymentId) {
 
     return items;
 }
+
+// ============================================================================
+// GET USER LAST LOGIN
+// ============================================================================
+
+QDateTime DatabaseManager::getUserLastLogin(int userId) {
+    QSqlQuery query(m_database);
+    query.prepare("SELECT last_login FROM users WHERE id = :id");
+    query.bindValue(":id", userId);
+
+    if (query.exec() && query.next()) {
+        return query.value(0).toDateTime();
+    }
+
+    return QDateTime(); // Invalid datetime
+}
+
+// ============================================================================
+// GET PASSWORD CHANGED DATE
+// ============================================================================
+
+QDateTime DatabaseManager::getPasswordChangedDate(int userId) {
+    QSqlQuery query(m_database);
+    query.prepare("SELECT password_changed_at FROM users WHERE id = :id");
+    query.bindValue(":id", userId);
+
+    if (query.exec() && query.next()) {
+        return query.value(0).toDateTime();
+    }
+
+    return QDateTime(); // Invalid datetime
+}
+
+
+// ============================================================================
+// CHANGE USER PASSWORD
+// ============================================================================
+
+bool DatabaseManager::changeUserPassword(int userId, const QString& newPassword) {
+    QSqlQuery query(m_database);
+
+    // Hash the new password
+    QString hashedPassword = Encryption::hashPassword(newPassword);
+
+    query.prepare(R"(
+        UPDATE users
+        SET password_hash = :password,
+            password_changed_at = :changed_at
+        WHERE id = :id
+    )");
+
+    query.bindValue(":password", hashedPassword);
+    query.bindValue(":changed_at", QDateTime::currentDateTime());
+    query.bindValue(":id", userId);
+
+    if (!query.exec()) {
+        m_lastError = "Failed to change password: " + query.lastError().text();
+        qWarning() << m_lastError;
+        return false;
+    }
+
+    return true;
+}
+
+// ============================================================================
+// LOG USER ACTIVITY
+// ============================================================================
+
+bool DatabaseManager::logUserActivity(int userId, const QString& actionType,
+                                      const QString& actionDetails) {
+    QSqlQuery query(m_database);
+
+    query.prepare(R"(
+        INSERT INTO user_activity_logs (user_id, action_type, action_details, created_at)
+        VALUES (:user_id, :action_type, :action_details, :created_at)
+    )");
+
+    query.bindValue(":user_id", userId);
+    query.bindValue(":action_type", actionType);
+    query.bindValue(":action_details", actionDetails);
+    query.bindValue(":created_at", QDateTime::currentDateTime());
+
+    if (!query.exec()) {
+        m_lastError = "Failed to log activity: " + query.lastError().text();
+        qWarning() << m_lastError;
+        return false;
+    }
+
+    return true;
+}
+
+// ============================================================================
+// GET USER ACTIVITY LOG
+// ============================================================================
+
+QVector<UserActivityLog> DatabaseManager::getUserActivityLog(int userId, int limit) {
+    QVector<UserActivityLog> logs;
+    QSqlQuery query(m_database);
+
+    query.prepare(R"(
+        SELECT id, user_id, action_type, action_details, created_at
+        FROM user_activity_logs
+        WHERE user_id = :user_id
+        ORDER BY created_at DESC
+        LIMIT :limit
+    )");
+
+    query.bindValue(":user_id", userId);
+    query.bindValue(":limit", limit);
+
+    if (!query.exec()) {
+        m_lastError = "Failed to get activity log: " + query.lastError().text();
+        qWarning() << m_lastError;
+        return logs;
+    }
+
+    while (query.next()) {
+        UserActivityLog log;
+        log.id = query.value(0).toInt();
+        log.userId = query.value(1).toInt();
+        log.actionType = query.value(2).toString();
+        log.actionDetails = query.value(3).toString();
+        log.createdAt = query.value(4).toDateTime();
+
+        logs.append(log);
+    }
+
+    return logs;
+}
+

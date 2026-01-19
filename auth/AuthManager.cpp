@@ -38,6 +38,19 @@ bool AuthManager::login(const QString& username, const QString& password) {
     m_currentUser = user;
     m_isLoggedIn = true;
     m_lastError.clear();
+
+    QSqlQuery updateQuery(DatabaseManager::instance().getDatabase());
+    updateQuery.prepare("UPDATE users SET last_login = :last_login WHERE id = :id");
+    updateQuery.bindValue(":last_login", QDateTime::currentDateTime());
+    updateQuery.bindValue(":id", m_currentUser.getId());
+    updateQuery.exec();
+
+    // Log the login activity
+    DatabaseManager::instance().logUserActivity(
+        m_currentUser.getId(),
+        "Login",
+        "User logged in successfully"
+        );
     
     return true;
 }
@@ -325,3 +338,20 @@ AuthManager::ValidationResult AuthManager::validateEmail(const QString& email) {
 void AuthManager::setLastError(const QString& error) {
     m_lastError = error;
 }
+
+bool AuthManager::verifyPassword(const QString& username, const QString& password) {
+    QSqlQuery query(DatabaseManager::instance().getDatabase());
+
+    query.prepare("SELECT password_hash FROM users WHERE username = :username");
+    query.bindValue(":username", username);
+
+    if (!query.exec() || !query.next()) {
+        return false;
+    }
+
+    QString storedHash = query.value(0).toString();
+    QString inputHash = Encryption::hashPassword(password);
+
+    return (storedHash == inputHash);
+}
+

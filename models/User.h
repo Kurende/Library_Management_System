@@ -69,5 +69,13 @@ private:
     QString m_securityAnswer;
     QDateTime m_createdAt;
 };
+struct UserActivityLog {
+    int id;
+    int userId;
+    QString actionType;
+    QString actionDetails;
+    QDateTime createdAt;
 
+    UserActivityLog() : id(-1), userId(-1) {}
+};
 #endif // USER_H

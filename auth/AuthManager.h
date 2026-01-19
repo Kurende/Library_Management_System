@@ -39,6 +39,7 @@ public:
     
     // Password change
     bool changePassword(const QString& oldPassword, const QString& newPassword);
+    bool verifyPassword(const QString& username, const QString& password);
     
     // Validation
     struct ValidationResult {

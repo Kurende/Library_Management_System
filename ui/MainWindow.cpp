@@ -32,6 +32,29 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
+void MainWindow::navigateToPage(QWidget* targetPage) {
+    if (!targetPage) return;
+
+    // Start with the widget we want to reach
+    QWidget* current = targetPage;
+
+    // Walk up the visual tree until we hit the top-level window
+    while (current != nullptr) {
+        QWidget* parent = current->parentWidget();
+
+        // Check if the parent is a QStackedWidget
+        QStackedWidget* stack = qobject_cast<QStackedWidget*>(parent);
+
+        if (stack) {
+            // If it is, tell the stack to show the 'current' widget
+            stack->setCurrentWidget(current);
+        }
+
+        // Move up to the next parent to check for nested stacks
+        current = parent;
+    }
+}
+
 // ==================== Initialization ====================
 
 void MainWindow::initializeUI() {
@@ -421,9 +444,19 @@ void MainWindow::on_pushButton_reportsSidebar_clicked() {
     showReportsPage();
 }
 
+void MainWindow::on_pushButton_makePaymentSidebar_clicked(){
+    showPaymentsPage();
+}
+void MainWindow::on_pushButton_usersIconSection_clicked(){
+    showUsersPage();
+}
+
+void MainWindow::on_pushButton_usersSidebar_clicked(){
+    showUsersPage();
+}
+
 void MainWindow::on_pushButton_settingsIconSection_clicked() {
-    // TODO: Implement settings page
-    showInfoMessage("Settings page - Coming soon!");
+    showSettingsPage();
 }
 
 void MainWindow::on_pushButton_settingsSidebar_clicked() {
@@ -433,78 +466,82 @@ void MainWindow::on_pushButton_settingsSidebar_clicked() {
 // ==================== Page Navigation Methods ====================
 
 void MainWindow::showLoginPage() {
-    ui->stackedWidget_mainPages->setCurrentWidget(ui->page_login);
+    navigateToPage(ui->page_login);
 }
 
 void MainWindow::showRegisterPage() {
-    ui->stackedWidget_mainPages->setCurrentWidget(ui->page_register);
+    navigateToPage(ui->page_register);
 }
 
 void MainWindow::showResetPasswordPage() {
-    ui->stackedWidget_mainPages->setCurrentWidget(ui->page_resetPassword);
+    navigateToPage(ui->page_resetPassword);
 }
 
 void MainWindow::showHomePage() {
-    ui->stackedWidget_mainPages->setCurrentWidget(ui->page_home);
+    navigateToPage(ui->page_home);
     showDashboardPage();
 }
 
 void MainWindow::showDashboardPage() {
-    ui->page_mainContent->setCurrentWidget(ui->page_dashboard);
+    navigateToPage(ui->page_dashboard);
 }
 
 void MainWindow::showBooksPage() {
-    ui->stackedWidget_bookManagement->setCurrentWidget(ui->page_addViewBooks);
+    navigateToPage(ui->page_addViewBooks);
 }
 
 void MainWindow::showAddBookPage() {
-    ui->stackedWidget_bookManagement->setCurrentWidget(ui->page_addViewBooks);
-    ui->page_mainContent->setCurrentWidget(ui->page_booksManagement);
+    navigateToPage(ui->page_booksManagement);
 }
 
 void MainWindow::showUpdateBookPage() {
-    ui->stackedWidget_bookManagement->setCurrentWidget(ui->page_updateBookInfo);
-    ui->page_mainContent->setCurrentWidget(ui->page_booksManagement);
+    navigateToPage(ui->page_updateBookInfo);
+
 }
 
 void MainWindow::showLearnersPage() {
-    ui->stackedWidget_learnersPages->setCurrentWidget(ui->page_addViewLearnerInfo);
+    navigateToPage(ui->page_addViewLearnerInfo);
 }
 
 void MainWindow::showAddLearnerPage() {
-    ui->stackedWidget_learnersPages->setCurrentWidget(ui->page_addViewLearnerInfo);
-    ui->page_mainContent->setCurrentWidget(ui->page_LearnerManagement);
+    navigateToPage(ui->page_addViewLearnerInfo);
 }
-
 void MainWindow::showLearnerProfilePage() {
-    ui->stackedWidget_learnersPages->setCurrentWidget(ui->page_profile);
-    ui->stackedWidget_learnersPages->setCurrentWidget(ui->page_learnerProfile);
-    ui->page_mainContent->setCurrentWidget(ui->page_LearnerManagement);
-}
 
+navigateToPage(ui->page_profile);
+}
 void MainWindow::showUpdateLearnerPage() {
-    ui->stackedWidget_learnersPages->setCurrentWidget(ui->page_updateLearnerInfo);
-    ui->page_mainContent->setCurrentWidget(ui->page_LearnerManagement);
+    navigateToPage(ui->page_updateLearnerInfo);
+
 }
 
 void MainWindow::showBorrowBookPage() {
-    ui->stackedWidget_transactionPages->setCurrentWidget(ui->page_borrowBook);
-    ui->page_mainContent->setCurrentWidget(ui->page_transact);
+    navigateToPage(ui->page_borrowBook);
+
 }
 
 void MainWindow::showReturnBookPage() {
-    ui->stackedWidget_transactionPages->setCurrentWidget(ui->page_returnBook);
-    ui->page_mainContent->setCurrentWidget(ui->page_transact);
+    navigateToPage(ui->page_returnBook);
+
 }
 
 void MainWindow::showTransactionHistoryPage() {
-    ui->stackedWidget_learnersPages->setCurrentWidget(ui->page_transactionHistory);
-    ui->page_mainContent->setCurrentWidget(ui->page_transact);
+    navigateToPage(ui->page_transactionHistory);
+
+}
+void MainWindow::showUsersPage(){
+    navigateToPage(ui->page_userProfile);
 }
 
 void MainWindow::showReportsPage() {
-    ui->stackedWidget_transactionPages->setCurrentWidget(ui->page_reports);
-    ui->page_mainContent->setCurrentWidget(ui->page_transact);
+    navigateToPage(ui->page_reports);
+
+}
+void MainWindow::showPaymentsPage(){
+    navigateToPage(ui->page_payments);
+}
+void MainWindow::showSettingsPage(){
+    navigateToPage(ui->page_userSettings);
 }
 // ==================== Dashboard ====================
 
@@ -1399,6 +1436,7 @@ void MainWindow::calculateAndDisplayAmount(int learnerId) {
     // Display in appropriate label
     showInfoMessage("Total amount due: R" + QString::number(amount, 'f', 2));
 }
+
 // ==================== Data Loading ====================
 
 void MainWindow::loadAllBooks() {
@@ -1884,3 +1922,327 @@ void MainWindow::saveReportAsPDF() {
         showSuccessMessage("Report saved as PDF: " + fileName);
     }
 }
+
+//Users functions
+
+void MainWindow::initializeProfilePage() {
+    // Load user profile data
+    loadUserProfile();
+
+    // Hide both edit frames initially
+    ui->widget_editProfile->hide();
+    ui->frame_changePassword->hide();
+}
+
+void MainWindow::loadUserProfile() {
+    // Get current logged-in user
+    User currentUser = AuthManager::instance().getCurrentUser();
+
+    if (currentUser.getId() == -1) {
+        QMessageBox::warning(this, "Error", "No user is logged in.");
+        return;
+    }
+
+    // Populate profile display labels (read-only)
+    ui->label_profile_name->setText(currentUser.getName());
+    ui->label_profile_surname->setText(currentUser.getSurname());
+    ui->label_profile_email->setText(currentUser.getEmail());
+    ui->label_profile_contact->setText(currentUser.getContactNo());
+    ui->label_profile_school->setText(currentUser.getSchoolName());
+    ui->label_profile_role->setText(currentUser.getRoleString());
+
+    // Display account information
+    ui->label_profile_created_value->setText(
+        currentUser.getCreatedAt().toString("yyyy-MM-dd")
+        );
+
+    // Get last login from database
+    QDateTime lastLogin = DatabaseManager::instance().getUserLastLogin(currentUser.getId());
+    if (lastLogin.isValid()) {
+        ui->label_profile_lastLogin_value->setText(
+            lastLogin.toString("yyyy-MM-dd hh:mm AP")
+            );
+    } else {
+        ui->label_profile_lastLogin_value->setText("Never");
+    }
+
+    // Update security info
+    //updateSecurityInfo();
+
+    // Update profile icon/avatar (if you have one)
+    updateProfileIcon();
+
+    // Hide edit frames initially
+    ui->widget_editProfile->hide();
+    ui->frame_changePassword->hide();
+}
+
+// UPDATE PROFILE ICON/AVATAR
+
+void MainWindow::updateProfileIcon() {
+    User currentUser = AuthManager::instance().getCurrentUser();
+
+    // Set user full name
+    QString fullName = currentUser.getName() + " " + currentUser.getSurname();
+    ui->label_fullNames->setText(fullName);
+
+    // Set role
+    ui->label_profile_role->setText(currentUser.getRoleString());
+}
+
+/* UPDATE SECURITY INFORMATION
+
+void MainWindow::updateSecurityInfo() {
+    User currentUser = AuthManager::instance().getCurrentUser();
+
+    // Get password last changed date from database
+    QDateTime passwordChanged = DatabaseManager::instance().getPasswordChangedDate(currentUser.getId());
+
+    if (passwordChanged.isValid()) {
+        int daysAgo = passwordChanged.daysTo(QDateTime::currentDateTime());
+        ui->label_passwordChanged_value->setText(QString::number(daysAgo) + " days ago");
+
+        // Warn if password is old (>90 days)
+        if (daysAgo > 90) {
+            ui->label_passwordChanged_value->setStyleSheet("color: #FF9800; font-weight: bold;");
+        } else {
+            ui->label_passwordChanged_value->setStyleSheet("color: #666;");
+        }
+    } else {
+        ui->label_passwordChanged_value->setText("Unknown");
+    }
+
+    // Check if security question is set
+    if (!currentUser.getSecurityQuestion().isEmpty()) {
+        ui->label_securityQuestion_value->setText("Yes");
+        ui->label_securityQuestion_value->setStyleSheet("color: green; font-weight: bold;");
+    } else {
+        ui->label_securityQuestion_value->setText("No");
+        ui->label_securityQuestion_value->setStyleSheet("color: red; font-weight: bold;");
+    }
+}
+*/
+
+
+// SHOW EDIT PROFILE FRAME
+
+void MainWindow::on_pushButton_editUserProfile_clicked() {
+    // Show the edit profile frame
+    ui->widget_editProfile->show();
+
+    // Hide change password frame if it's visible
+    ui->frame_changePassword->hide();
+
+    // Populate fields with current data
+    User currentUser = AuthManager::instance().getCurrentUser();
+    ui->lineEdit_editProfile_name->setText(currentUser.getName());
+    ui->lineEdit_editProfile_surname->setText(currentUser.getSurname());
+    ui->lineEdit_editProfile_contact->setText(currentUser.getContactNo());
+    ui->lineEdit_editProfile_email->setText(currentUser.getEmail());
+
+    // Focus on first field
+    ui->lineEdit_editProfile_name->setFocus();
+}
+
+
+// CONFIRM UPDATE PROFILE
+
+void MainWindow::on_pushButton_confirmEditProfile_clicked() {
+    // Validate input
+    if (ui->lineEdit_editProfile_name->text().trimmed().isEmpty()) {
+        QMessageBox::warning(this, "Validation Error", "First name cannot be empty.");
+        ui->lineEdit_editProfile_name->setFocus();
+        return;
+    }
+
+    if (ui->lineEdit_editProfile_surname->text().trimmed().isEmpty()) {
+        QMessageBox::warning(this, "Validation Error", "Surname cannot be empty.");
+        ui->lineEdit_editProfile_surname->setFocus();
+        return;
+    }
+
+    if (ui->lineEdit_editProfile_email->text().trimmed().isEmpty()) {
+        QMessageBox::warning(this, "Validation Error", "Email cannot be empty.");
+        ui->lineEdit_editProfile_email->setFocus();
+        return;
+    }
+
+    // Validate email format
+    QString email = ui->lineEdit_editProfile_email->text().trimmed();
+    QRegularExpression emailRegex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    if (!emailRegex.match(email).hasMatch()) {
+        QMessageBox::warning(this, "Validation Error", "Please enter a valid email address.");
+        ui->lineEdit_editProfile_email->setFocus();
+        return;
+    }
+
+    // Validate contact number (10 digits)
+    QString contact = ui->lineEdit_editProfile_contact->text().trimmed();
+    if (!contact.isEmpty() && contact.length() != 10) {
+        QMessageBox::warning(this, "Validation Error", "Contact number must be 10 digits.");
+        ui->lineEdit_editProfile_contact->setFocus();
+        return;
+    }
+
+    // Get current user
+    User currentUser = AuthManager::instance().getCurrentUser();
+
+    // Update user object
+    currentUser.setName(ui->lineEdit_editProfile_name->text().trimmed());
+    currentUser.setSurname(ui->lineEdit_editProfile_surname->text().trimmed());
+    currentUser.setEmail(ui->lineEdit_editProfile_email->text().trimmed());
+    currentUser.setContactNo(ui->lineEdit_editProfile_contact->text().trimmed());
+
+    // Update in database
+    if (DatabaseManager::instance().updateUser(currentUser)) {
+        // Log the activity
+        DatabaseManager::instance().logUserActivity(
+            currentUser.getId(),
+            "Update Profile",
+            "Profile information updated"
+            );
+
+        // Reload profile data
+        loadUserProfile();
+
+        // Hide edit frame
+        ui->widget_editProfile->hide();
+
+        QMessageBox::information(this, "Success", "Profile updated successfully!");
+    } else {
+        QMessageBox::critical(this, "Error",
+                              "Failed to update profile: " + DatabaseManager::instance().getLastError());
+    }
+}
+
+
+// CANCEL EDIT PROFILE
+
+void MainWindow::on_pushButton_cancelEditProfile_clicked() {
+    // Just hide the frame without saving
+    ui->widget_editProfile->hide();
+
+    // Clear fields
+    ui->lineEdit_editProfile_name->clear();
+    ui->lineEdit_editProfile_surname->clear();
+    ui->lineEdit_editProfile_contact->clear();
+    ui->lineEdit_editProfile_email->clear();
+}
+
+
+// SHOW CHANGE PASSWORD FRAME
+
+void MainWindow::on_pushButton_changeUserPassword_clicked() {
+    // Show the change password frame
+    ui->frame_changePassword->show();
+
+    // Hide edit profile frame if it's visible
+    ui->widget_editProfile->hide();
+
+    // Clear all password fields
+    ui->lineEdit_currentPassword->clear();
+    ui->lineEdit_newPassword->clear();
+    ui->lineEdit_repeatPassword->clear();
+
+    // Focus on first field
+    ui->lineEdit_currentPassword->setFocus();
+}
+
+
+// CONFIRM CHANGE PASSWORD
+
+void MainWindow::on_pushButton_confirmChangePassword_clicked() {
+    // Get input values
+    QString currentPassword = ui->lineEdit_currentPassword->text();
+    QString newPassword = ui->lineEdit_newPassword->text();
+    QString repeatPassword = ui->lineEdit_repeatPassword->text();
+
+    // Validate current password is not empty
+    if (currentPassword.isEmpty()) {
+        QMessageBox::warning(this, "Validation Error", "Please enter your current password.");
+        ui->lineEdit_currentPassword->setFocus();
+        return;
+    }
+
+    // Validate new password
+    if (newPassword.isEmpty()) {
+        QMessageBox::warning(this, "Validation Error", "Please enter a new password.");
+        ui->lineEdit_newPassword->setFocus();
+        return;
+    }
+
+    // Check password strength (minimum 8 characters)
+    if (newPassword.length() < 8) {
+        QMessageBox::warning(this, "Validation Error",
+                             "Password must be at least 8 characters long.");
+        ui->lineEdit_newPassword->setFocus();
+        return;
+    }
+
+    // Check if passwords match
+    if (newPassword != repeatPassword) {
+        QMessageBox::warning(this, "Validation Error", "New passwords do not match.");
+        ui->lineEdit_repeatPassword->clear();
+        ui->lineEdit_repeatPassword->setFocus();
+        return;
+    }
+
+    // Check if new password is same as current
+    if (currentPassword == newPassword) {
+        QMessageBox::warning(this, "Validation Error",
+                             "New password must be different from current password.");
+        ui->lineEdit_newPassword->clear();
+        ui->lineEdit_repeatPassword->clear();
+        ui->lineEdit_newPassword->setFocus();
+        return;
+    }
+
+    // Verify current password
+    User currentUser = AuthManager::instance().getCurrentUser();
+    if (!AuthManager::instance().verifyPassword(currentUser.getUsername(), currentPassword)) {
+        QMessageBox::warning(this, "Authentication Error",
+                             "Current password is incorrect.");
+        ui->lineEdit_currentPassword->clear();
+        ui->lineEdit_currentPassword->setFocus();
+        return;
+    }
+
+    // Change password in database
+    if (DatabaseManager::instance().changeUserPassword(currentUser.getId(), newPassword)) {
+        // Log the activity
+        DatabaseManager::instance().logUserActivity(
+            currentUser.getId(),
+            "Change Password",
+            "Password changed successfully"
+            );
+
+        // Update security info
+        //updateSecurityInfo();
+
+        // Hide frame
+        ui->frame_changePassword->hide();
+
+        // Clear fields
+        ui->lineEdit_currentPassword->clear();
+        ui->lineEdit_newPassword->clear();
+        ui->lineEdit_repeatPassword->clear();
+
+        QMessageBox::information(this, "Success", "Password changed successfully!");
+    } else {
+        QMessageBox::critical(this, "Error",
+                              "Failed to change password: " + DatabaseManager::instance().getLastError());
+    }
+}
+
+// CANCEL CHANGE PASSWORD
+
+void MainWindow::on_pushButton_cancelChangePassword_clicked() {
+    // Just hide the frame without saving
+    ui->frame_changePassword->hide();
+
+    // Clear all password fields
+    ui->lineEdit_currentPassword->clear();
+    ui->lineEdit_newPassword->clear();
+    ui->lineEdit_repeatPassword->clear();
+}
+

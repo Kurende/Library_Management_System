@@ -16,7 +16,8 @@
 class DatabaseManager {
 public:
     static DatabaseManager& instance();
-    
+    QSqlDatabase& getDatabase() { return m_database; }
+
     // Database initialization
     bool initialize(const QString& dbPath = "library_system.db");
     bool createTables();
@@ -31,6 +32,13 @@ public:
     User getUserByEmail(const QString& email);
     QVector<User> getAllUsers();
     bool userExists(const QString& username);
+    QDateTime getUserLastLogin(int userId);
+    QDateTime getPasswordChangedDate(int userId);
+    bool changeUserPassword(int userId, const QString& newPassword);
+
+    // Activity Logging
+    bool logUserActivity(int userId, const QString& actionType, const QString& actionDetails);
+    QVector<UserActivityLog> getUserActivityLog(int userId, int limit = 100);
     
     // Learner operations
     bool addLearner(const Learner& learner);

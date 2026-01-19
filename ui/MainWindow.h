@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QTableWidget>
+#include <QStackedWidget>
 #include "Learner.h"
 #include "Book.h"
 #include "Transaction.h"
@@ -36,6 +37,7 @@ private slots:
     // ==================== Navigation ====================
     void on_pushButton_homeIconSection_clicked();
     void on_pushButton_settingsIconSection_clicked();
+    void on_pushButton_usersIconSection_clicked();
     void on_pushButton_booksSidebar_clicked();
     void on_pushButton_learnersSidebar_clicked();
     void on_pushButton_transactSidebar_clicked();
@@ -44,13 +46,15 @@ private slots:
     void on_pushButton_logoutSidebar_clicked();
     void on_pushButton_logoutTopBar_clicked();
     void on_pushButton_toogleMenu_clicked();
-    //void on_pushButton_makePaymentSidebar_clicked();
+    void on_pushButton_makePaymentSidebar_clicked();
     
     // Sidebar sub-menus
     void on_pushButton_booksIconSection_clicked();
     void on_pushButton_learnersIconSection_clicked();
     void on_pushButton_transactionIconSection_clicked();
     void on_pushButton_reportsIconSection_clicked();
+    void on_pushButton_usersSidebar_clicked();
+
     
     // ==================== Dashboard ====================
     void on_pushButton_addBookQuickButton_clicked();
@@ -75,6 +79,14 @@ private slots:
     void on_pushButton_saveChanges_clicked();
     void on_pushButton_cancelEdit_clicked();
     void on_pushButton_deleteBook_clicked();
+
+    //================== User Management =========================
+    void on_pushButton_editUserProfile_clicked();
+    void on_pushButton_confirmEditProfile_clicked();
+    void on_pushButton_cancelEditProfile_clicked();
+    void on_pushButton_changeUserPassword_clicked();
+    void on_pushButton_confirmChangePassword_clicked();
+    void on_pushButton_cancelChangePassword_clicked();
     
     // ==================== Learner Management ====================
     void on_pushButton_addLearnerSidebar_clicked();
@@ -155,6 +167,7 @@ private:
     void applyPermissions();
     
     // ==================== Page Navigation ====================
+    void navigateToPage(QWidget* targetPage);
     void showLoginPage();
     void showRegisterPage();
     void showResetPasswordPage();
@@ -171,6 +184,10 @@ private:
     void showReturnBookPage();
     void showTransactionHistoryPage();
     void showReportsPage();
+    void showPaymentsPage();
+    void showUsersPage();
+    void showSettingsPage();
+
     
     // ==================== Data Loading ====================
     void loadAllBooks();
@@ -221,6 +238,13 @@ private:
     void showSuccessMessage(const QString& message);
     void showErrorMessage(const QString& message);
     void showInfoMessage(const QString& message);
+
+    //================== Users ====================================
+    void loadUserProfile();
+    void updateProfileIcon();
+    void updateSecurityInfo();
+    void initializeProfilePage();
+
     
     // ==================== Report Generation ====================
     void generateBorrowReport(int learnerId);
