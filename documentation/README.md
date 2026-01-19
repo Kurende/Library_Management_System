@@ -257,6 +257,7 @@ Library_Management_System/
 │   └── icons.qrc                    # Resource file for icons
 │
 └── documentation/
+    ├── Developer Guide_Library Managem.md
     └── README.md                    # This file
 ```
 
@@ -388,19 +389,19 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
 
-## 📧 Support
-
-For support, email support@example.com or create an issue in the repository.
-
----
 
 ## 🙏 Acknowledgments
 
-- Makhutswe/Lepelle Circuits Schools
 - Qt Framework Community
 - All contributors
 
 ---
 
 **Version**: 1.0.0  
-**Last Updated**: January 2026
+**Last Updated**: 19 January 2026
+
+
+## Author
+**Kabelo Bruce Sebashe**  
+University of South Africa (UNISA)
+
