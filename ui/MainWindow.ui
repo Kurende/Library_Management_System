@@ -3079,7 +3079,7 @@ color:white;}</string>
                    <enum>QFrame::Shadow::Raised</enum>
                   </property>
                   <property name="currentIndex">
-                   <number>6</number>
+                   <number>5</number>
                   </property>
                   <widget class="QWidget" name="page_dashboard">
                    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -5947,7 +5947,7 @@ background-color:#011526;
                                     <second>0</second>
                                     <year>2024</year>
                                     <month>12</month>
-                                    <day>4</day>
+                                    <day>2</day>
                                    </datetime>
                                   </property>
                                   <property name="displayFormat">
@@ -6010,7 +6010,7 @@ background-color:#011526;
                                     <second>0</second>
                                     <year>2025</year>
                                     <month>8</month>
-                                    <day>17</day>
+                                    <day>15</day>
                                    </datetime>
                                   </property>
                                   <property name="displayFormat">
@@ -9261,8 +9261,8 @@ border-radius:3px;
                        <property name="geometry">
                         <rect>
                          <x>0</x>
-                         <y>0</y>
-                         <width>459</width>
+                         <y>-65</y>
+                         <width>1042</width>
                          <height>909</height>
                         </rect>
                        </property>
@@ -9581,7 +9581,7 @@ QGroupBox::title {
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>1024</width>
+                             <width>564</width>
                              <height>790</height>
                             </rect>
                            </property>
@@ -10097,6 +10097,7 @@ background-color:#254559;
                         </item>
                        </layout>
                       </widget>
+                      <widget class="QWidget" name="page"/>
                       <widget class="QWidget" name="page_userProfile">
                        <layout class="QVBoxLayout" name="verticalLayout_92">
                         <item>
@@ -11204,7 +11205,396 @@ background-color:#6093BF;}</string>
                        <number>1</number>
                       </property>
                       <widget class="QWidget" name="page_adminSettings"/>
-                      <widget class="QWidget" name="page_userSettings"/>
+                      <widget class="QWidget" name="page_userSettings">
+                       <layout class="QVBoxLayout" name="verticalLayout_125">
+                        <item>
+                         <widget class="QScrollArea" name="scrollArea_adminUserPage_2">
+                          <property name="widgetResizable">
+                           <bool>true</bool>
+                          </property>
+                          <widget class="QWidget" name="scrollAreaWidgetContents_5">
+                           <property name="geometry">
+                            <rect>
+                             <x>0</x>
+                             <y>0</y>
+                             <width>1036</width>
+                             <height>592</height>
+                            </rect>
+                           </property>
+                           <layout class="QVBoxLayout" name="verticalLayout_124">
+                            <item>
+                             <widget class="QLabel" name="label_settings">
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>20</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>20</height>
+                               </size>
+                              </property>
+                              <property name="font">
+                               <font>
+                                <bold>true</bold>
+                                <underline>true</underline>
+                               </font>
+                              </property>
+                              <property name="text">
+                               <string>SETTINGS</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QWidget" name="widget_adminUserPage_2" native="true">
+                              <property name="styleSheet">
+                               <string notr="true">QPushButton{
+color:white;}
+QLabel{color:white;}
+QWidget{
+background-color:#011526;}
+
+</string>
+                              </property>
+                              <layout class="QVBoxLayout" name="verticalLayout_127">
+                               <item>
+                                <widget class="QGroupBox" name="groupBox_theme">
+                                 <property name="title">
+                                  <string>GroupBox</string>
+                                 </property>
+                                 <layout class="QVBoxLayout" name="verticalLayout_131">
+                                  <item>
+                                   <layout class="QHBoxLayout" name="horizontalLayout_66">
+                                    <item>
+                                     <widget class="QLabel" name="label_fontSize">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>20</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>20</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <bold>false</bold>
+                                        <underline>false</underline>
+                                       </font>
+                                      </property>
+                                      <property name="text">
+                                       <string>Font Size </string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QComboBox" name="comboBox_fontSize"/>
+                                    </item>
+                                   </layout>
+                                  </item>
+                                  <item>
+                                   <layout class="QHBoxLayout" name="horizontalLayout_67">
+                                    <item>
+                                     <widget class="QLabel" name="label_themeSelect">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>20</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>20</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <bold>false</bold>
+                                        <underline>false</underline>
+                                       </font>
+                                      </property>
+                                      <property name="text">
+                                       <string>Theme</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QRadioButton" name="radioButton_darkMode">
+                                      <property name="text">
+                                       <string>Dark</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QRadioButton" name="radioButton_lightMode">
+                                      <property name="text">
+                                       <string>Light</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                   </layout>
+                                  </item>
+                                  <item>
+                                   <widget class="QPushButton" name="pushButton_applyTheme">
+                                    <property name="font">
+                                     <font>
+                                      <italic>false</italic>
+                                      <bold>false</bold>
+                                      <underline>false</underline>
+                                      <kerning>true</kerning>
+                                     </font>
+                                    </property>
+                                    <property name="styleSheet">
+                                     <string notr="true">QPushButton{
+background-color:#254559;
+
+}
+</string>
+                                    </property>
+                                    <property name="text">
+                                     <string>Apply Theme</string>
+                                    </property>
+                                    <property name="flat">
+                                     <bool>false</bool>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                 </layout>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QGroupBox" name="groupBox_reportsExport">
+                                 <property name="title">
+                                  <string>GroupBox</string>
+                                 </property>
+                                 <layout class="QVBoxLayout" name="verticalLayout_130">
+                                  <item>
+                                   <widget class="QPushButton" name="pushButton_exportBooks">
+                                    <property name="font">
+                                     <font>
+                                      <italic>false</italic>
+                                      <bold>false</bold>
+                                      <underline>false</underline>
+                                      <kerning>true</kerning>
+                                     </font>
+                                    </property>
+                                    <property name="styleSheet">
+                                     <string notr="true">QPushButton{
+background-color:#254559;
+
+}
+</string>
+                                    </property>
+                                    <property name="text">
+                                     <string>Export All Books To CSV</string>
+                                    </property>
+                                    <property name="flat">
+                                     <bool>true</bool>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                  <item>
+                                   <widget class="QPushButton" name="pushButton_exportLearners">
+                                    <property name="font">
+                                     <font>
+                                      <italic>false</italic>
+                                      <bold>false</bold>
+                                      <underline>false</underline>
+                                      <kerning>true</kerning>
+                                     </font>
+                                    </property>
+                                    <property name="styleSheet">
+                                     <string notr="true">QPushButton{
+background-color:#254559;
+
+}
+</string>
+                                    </property>
+                                    <property name="text">
+                                     <string>Export All Learners To CSV</string>
+                                    </property>
+                                    <property name="flat">
+                                     <bool>true</bool>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                  <item>
+                                   <widget class="QPushButton" name="pushButton_exportTransactions">
+                                    <property name="font">
+                                     <font>
+                                      <italic>false</italic>
+                                      <bold>false</bold>
+                                      <underline>false</underline>
+                                      <kerning>true</kerning>
+                                     </font>
+                                    </property>
+                                    <property name="styleSheet">
+                                     <string notr="true">QPushButton{
+background-color:#254559;
+
+}
+</string>
+                                    </property>
+                                    <property name="text">
+                                     <string>Export Transaction History</string>
+                                    </property>
+                                    <property name="flat">
+                                     <bool>true</bool>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                  <item>
+                                   <widget class="QPushButton" name="pushButton_generateSystemReport">
+                                    <property name="font">
+                                     <font>
+                                      <italic>false</italic>
+                                      <bold>false</bold>
+                                      <underline>false</underline>
+                                      <kerning>true</kerning>
+                                     </font>
+                                    </property>
+                                    <property name="styleSheet">
+                                     <string notr="true">QPushButton{
+background-color:#254559;
+
+}
+</string>
+                                    </property>
+                                    <property name="text">
+                                     <string>Generate System Report</string>
+                                    </property>
+                                    <property name="flat">
+                                     <bool>true</bool>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                 </layout>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QGroupBox" name="groupBox_about">
+                                 <property name="title">
+                                  <string>GroupBox</string>
+                                 </property>
+                                 <layout class="QVBoxLayout" name="verticalLayout_126">
+                                  <item>
+                                   <widget class="QLabel" name="label_appVersion">
+                                    <property name="minimumSize">
+                                     <size>
+                                      <width>0</width>
+                                      <height>20</height>
+                                     </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                     <size>
+                                      <width>16777215</width>
+                                      <height>20</height>
+                                     </size>
+                                    </property>
+                                    <property name="font">
+                                     <font>
+                                      <bold>false</bold>
+                                      <underline>false</underline>
+                                     </font>
+                                    </property>
+                                    <property name="text">
+                                     <string>v1.0.0 Library Management System</string>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                  <item>
+                                   <widget class="QLabel" name="label_summaryTitle_19">
+                                    <property name="minimumSize">
+                                     <size>
+                                      <width>0</width>
+                                      <height>20</height>
+                                     </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                     <size>
+                                      <width>16777215</width>
+                                      <height>20</height>
+                                     </size>
+                                    </property>
+                                    <property name="font">
+                                     <font>
+                                      <bold>false</bold>
+                                      <underline>false</underline>
+                                     </font>
+                                    </property>
+                                    <property name="text">
+                                     <string>© 2026 Project K </string>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                  <item>
+                                   <widget class="QPushButton" name="pushButton_credits">
+                                    <property name="font">
+                                     <font>
+                                      <italic>false</italic>
+                                      <bold>false</bold>
+                                      <underline>false</underline>
+                                      <kerning>true</kerning>
+                                     </font>
+                                    </property>
+                                    <property name="styleSheet">
+                                     <string notr="true">QPushButton{
+background-color:#254559;
+
+}
+</string>
+                                    </property>
+                                    <property name="text">
+                                     <string>Credits</string>
+                                    </property>
+                                    <property name="flat">
+                                     <bool>false</bool>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                  <item>
+                                   <widget class="QPushButton" name="pushButton_viewLicense">
+                                    <property name="font">
+                                     <font>
+                                      <italic>false</italic>
+                                      <bold>false</bold>
+                                      <underline>false</underline>
+                                      <kerning>true</kerning>
+                                     </font>
+                                    </property>
+                                    <property name="styleSheet">
+                                     <string notr="true">QPushButton{
+background-color:#254559;
+
+}
+</string>
+                                    </property>
+                                    <property name="text">
+                                     <string>View Licence</string>
+                                    </property>
+                                    <property name="flat">
+                                     <bool>false</bool>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                 </layout>
+                                </widget>
+                               </item>
+                              </layout>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
                      </widget>
                     </item>
                    </layout>

@@ -1,30 +1,31 @@
-#ifndef PAYMENTITEM_H
-#define PAYMENTITEM_H
+#include "Payments.h"
+#include <QDateTime>
 
-class PaymentItem {
-private:
-    int m_id;
-    int m_paymentId;
-    int m_transactionId;
-    int m_bookId;
-    double m_amount;
+Payments::Payments()
+    : m_id(-1)
+    , m_learnerId(-1)
+    , m_amount(0.0)
+    , m_processedBy(-1)
+    , m_paymentDate(QDateTime::currentDateTime())
+{
+}
 
-public:
-    PaymentItem() : m_id(-1), m_paymentId(-1), m_transactionId(-1), m_bookId(-1), m_amount(0.0) {}
+Payments::Payments(int id, const QString& receiptNo, int learnerId, double amount,
+                 int processedBy, const QDateTime& paymentDate, const QString& notes)
+    : m_id(id)
+    , m_receiptNo(receiptNo)
+    , m_learnerId(learnerId)
+    , m_amount(amount)
+    , m_processedBy(processedBy)
+    , m_paymentDate(paymentDate)
+    , m_notes(notes)
+{
+}
 
-    // Getters
-    int getId() const { return m_id; }
-    int getPaymentId() const { return m_paymentId; }
-    int getTransactionId() const { return m_transactionId; }
-    int getBookId() const { return m_bookId; }
-    double getAmount() const { return m_amount; }
-
-    // Setters
-    void setId(int id) { m_id = id; }
-    void setPaymentId(int id) { m_paymentId = id; }
-    void setTransactionId(int id) { m_transactionId = id; }
-    void setBookId(int id) { m_bookId = id; }
-    void setAmount(double amount) { m_amount = amount; }
-};
-
-#endif // PAYMENTITEM_H
+QString Payments::generateReceiptNo() {
+    // Generate receipt number in format: RCP-YYYYMMDD-HHMMSS
+    QDateTime now = QDateTime::currentDateTime();
+    return QString("RCP-%1-%2")
+        .arg(now.toString("yyyyMMdd"))
+        .arg(now.toString("HHmmss"));
+}

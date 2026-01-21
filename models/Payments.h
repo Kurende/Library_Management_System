@@ -1,21 +1,14 @@
-#ifndef PAYMENT_H
-#define PAYMENT_H
+#ifndef PAYMENTS_H
+#define PAYMENTS_H
 
 #include <QString>
 #include <QDateTime>
 
-class Payment {
-private:
-    int m_id;
-    QString m_receiptNo;
-    int m_learnerId;
-    double m_amount;
-    int m_processedBy;
-    QDateTime m_paymentDate;
-    QString m_notes;
-
+class Payments {
 public:
-    Payment() : m_id(-1), m_learnerId(-1), m_amount(0.0), m_processedBy(-1) {}
+    Payments();
+    Payments(int id, const QString& receiptNo, int learnerId, double amount,
+            int processedBy, const QDateTime& paymentDate, const QString& notes);
 
     // Getters
     int getId() const { return m_id; }
@@ -28,17 +21,24 @@ public:
 
     // Setters
     void setId(int id) { m_id = id; }
-    void setReceiptNo(const QString& no) { m_receiptNo = no; }
-    void setLearnerId(int id) { m_learnerId = id; }
+    void setReceiptNo(const QString& receiptNo) { m_receiptNo = receiptNo; }
+    void setLearnerId(int learnerId) { m_learnerId = learnerId; }
     void setAmount(double amount) { m_amount = amount; }
-    void setProcessedBy(int userId) { m_processedBy = userId; }
-    void setPaymentDate(const QDateTime& date) { m_paymentDate = date; }
+    void setProcessedBy(int processedBy) { m_processedBy = processedBy; }
+    void setPaymentDate(const QDateTime& paymentDate) { m_paymentDate = paymentDate; }
     void setNotes(const QString& notes) { m_notes = notes; }
 
-    // Helper - Generate unique receipt number
-    QString generateReceiptNo() const {
-        return QString("RCP-%1").arg(QDateTime::currentDateTime().toString("yyyyMMddhhmmss"));
-    }
+    // Utility methods
+    QString generateReceiptNo();
+
+private:
+    int m_id;
+    QString m_receiptNo;
+    int m_learnerId;
+    double m_amount;
+    int m_processedBy;
+    QDateTime m_paymentDate;
+    QString m_notes;
 };
 
-#endif // PAYMENT_H
+#endif // PAYMENTS_H

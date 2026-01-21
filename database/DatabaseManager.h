@@ -104,9 +104,9 @@ public:
     bool createPaymentTables();
 
     // Payment operations
-    bool processPayment(Payment& payment, const QVector<int>& transactionIds);
-    Payment getPaymentById(int id);
-    QVector<Payment> getPaymentsByLearnerId(int learnerId);
+    bool processPayment(Payments& payment, const QVector<int>& transactionIds);
+    Payments getPaymentById(int id);
+    QVector<Payments> getPaymentsByLearnerId(int learnerId);
     QVector<PaymentItem> getPaymentItems(int paymentId);
 
     // Get lost transactions that haven't been paid for

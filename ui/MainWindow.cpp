@@ -96,11 +96,26 @@ void MainWindow::initializeUI() {
     ui->frame_resetSecurityQuestionCard->setVisible(false);
     ui->frame_newPassword->setVisible(false);
 
+    // Initialize payment page
+    m_currentPaymentId = -1;
+    ui->pushButton_viewReceipt->setEnabled(false);
+
+    // Setup lost books table
+    ui->tableWidget_lostBooks->setColumnCount(6);
+    ui->tableWidget_lostBooks->setHorizontalHeaderLabels({
+        "Transaction ID", "Book Code", "Book Title", "Lost Date", "Amount", "Select"
+    });
+    ui->tableWidget_lostBooks->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableWidget_lostBooks->horizontalHeader()->setStretchLastSection(true);
+
+
 }
 
 void MainWindow::setupConnections() {
-    // Additional custom connections can be added here
-    // Most connections are handled by auto-connect (on_objectName_signal pattern)
+
+    // Payment table item changed
+    connect(ui->tableWidget_lostBooks, &QTableWidget::itemChanged,
+            this, &MainWindow::updatePaymentSummary);
 }
 
 void MainWindow::setupComboBoxes() {
@@ -110,7 +125,7 @@ void MainWindow::setupComboBoxes() {
     ui->comboBox_bookGrade->addItems(grades);
     ui->comboBox_editBookGrade->addItems(grades);
     ui->comboBox_addLearnerGrade->addItems(grades);
-    ui->comboBox__editLearnerGrade->addItems(grades);
+    ui->comboBox_editLearnerGrade->addItems(grades);
     ui->comboBox_filterLearnerGrade->addItem("All Grades");
     ui->comboBox_filterLearnerGrade->addItems(grades);
     
@@ -491,7 +506,7 @@ void MainWindow::showBooksPage() {
 }
 
 void MainWindow::showAddBookPage() {
-    navigateToPage(ui->page_booksManagement);
+    navigateToPage(ui->page_addViewBooks);
 }
 
 void MainWindow::showUpdateBookPage() {
@@ -904,9 +919,9 @@ void MainWindow::on_pushButton_editLearnerConfirm_clicked() {
     
     learner.setName(ui->lineEdit_editLearnerFirstName->text().trimmed());
     learner.setSurname(ui->lineEdit_editLearnerSurname->text().trimmed());
-    learner.setGrade(ui->comboBox__editLearnerGrade->currentText());
-    learner.setDateOfBirth(ui->dateEdit__editLearnerDOB->date());
-    learner.setContactNo(ui->lineEdit__editLearnerContact->text().trimmed());
+    learner.setGrade(ui->comboBox_editLearnerGrade->currentText());
+    learner.setDateOfBirth(ui->dateEdit_editLearnerDOB->date());
+    learner.setContactNo(ui->lineEdit_editLearnerContact->text().trimmed());
     
     if (DatabaseManager::instance().updateLearner(learner)) {
         showSuccessMessage("Learner updated successfully!");
@@ -1218,6 +1233,390 @@ void MainWindow::on_radioButton_returnReport_clicked() {
     // Radio button selected
 }
 
+
+// ==================== Payments ====================
+
+// Payment: Find Learner
+void MainWindow::on_pushButton_findLearnerPayment_clicked() {
+    QString learnerIdText = ui->lineEdit_paymentLearnerId->text().trimmed();
+
+    if (learnerIdText.isEmpty()) {
+        showErrorMessage("Please enter a learner ID");
+        return;
+    }
+
+    bool ok;
+    int learnerId = learnerIdText.toInt(&ok);
+
+    if (!ok) {
+        showErrorMessage("Invalid learner ID");
+        return;
+    }
+
+    Learner learner = DatabaseManager::instance().getLearnerById(learnerId);
+
+    if (learner.getId() == -1) {
+        showErrorMessage("Learner not found");
+        ui->label_learnerInfo->setText("Not Found");
+        ui->label_totalOutstanding->setText("R0.00");
+        ui->tableWidget_lostBooks->setRowCount(0);
+        return;
+    }
+
+    m_selectedLearnerId = learnerId;
+
+    // Display learner info
+    QString learnerInfo = QString("%1 %2 - Grade %3")
+                              .arg(learner.getName())
+                              .arg(learner.getSurname())
+                              .arg(learner.getGrade());
+    ui->label_learnerInfo->setText(learnerInfo);
+
+    // Get outstanding amount
+    double totalOutstanding = DatabaseManager::instance().getTotalOutstandingFees(learnerId);
+    ui->label_totalOutstanding->setText("R" + QString::number(totalOutstanding, 'f', 2));
+
+    // Load lost/unreturned books
+    loadLostBooksForPayment(learnerId);
+
+    // Clear payment summary
+    ui->label_selectedItems->setText("0");
+    ui->label_amountToPay->setText("R0.00");
+    m_selectedTransactionIds.clear();
+
+    showSuccessMessage("Learner found: " + learner.getFullName());
+}
+
+// Load lost books into table
+void MainWindow::loadLostBooksForPayment(int learnerId) {
+    QVector<Transaction> lostTransactions =
+        DatabaseManager::instance().getUnpaidLostTransactionsByLearnerId(learnerId);
+
+    ui->tableWidget_lostBooks->setRowCount(0);
+    ui->tableWidget_lostBooks->setColumnCount(6);
+    ui->tableWidget_lostBooks->setHorizontalHeaderLabels({
+        "Transaction ID", "Book Code", "Book Title", "Lost Date", "Amount", "Select"
+    });
+
+    for (const Transaction& trans : lostTransactions) {
+        Book book = DatabaseManager::instance().getBookById(trans.getBookId());
+
+        int row = ui->tableWidget_lostBooks->rowCount();
+        ui->tableWidget_lostBooks->insertRow(row);
+
+        // Transaction ID
+        ui->tableWidget_lostBooks->setItem(row, 0,
+                                           new QTableWidgetItem(QString::number(trans.getId())));
+
+        // Book Code
+        ui->tableWidget_lostBooks->setItem(row, 1,
+                                           new QTableWidgetItem(book.getBookCode()));
+
+        // Book Title
+        ui->tableWidget_lostBooks->setItem(row, 2,
+                                           new QTableWidgetItem(book.getTitle()));
+
+        // Lost Date (return date when marked as lost)
+        QString lostDate = trans.getReturnDate().isValid() ?
+                               trans.getReturnDate().toString("dd/MM/yyyy") : "N/A";
+        ui->tableWidget_lostBooks->setItem(row, 3,
+                                           new QTableWidgetItem(lostDate));
+
+        // Amount
+        ui->tableWidget_lostBooks->setItem(row, 4,
+                                           new QTableWidgetItem("R" + QString::number(book.getPrice(), 'f', 2)));
+
+        // Checkbox for selection
+        QTableWidgetItem* checkboxItem = new QTableWidgetItem();
+        checkboxItem->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled);
+        checkboxItem->setCheckState(Qt::Unchecked);
+        ui->tableWidget_lostBooks->setItem(row, 5, checkboxItem);
+    }
+
+    ui->tableWidget_lostBooks->horizontalHeader()->setStretchLastSection(true);
+    ui->tableWidget_lostBooks->setSelectionBehavior(QAbstractItemView::SelectRows);
+}
+
+// Table selection changed - update payment summary
+void MainWindow::on_tableWidget_lostBooks_itemSelectionChanged() {
+    updatePaymentSummary();
+}
+
+// Update payment summary based on selected items
+void MainWindow::updatePaymentSummary() {
+    int selectedCount = 0;
+    double totalAmount = 0.0;
+    m_selectedTransactionIds.clear();
+
+    for (int row = 0; row < ui->tableWidget_lostBooks->rowCount(); ++row) {
+        QTableWidgetItem* checkboxItem = ui->tableWidget_lostBooks->item(row, 5);
+        if (checkboxItem && checkboxItem->checkState() == Qt::Checked) {
+            selectedCount++;
+
+            // Get transaction ID
+            int transId = ui->tableWidget_lostBooks->item(row, 0)->text().toInt();
+            m_selectedTransactionIds.append(transId);
+
+            // Parse amount (remove "R" prefix)
+            QString amountStr = ui->tableWidget_lostBooks->item(row, 4)->text();
+            amountStr.remove("R");
+            totalAmount += amountStr.toDouble();
+        }
+    }
+
+    ui->label_selectedItems->setText(QString::number(selectedCount));
+    ui->label_amountToPay->setText("R" + QString::number(totalAmount, 'f', 2));
+}
+
+// Select all books
+void MainWindow::on_pushButton_selectAllBooks_clicked() {
+    for (int row = 0; row < ui->tableWidget_lostBooks->rowCount(); ++row) {
+        QTableWidgetItem* checkboxItem = ui->tableWidget_lostBooks->item(row, 5);
+        if (checkboxItem) {
+            checkboxItem->setCheckState(Qt::Checked);
+        }
+    }
+    updatePaymentSummary();
+}
+
+// Deselect all books
+void MainWindow::on_pushButton_deselectAllBooks_clicked() {
+    for (int row = 0; row < ui->tableWidget_lostBooks->rowCount(); ++row) {
+        QTableWidgetItem* checkboxItem = ui->tableWidget_lostBooks->item(row, 5);
+        if (checkboxItem) {
+            checkboxItem->setCheckState(Qt::Unchecked);
+        }
+    }
+    updatePaymentSummary();
+}
+
+// Process payment
+void MainWindow::on_pushButton_processPayment_clicked() {
+    if (m_selectedLearnerId == -1) {
+        showErrorMessage("Please find a learner first");
+        return;
+    }
+
+    if (m_selectedTransactionIds.isEmpty()) {
+        showErrorMessage("Please select at least one book to process payment");
+        return;
+    }
+
+    // Get amount to pay
+    QString amountStr = ui->label_amountToPay->text();
+    amountStr.remove("R");
+    double amount = amountStr.toDouble();
+
+    if (amount <= 0) {
+        showErrorMessage("Invalid payment amount");
+        return;
+    }
+
+    // Confirm payment
+    Learner learner = DatabaseManager::instance().getLearnerById(m_selectedLearnerId);
+    QString message = QString(
+                          "Process payment for %1?\n\n"
+                          "Learner: %2\n"
+                          "Books: %3\n"
+                          "Amount: R%4\n\n"
+                          "This action cannot be undone."
+                          ).arg(learner.getFullName())
+                          .arg(learner.getFullName())
+                          .arg(m_selectedTransactionIds.size())
+                          .arg(QString::number(amount, 'f', 2));
+
+    QMessageBox::StandardButton reply = QMessageBox::question(
+        this, "Confirm Payment", message,
+        QMessageBox::Yes | QMessageBox::No
+        );
+
+    if (reply != QMessageBox::Yes) {
+        return;
+    }
+
+    // Create payment object
+    Payments payment;
+    payment.setLearnerId(m_selectedLearnerId);
+    payment.setAmount(amount);
+    payment.setProcessedBy(AuthManager::instance().getCurrentUser().getId());
+    payment.setPaymentDate(QDateTime::currentDateTime());
+    payment.setNotes("Cash payment for lost books");
+
+    // Process payment
+    if (DatabaseManager::instance().processPayment(payment, m_selectedTransactionIds)) {
+        m_currentPaymentId = payment.getId();
+
+        showSuccessMessage(
+            "Payment processed successfully!\n"
+            "Receipt No: " + payment.getReceiptNo()
+            );
+
+        // Enable view receipt button
+        ui->pushButton_viewReceipt->setEnabled(true);
+
+        // Refresh the data
+        on_pushButton_findLearnerPayment_clicked();
+
+        // Log activity
+        DatabaseManager::instance().logUserActivity(
+            AuthManager::instance().getCurrentUser().getId(),
+            "Process Payment",
+            QString("Payment of R%1 for learner %2")
+                .arg(amount, 0, 'f', 2)
+                .arg(m_selectedLearnerId)
+            );
+
+    } else {
+        showErrorMessage("Failed to process payment: " +
+                         DatabaseManager::instance().getLastError());
+    }
+}
+
+// View receipt
+void MainWindow::on_pushButton_viewReceipt_clicked() {
+    if (m_currentPaymentId == -1) {
+        showErrorMessage("No payment receipt available");
+        return;
+    }
+
+    Payments payment = DatabaseManager::instance().getPaymentById(m_currentPaymentId);
+    if (payment.getId() == -1) {
+        showErrorMessage("Payment not found");
+        return;
+    }
+
+    // Generate receipt HTML
+    QString receiptHtml = generateReceiptHTML(payment);
+
+    // Create dialog to show receipt
+    QDialog* receiptDialog = new QDialog(this);
+    receiptDialog->setWindowTitle("Payment Receipt");
+    receiptDialog->resize(600, 800);
+
+    QVBoxLayout* layout = new QVBoxLayout(receiptDialog);
+
+    QTextEdit* textEdit = new QTextEdit(receiptDialog);
+    textEdit->setHtml(receiptHtml);
+    textEdit->setReadOnly(true);
+    layout->addWidget(textEdit);
+
+    // Add buttons
+    QHBoxLayout* buttonLayout = new QHBoxLayout();
+
+    QPushButton* printBtn = new QPushButton("Print", receiptDialog);
+    QPushButton* closeBtn = new QPushButton("Close", receiptDialog);
+
+    buttonLayout->addWidget(printBtn);
+    buttonLayout->addWidget(closeBtn);
+    layout->addLayout(buttonLayout);
+
+    // Connect buttons
+    connect(printBtn, &QPushButton::clicked, [textEdit]() {
+        QPrinter printer;
+        QPrintDialog dialog(&printer);
+        if (dialog.exec() == QDialog::Accepted) {
+            textEdit->document()->print(&printer);
+        }
+    });
+
+    connect(closeBtn, &QPushButton::clicked, receiptDialog, &QDialog::accept);
+
+    receiptDialog->exec();
+    delete receiptDialog;
+}
+
+// Generate receipt HTML
+QString MainWindow::generateReceiptHTML(const Payments& payment) {
+    Learner learner = DatabaseManager::instance().getLearnerById(payment.getLearnerId());
+    User processor = DatabaseManager::instance().getUserById(payment.getProcessedBy());
+    QVector<PaymentItem> items = DatabaseManager::instance().getPaymentItems(payment.getId());
+
+    QString html = "<html><head><style>";
+    html += "body { font-family: Arial, sans-serif; }";
+    html += "h1 { color: #2c3e50; text-align: center; }";
+    html += "h2 { color: #34495e; border-bottom: 2px solid #3498db; padding-bottom: 5px; }";
+    html += "table { border-collapse: collapse; width: 100%; margin-top: 10px; }";
+    html += "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }";
+    html += "th { background-color: #3498db; color: white; }";
+    html += ".info-section { margin: 20px 0; }";
+    html += ".total { font-size: 18px; font-weight: bold; text-align: right; margin-top: 20px; }";
+    html += "</style></head><body>";
+
+    html += "<h1>PAYMENT RECEIPT</h1>";
+    html += "<div class='info-section'>";
+    html += "<p><strong>Receipt No:</strong> " + payment.getReceiptNo() + "</p>";
+    html += "<p><strong>Date:</strong> " + payment.getPaymentDate().toString("dd MMMM yyyy hh:mm AP") + "</p>";
+    html += "<p><strong>Learner:</strong> " + learner.getFullName() + " (ID: " + QString::number(learner.getId()) + ")</p>";
+    html += "<p><strong>Grade:</strong> " + learner.getGrade() + "</p>";
+    html += "<p><strong>Processed By:</strong> " + processor.getFullName() + "</p>";
+    html += "</div>";
+
+    html += "<h2>Payment Details</h2>";
+    html += "<table>";
+    html += "<tr><th>Book Code</th><th>Book Title</th><th>Amount</th></tr>";
+
+    double total = 0.0;
+    for (const PaymentItem& item : items) {
+        Book book = DatabaseManager::instance().getBookById(item.getBookId());
+        html += "<tr>";
+        html += "<td>" + book.getBookCode() + "</td>";
+        html += "<td>" + book.getTitle() + "</td>";
+        html += "<td>R" + QString::number(item.getAmount(), 'f', 2) + "</td>";
+        html += "</tr>";
+        total += item.getAmount();
+    }
+
+    html += "</table>";
+    html += "<div class='total'>Total Amount: R" + QString::number(total, 'f', 2) + "</div>";
+
+    if (!payment.getNotes().isEmpty()) {
+        html += "<div class='info-section'>";
+        html += "<p><strong>Notes:</strong> " + payment.getNotes() + "</p>";
+        html += "</div>";
+    }
+
+    html += "<hr style='margin-top: 50px;'>";
+    html += "<p style='text-align: center; font-size: 12px; color: #7f8c8d;'>";
+    html += "Thank you for your payment<br>";
+    html += "Library Management System";
+    html += "</p>";
+
+    html += "</body></html>";
+    return html;
+}
+
+// Clear payment form
+void MainWindow::on_pushButton_clearPayment_clicked() {
+    ui->lineEdit_paymentLearnerId->clear();
+    ui->label_learnerInfo->clear();
+    ui->label_totalOutstanding->setText("R0.00");
+    ui->tableWidget_lostBooks->setRowCount(0);
+    ui->label_selectedItems->setText("0");
+    ui->label_amountToPay->setText("R0.00");
+
+    m_selectedLearnerId = -1;
+    m_currentPaymentId = -1;
+    m_selectedTransactionIds.clear();
+
+    ui->pushButton_viewReceipt->setEnabled(false);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // ==================== Helper Methods ====================
 
 void MainWindow::updateUserInfo() {
@@ -1472,7 +1871,7 @@ void MainWindow::loadLearnerProfile(int learnerId) {
     
     // Display in summary section (you may need to add labels for this)
     // ui->label_totalBooksBorrowed->setText(QString::number(activeTransactions.size()));
-    // ui->label_totalAmountDue->setText("R" + QString::number(totalDue, 'f', 2));
+    ui->label_totalOutstanding->setText("R" + QString::number(totalDue, 'f', 2));
 }
 
 void MainWindow::loadBookDetails(int bookId) {
@@ -1731,9 +2130,9 @@ void MainWindow::fillBookForm(const Book& book) {
 void MainWindow::fillLearnerForm(const Learner& learner) {
     ui->lineEdit_editLearnerFirstName->setText(learner.getName());
     ui->lineEdit_editLearnerSurname->setText(learner.getSurname());
-    ui->comboBox__editLearnerGrade->setCurrentText(learner.getGrade());
-    ui->dateEdit__editLearnerDOB->setDate(learner.getDateOfBirth());
-    ui->lineEdit__editLearnerContact->setText(learner.getContactNo());
+    ui->comboBox_editLearnerGrade->setCurrentText(learner.getGrade());
+    ui->dateEdit_editLearnerDOB->setDate(learner.getDateOfBirth());
+    ui->lineEdit_editLearnerContact->setText(learner.getContactNo());
 }
 
 void MainWindow::copyBookDataFromISBN() {
@@ -1984,7 +2383,7 @@ void MainWindow::updateProfileIcon() {
 
     // Set user full name
     QString fullName = currentUser.getName() + " " + currentUser.getSurname();
-    ui->label_fullNames->setText(fullName);
+    ui->label_profile_name->setText(fullName);
 
     // Set role
     ui->label_profile_role->setText(currentUser.getRoleString());

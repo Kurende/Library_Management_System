@@ -1,31 +1,31 @@
 #ifndef PAYMENTITEM_H
 #define PAYMENTITEM_H
 
-class PaymentItem
-{
+class PaymentItem {
+public:
+    PaymentItem();
+    PaymentItem(int id, int paymentId, int transactionId, int bookId, double amount);
+
+    // Getters
+    int getId() const { return m_id; }
+    int getPaymentId() const { return m_paymentId; }
+    int getTransactionId() const { return m_transactionId; }
+    int getBookId() const { return m_bookId; }
+    double getAmount() const { return m_amount; }
+
+    // Setters
+    void setId(int id) { m_id = id; }
+    void setPaymentId(int paymentId) { m_paymentId = paymentId; }
+    void setTransactionId(int transactionId) { m_transactionId = transactionId; }
+    void setBookId(int bookId) { m_bookId = bookId; }
+    void setAmount(double amount) { m_amount = amount; }
+
 private:
     int m_id;
     int m_paymentId;
     int m_transactionId;
     int m_bookId;
     double m_amount;
-
-public:
-    PaymentItem();
-
-    // Getters
-    int getId() const;
-    int getPaymentId() const;
-    int getTransactionId() const;
-    int getBookId() const;
-    double getAmount() const;
-
-    // Setters
-    void setId(int id);
-    void setPaymentId(int id);
-    void setTransactionId(int id);
-    void setBookId(int id);
-    void setAmount(double amount);
 };
 
 #endif // PAYMENTITEM_H

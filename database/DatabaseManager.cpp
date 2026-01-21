@@ -6,6 +6,8 @@
 #include "utils/Encryption.h"
 #include <QSqlQuery>
 #include <QDateTime>
+#include "Payments.h"
+#include "PaymentItem.h"
 
 DatabaseManager& DatabaseManager::instance() {
     static DatabaseManager instance;
@@ -27,6 +29,13 @@ bool DatabaseManager::initialize(const QString& dbPath) {
         setLastError("Failed to open database: " + m_database.lastError().text());
         return false;
     }
+    // Delete old tables and recreate them (only run this once!)
+    QSqlQuery cleanupQuery;
+    cleanupQuery.exec("DROP TABLE IF EXISTS payment_items");
+    cleanupQuery.exec("DROP TABLE IF EXISTS payments");
+
+    // Then recreate them
+    DatabaseManager::instance().createPaymentTables();
     
     return createTables();
 }
@@ -1222,52 +1231,74 @@ QVector<Transaction> DatabaseManager::getActiveTransactionsByLearnerId(int learn
     return transactions;
 }
 
+
+
+
+
 bool DatabaseManager::createPaymentTables() {
     QSqlQuery query(m_database);
 
-    // Create payments table
-    QString createPaymentsTable = R"(
-        CREATE TABLE IF NOT EXISTS payments (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            receipt_no TEXT UNIQUE NOT NULL,
-            learner_id INTEGER NOT NULL,
-            amount REAL NOT NULL,
-            processed_by INTEGER NOT NULL,
-            payment_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-            notes TEXT,
-            FOREIGN KEY (learner_id) REFERENCES learners(id),
-            FOREIGN KEY (processed_by) REFERENCES users(id)
-        )
-    )";
+    // Ensure foreign key enforcement is enabled for this connection (SQLite)
+    query.exec("PRAGMA foreign_keys = ON");
 
-    if (!query.exec(createPaymentsTable)) {
-        qDebug() << "Error creating payments table:" << query.lastError().text();
-        return false;
+    if (!m_database.transaction()) {
+        setLastError("Failed to start DB transaction for creating payment tables");
     }
 
-    // Create payment_items table
-    QString createPaymentItemsTable = R"(
+    bool ok = true;
+
+    // UPDATED: payment_date will be auto-generated with DEFAULT CURRENT_TIMESTAMP
+    ok &= query.exec(R"SQL(
+        CREATE TABLE IF NOT EXISTS payments (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            receipt_no TEXT UNIQUE,
+            learner_id INTEGER,
+            amount REAL,
+            processed_by INTEGER,
+            payment_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+            notes TEXT,
+            FOREIGN KEY (learner_id) REFERENCES learners(id) ON DELETE SET NULL ON UPDATE CASCADE,
+            FOREIGN KEY (processed_by) REFERENCES users(id) ON DELETE SET NULL ON UPDATE CASCADE
+        )
+    )SQL");
+    if (!ok) {
+        setLastError("Failed to create payments table: " + query.lastError().text());
+    }
+
+    ok &= query.exec(R"SQL(
         CREATE TABLE IF NOT EXISTS payment_items (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             payment_id INTEGER NOT NULL,
-            transaction_id INTEGER NOT NULL,
-            book_id INTEGER NOT NULL,
-            amount REAL NOT NULL,
-            FOREIGN KEY (payment_id) REFERENCES payments(id),
-            FOREIGN KEY (transaction_id) REFERENCES transactions(id),
-            FOREIGN KEY (book_id) REFERENCES books(id)
+            transaction_id INTEGER,
+            book_id INTEGER,
+            amount REAL,
+            FOREIGN KEY (payment_id) REFERENCES payments(id) ON DELETE CASCADE ON UPDATE CASCADE,
+            FOREIGN KEY (transaction_id) REFERENCES transactions(id) ON DELETE SET NULL ON UPDATE CASCADE,
+            FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE SET NULL ON UPDATE CASCADE
         )
-    )";
+    )SQL");
+    if (!ok) {
+        setLastError("Failed to create payment_items table: " + query.lastError().text());
+    }
 
-    if (!query.exec(createPaymentItemsTable)) {
-        qDebug() << "Error creating payment_items table:" << query.lastError().text();
+    // Helpful indexes
+    ok &= query.exec("CREATE INDEX IF NOT EXISTS idx_payments_learner_id ON payments(learner_id)");
+    ok &= query.exec("CREATE INDEX IF NOT EXISTS idx_payments_processed_by ON payments(processed_by)");
+    ok &= query.exec("CREATE INDEX IF NOT EXISTS idx_payment_items_payment_id ON payment_items(payment_id)");
+    ok &= query.exec("CREATE INDEX IF NOT EXISTS idx_payment_items_transaction_id ON payment_items(transaction_id)");
+    ok &= query.exec("CREATE INDEX IF NOT EXISTS idx_payment_items_book_id ON payment_items(book_id)");
+
+    if (!m_database.commit()) {
+        m_database.rollback();
+        setLastError("Failed to commit DB transaction for creating payment tables");
         return false;
     }
 
-    return true;
+    return ok;
 }
 
-bool DatabaseManager::processPayment(Payment& payment, const QVector<int>& transactionIds) {
+
+bool DatabaseManager::processPayment(Payments& payment, const QVector<int>& transactionIds) {
     if (transactionIds.isEmpty()) {
         m_lastError = "No transactions selected for payment";
         return false;
@@ -1287,7 +1318,7 @@ bool DatabaseManager::processPayment(Payment& payment, const QVector<int>& trans
             payment.setReceiptNo(payment.generateReceiptNo());
         }
 
-        // Insert payment record
+        // Insert payment record - FIXED: removed payment_date from INSERT
         query.prepare(R"(
             INSERT INTO payments (receipt_no, learner_id, amount, processed_by, notes)
             VALUES (:receipt_no, :learner_id, :amount, :processed_by, :notes)
@@ -1305,6 +1336,9 @@ bool DatabaseManager::processPayment(Payment& payment, const QVector<int>& trans
 
         int paymentId = query.lastInsertId().toInt();
         payment.setId(paymentId);
+
+        // Set payment date to current timestamp from database
+        payment.setPaymentDate(QDateTime::currentDateTime());
 
         // Process each transaction
         for (int transId : transactionIds) {
@@ -1335,14 +1369,14 @@ bool DatabaseManager::processPayment(Payment& payment, const QVector<int>& trans
                 throw std::runtime_error(query.lastError().text().toStdString());
             }
 
-            // Update transaction status to "Paid" (we'll add this status)
+            // Update transaction status to "Returned" (since payment is made for lost book)
+            // Keep the status as "Lost" but we can add a note
             query.prepare(R"(
                 UPDATE transactions
-                SET status = 'Paid', notes = 'Payment processed - Receipt: ' || :receipt_no
+                SET status = 'Paid'
                 WHERE id = :id
             )");
 
-            query.bindValue(":receipt_no", payment.getReceiptNo());
             query.bindValue(":id", transId);
 
             if (!query.exec()) {
@@ -1363,6 +1397,7 @@ bool DatabaseManager::processPayment(Payment& payment, const QVector<int>& trans
         qDebug() << m_lastError;
         return false;
     }
+
 }
 
 QVector<Transaction> DatabaseManager::getUnpaidLostTransactionsByLearnerId(int learnerId) {
@@ -1420,8 +1455,8 @@ double DatabaseManager::getTotalOutstandingFees(int learnerId) {
     return total;
 }
 
-Payment DatabaseManager::getPaymentById(int id) {
-    Payment payment;
+Payments DatabaseManager::getPaymentById(int id) {
+    Payments payment;
     QSqlQuery query(m_database);
 
     query.prepare("SELECT * FROM payments WHERE id = :id");
@@ -1440,8 +1475,8 @@ Payment DatabaseManager::getPaymentById(int id) {
     return payment;
 }
 
-QVector<Payment> DatabaseManager::getPaymentsByLearnerId(int learnerId) {
-    QVector<Payment> payments;
+QVector<Payments> DatabaseManager::getPaymentsByLearnerId(int learnerId) {
+    QVector<Payments> payments;
     QSqlQuery query(m_database);
 
     query.prepare(R"(
@@ -1458,7 +1493,7 @@ QVector<Payment> DatabaseManager::getPaymentsByLearnerId(int learnerId) {
     }
 
     while (query.next()) {
-        Payment payment;
+        Payments payment;
         payment.setId(query.value("id").toInt());
         payment.setReceiptNo(query.value("receipt_no").toString());
         payment.setLearnerId(query.value("learner_id").toInt());
@@ -1496,6 +1531,10 @@ QVector<PaymentItem> DatabaseManager::getPaymentItems(int paymentId) {
 
     return items;
 }
+
+
+
+
 
 // ============================================================================
 // GET USER LAST LOGIN

@@ -8,6 +8,10 @@
 #include "Book.h"
 #include "Transaction.h"
 
+#include "Payments.h"
+
+
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -136,7 +140,7 @@ private slots:
     void on_pushButton_backToProfile_clicked();
     void on_pushButton_filterHistory_clicked();
     void on_pushButton_goToReports_clicked();
-    
+
     // ==================== Reports ====================
     void on_pushButton_printReportSidebar_clicked();
     void on_pushButton_loadLearnerData_clicked();
@@ -148,6 +152,15 @@ private slots:
     void on_radioButton_borrowReport_clicked();
     void on_radioButton_returnReport_clicked();
 
+    // ==================== Payments ====================
+    void on_pushButton_findLearnerPayment_clicked();
+    void on_pushButton_selectAllBooks_clicked();
+    void on_pushButton_deselectAllBooks_clicked();
+    void on_pushButton_processPayment_clicked();
+    void on_pushButton_viewReceipt_clicked();
+    void on_pushButton_clearPayment_clicked();
+    void on_tableWidget_lostBooks_itemSelectionChanged();
+
 private:
     Ui::MainWindow *ui;
     
@@ -156,7 +169,7 @@ private:
     int m_selectedLearnerId;
     int m_selectedTransactionId;
     QString m_currentEmail; // For password reset
-    
+
     // UI State
     bool m_menuExpanded;
     
@@ -206,7 +219,7 @@ private:
     void populateReturnBooksTable(const QVector<Transaction>& transactions);
     void populateDashboardTransactions(const QVector<Transaction>& transactions);
     void populateCurrentlyBorrowedBooks(int learnerId);
-    
+
     // ==================== Form Management ====================
     void clearBookForm();
     void clearLearnerForm();
@@ -230,7 +243,7 @@ private:
     void performReturn();
     void performMarkAsLost();
     void calculateAndDisplayAmount(int learnerId);
-    
+
     // ==================== UI Updates ====================
     void updateDashboardStats();
     void updateUserInfo();
@@ -252,7 +265,11 @@ private:
     QString generateReportHTML(int learnerId, const QString& reportType);
     void printReport();
     void saveReportAsPDF();
-    
+
+
+    int m_currentPaymentId;
+    QVector<int> m_selectedTransactionIds;
+
     // ==================== Search & Filter ====================
     void searchBooks(const QString& searchTerm);
     void filterBooksByGrade(const QString& grade);
@@ -264,6 +281,10 @@ private:
     QString getSubjectText(int index);
     void setupComboBoxes();
     void setupTableHeaders();
+    void loadLostBooksForPayment(int learnerId);
+    void updatePaymentSummary();
+    QString generateReceiptHTML(const Payments& payment);
+
 };
 
 #endif // MAINWINDOW_H
