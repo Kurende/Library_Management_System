@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
         QMessageBox::critical(nullptr, "Database Error",
                             "Failed to initialize database:\n" +
                             DatabaseManager::instance().getLastError());
+
         return 1;
     }
     
