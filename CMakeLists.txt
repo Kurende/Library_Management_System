@@ -13,6 +13,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Find Qt packages
 find_package(Qt6 COMPONENTS Widgets Sql PrintSupport REQUIRED)
+find_package(Qt6 REQUIRED COMPONENTS Charts Sql)
 
 # Source files
 set(PROJECT_SOURCES
@@ -64,6 +65,7 @@ target_link_libraries(Library_Management_System PRIVATE
     Qt6::Widgets
     Qt6::Sql
     Qt6::PrintSupport
+    Qt6::Charts
 )
 
 # Include directories
