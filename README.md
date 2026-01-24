@@ -135,7 +135,7 @@ make -j$(nproc)
 # Open Qt command prompt or set Qt environment variables
 
 # Clone the repository
-git clone https://github.com/yourusername/library-management-system.git
+git clone https://github.com/kurende/library-management-system.git
 cd library-management-system
 
 # Create build directory
