@@ -7,8 +7,11 @@
 #include "Learner.h"
 #include "Book.h"
 #include "Transaction.h"
-
 #include "Payments.h"
+#include <QtCharts/QChartView>
+#include <QtCharts/QPieSeries>
+#include <QtCharts/QPieSlice>
+#include <QtCharts/QChart>
 
 
 
@@ -64,7 +67,9 @@ private slots:
     void on_pushButton_addBookQuickButton_clicked();
     void on_pushButton_issueBookQuickButton_clicked();
     void on_pushButton_returnBookQuickButton_clicked();
-    
+    void setupLibraryChart();
+    void displayUserTips();
+
     // ==================== Book Management ====================
     void on_pushButton_addBookSidebar_clicked();
     void on_pushButton_updateBookInfoSidebar_clicked();
@@ -173,6 +178,9 @@ private:
     // UI State
     bool m_menuExpanded;
     
+    //Chart
+    QChartView *m_chartView;
+
     // ==================== Initialization ====================
     void initializeUI();
     void setupConnections();

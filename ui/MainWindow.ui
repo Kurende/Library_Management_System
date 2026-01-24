@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1388</width>
+    <width>1497</width>
     <height>740</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>400</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -3079,825 +3085,856 @@ color:white;}</string>
                    <enum>QFrame::Shadow::Raised</enum>
                   </property>
                   <property name="currentIndex">
-                   <number>5</number>
+                   <number>0</number>
                   </property>
                   <widget class="QWidget" name="page_dashboard">
-                   <layout class="QVBoxLayout" name="verticalLayout_2">
+                   <layout class="QVBoxLayout" name="verticalLayout_133">
                     <item>
-                     <layout class="QHBoxLayout" name="horizontalLayout_23">
-                      <property name="spacing">
-                       <number>0</number>
+                     <widget class="QScrollArea" name="scrollArea_Dashboard">
+                      <property name="styleSheet">
+                       <string notr="true">
+background-color:#011526;
+color:#fefefe;</string>
                       </property>
-                      <item>
-                       <layout class="QVBoxLayout" name="verticalLayout">
-                        <property name="spacing">
-                         <number>10</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>45</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>12</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>25</number>
-                        </property>
+                      <property name="widgetResizable">
+                       <bool>true</bool>
+                      </property>
+                      <widget class="QWidget" name="scrollAreaWidgetContents_6">
+                       <property name="geometry">
+                        <rect>
+                         <x>0</x>
+                         <y>-578</y>
+                         <width>1151</width>
+                         <height>1218</height>
+                        </rect>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_2">
                         <item>
-                         <widget class="QLabel" name="label_statisticsTitle">
-                          <property name="minimumSize">
-                           <size>
-                            <width>0</width>
-                            <height>15</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>15</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>12</pointsize>
-                            <fontweight>DemiBold</fontweight>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QLabel{
+                         <widget class="QWidget" name="widget_dashboard" native="true">
+                          <layout class="QVBoxLayout" name="verticalLayout_135">
+                           <property name="spacing">
+                            <number>20</number>
+                           </property>
+                           <item>
+                            <layout class="QVBoxLayout" name="verticalLayout">
+                             <item>
+                              <widget class="QLabel" name="label_statisticsTitle">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>15</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>16777215</width>
+                                 <height>15</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <pointsize>12</pointsize>
+                                 <fontweight>DemiBold</fontweight>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QLabel{
 padding-left:8px;
 color:#fefefe;}
 </string>
-                          </property>
-                          <property name="text">
-                           <string>STATISTICS OVERVIEW</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QFrame" name="frame_statisticsOverview">
-                          <property name="minimumSize">
-                           <size>
-                            <width>0</width>
-                            <height>200</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>300</height>
-                           </size>
-                          </property>
-                          <property name="autoFillBackground">
-                           <bool>false</bool>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QFrame{
+                               </property>
+                               <property name="text">
+                                <string>STATISTICS OVERVIEW</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QFrame" name="frame_statisticsOverview">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>250</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>16777215</width>
+                                 <height>300</height>
+                                </size>
+                               </property>
+                               <property name="autoFillBackground">
+                                <bool>false</bool>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QFrame{
 border-radius:8px;
 background-color:#254559;
 color:#fefefe;}
 
 
 </string>
-                          </property>
-                          <property name="frameShape">
-                           <enum>QFrame::Shape::NoFrame</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Shadow::Plain</enum>
-                          </property>
-                          <layout class="QVBoxLayout" name="verticalLayout_17">
-                           <property name="spacing">
-                            <number>4</number>
-                           </property>
-                           <property name="topMargin">
-                            <number>9</number>
-                           </property>
-                           <item>
-                            <layout class="QVBoxLayout" name="verticalLayout_15">
-                             <item>
-                              <layout class="QHBoxLayout" name="horizontalLayout_5">
-                               <item>
-                                <widget class="QFrame" name="frame_totalBooksCard">
-                                 <property name="styleSheet">
-                                  <string notr="true">QFrame{
+                               </property>
+                               <property name="frameShape">
+                                <enum>QFrame::Shape::NoFrame</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Shadow::Plain</enum>
+                               </property>
+                               <layout class="QVBoxLayout" name="verticalLayout_17">
+                                <property name="spacing">
+                                 <number>4</number>
+                                </property>
+                                <property name="topMargin">
+                                 <number>9</number>
+                                </property>
+                                <item>
+                                 <layout class="QVBoxLayout" name="verticalLayout_15">
+                                  <item>
+                                   <layout class="QHBoxLayout" name="horizontalLayout_5">
+                                    <item>
+                                     <widget class="QFrame" name="frame_totalBooksCard">
+                                      <property name="styleSheet">
+                                       <string notr="true">QFrame{
 border: 1px solid rgb(252, 251, 244);
 border-radius: 8px;}
 </string>
-                                 </property>
-                                 <property name="frameShape">
-                                  <enum>QFrame::Shape::StyledPanel</enum>
-                                 </property>
-                                 <property name="frameShadow">
-                                  <enum>QFrame::Shadow::Raised</enum>
-                                 </property>
-                                 <layout class="QVBoxLayout" name="verticalLayout_19">
-                                  <property name="spacing">
-                                   <number>2</number>
-                                  </property>
-                                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                                   <widget class="QLabel" name="label_totalBooksDisplay">
-                                    <property name="minimumSize">
-                                     <size>
-                                      <width>0</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="font">
-                                     <font>
-                                      <pointsize>15</pointsize>
-                                      <bold>true</bold>
-                                     </font>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">
+                                      </property>
+                                      <property name="frameShape">
+                                       <enum>QFrame::Shape::StyledPanel</enum>
+                                      </property>
+                                      <property name="frameShadow">
+                                       <enum>QFrame::Shadow::Raised</enum>
+                                      </property>
+                                      <layout class="QVBoxLayout" name="verticalLayout_19">
+                                       <property name="spacing">
+                                        <number>2</number>
+                                       </property>
+                                       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                                        <widget class="QLabel" name="label_totalBooksDisplay">
+                                         <property name="minimumSize">
+                                          <size>
+                                           <width>0</width>
+                                           <height>30</height>
+                                          </size>
+                                         </property>
+                                         <property name="maximumSize">
+                                          <size>
+                                           <width>16777215</width>
+                                           <height>30</height>
+                                          </size>
+                                         </property>
+                                         <property name="font">
+                                          <font>
+                                           <pointsize>15</pointsize>
+                                           <bold>true</bold>
+                                          </font>
+                                         </property>
+                                         <property name="styleSheet">
+                                          <string notr="true">
 border:none;
 </string>
-                                    </property>
-                                    <property name="text">
-                                     <string/>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                                   <widget class="QLabel" name="label_totalBooksTitle">
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>18</height>
-                                     </size>
-                                    </property>
-                                    <property name="font">
-                                     <font>
-                                      <pointsize>10</pointsize>
-                                      <bold>true</bold>
-                                     </font>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">border:none;</string>
-                                    </property>
-                                    <property name="text">
-                                     <string>Total Books</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                 </layout>
-                                </widget>
-                               </item>
-                               <item>
-                                <widget class="QFrame" name="frame_totalActiveLearnersCard">
-                                 <property name="styleSheet">
-                                  <string notr="true">QFrame{
+                                         </property>
+                                         <property name="text">
+                                          <string/>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                                        <widget class="QLabel" name="label_totalBooksTitle">
+                                         <property name="maximumSize">
+                                          <size>
+                                           <width>16777215</width>
+                                           <height>18</height>
+                                          </size>
+                                         </property>
+                                         <property name="font">
+                                          <font>
+                                           <pointsize>10</pointsize>
+                                           <bold>true</bold>
+                                          </font>
+                                         </property>
+                                         <property name="styleSheet">
+                                          <string notr="true">border:none;</string>
+                                         </property>
+                                         <property name="text">
+                                          <string>Total Books</string>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                      </layout>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QFrame" name="frame_totalActiveLearnersCard">
+                                      <property name="styleSheet">
+                                       <string notr="true">QFrame{
 border: 1px solid rgb(252, 251, 244);
 border-radius: 8px;}
 
 </string>
-                                 </property>
-                                 <property name="frameShape">
-                                  <enum>QFrame::Shape::StyledPanel</enum>
-                                 </property>
-                                 <property name="frameShadow">
-                                  <enum>QFrame::Shadow::Raised</enum>
-                                 </property>
-                                 <layout class="QVBoxLayout" name="verticalLayout_20">
-                                  <property name="spacing">
-                                   <number>2</number>
-                                  </property>
-                                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                                   <widget class="QLabel" name="label_totalActiveLearnersDisplay">
-                                    <property name="minimumSize">
-                                     <size>
-                                      <width>0</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="font">
-                                     <font>
-                                      <pointsize>15</pointsize>
-                                      <bold>true</bold>
-                                     </font>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">border:none;</string>
-                                    </property>
-                                    <property name="text">
-                                     <string/>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                                   <widget class="QLabel" name="label_totalActiveLearnersTitle">
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>18</height>
-                                     </size>
-                                    </property>
-                                    <property name="font">
-                                     <font>
-                                      <pointsize>10</pointsize>
-                                      <bold>true</bold>
-                                     </font>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">border:none;</string>
-                                    </property>
-                                    <property name="text">
-                                     <string>Total Active Learners</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                 </layout>
-                                </widget>
-                               </item>
-                               <item>
-                                <widget class="QFrame" name="frame_BooksAvailableCard">
-                                 <property name="styleSheet">
-                                  <string notr="true">QFrame{
+                                      </property>
+                                      <property name="frameShape">
+                                       <enum>QFrame::Shape::StyledPanel</enum>
+                                      </property>
+                                      <property name="frameShadow">
+                                       <enum>QFrame::Shadow::Raised</enum>
+                                      </property>
+                                      <layout class="QVBoxLayout" name="verticalLayout_20">
+                                       <property name="spacing">
+                                        <number>2</number>
+                                       </property>
+                                       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                                        <widget class="QLabel" name="label_totalActiveLearnersDisplay">
+                                         <property name="minimumSize">
+                                          <size>
+                                           <width>0</width>
+                                           <height>30</height>
+                                          </size>
+                                         </property>
+                                         <property name="maximumSize">
+                                          <size>
+                                           <width>16777215</width>
+                                           <height>30</height>
+                                          </size>
+                                         </property>
+                                         <property name="font">
+                                          <font>
+                                           <pointsize>15</pointsize>
+                                           <bold>true</bold>
+                                          </font>
+                                         </property>
+                                         <property name="styleSheet">
+                                          <string notr="true">border:none;</string>
+                                         </property>
+                                         <property name="text">
+                                          <string/>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                                        <widget class="QLabel" name="label_totalActiveLearnersTitle">
+                                         <property name="maximumSize">
+                                          <size>
+                                           <width>16777215</width>
+                                           <height>18</height>
+                                          </size>
+                                         </property>
+                                         <property name="font">
+                                          <font>
+                                           <pointsize>10</pointsize>
+                                           <bold>true</bold>
+                                          </font>
+                                         </property>
+                                         <property name="styleSheet">
+                                          <string notr="true">border:none;</string>
+                                         </property>
+                                         <property name="text">
+                                          <string>Total Active Learners</string>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                      </layout>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QFrame" name="frame_BooksAvailableCard">
+                                      <property name="styleSheet">
+                                       <string notr="true">QFrame{
 border: 1px solid rgb(252, 251, 244);
 border-radius: 8px;}
 </string>
-                                 </property>
-                                 <property name="frameShape">
-                                  <enum>QFrame::Shape::StyledPanel</enum>
-                                 </property>
-                                 <property name="frameShadow">
-                                  <enum>QFrame::Shadow::Raised</enum>
-                                 </property>
-                                 <layout class="QVBoxLayout" name="verticalLayout_21">
-                                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                                   <widget class="QLabel" name="label_booksAvailableDisplay">
-                                    <property name="minimumSize">
-                                     <size>
-                                      <width>0</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="font">
-                                     <font>
-                                      <pointsize>15</pointsize>
-                                      <bold>true</bold>
-                                     </font>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">border:none;</string>
-                                    </property>
-                                    <property name="text">
-                                     <string/>
-                                    </property>
-                                   </widget>
+                                      </property>
+                                      <property name="frameShape">
+                                       <enum>QFrame::Shape::StyledPanel</enum>
+                                      </property>
+                                      <property name="frameShadow">
+                                       <enum>QFrame::Shadow::Raised</enum>
+                                      </property>
+                                      <layout class="QVBoxLayout" name="verticalLayout_21">
+                                       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                                        <widget class="QLabel" name="label_booksAvailableDisplay">
+                                         <property name="minimumSize">
+                                          <size>
+                                           <width>0</width>
+                                           <height>30</height>
+                                          </size>
+                                         </property>
+                                         <property name="maximumSize">
+                                          <size>
+                                           <width>16777215</width>
+                                           <height>30</height>
+                                          </size>
+                                         </property>
+                                         <property name="font">
+                                          <font>
+                                           <pointsize>15</pointsize>
+                                           <bold>true</bold>
+                                          </font>
+                                         </property>
+                                         <property name="styleSheet">
+                                          <string notr="true">border:none;</string>
+                                         </property>
+                                         <property name="text">
+                                          <string/>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                                        <widget class="QLabel" name="label_booksAvailableTitle">
+                                         <property name="maximumSize">
+                                          <size>
+                                           <width>16777215</width>
+                                           <height>18</height>
+                                          </size>
+                                         </property>
+                                         <property name="font">
+                                          <font>
+                                           <pointsize>10</pointsize>
+                                           <bold>true</bold>
+                                          </font>
+                                         </property>
+                                         <property name="styleSheet">
+                                          <string notr="true">border:none;</string>
+                                         </property>
+                                         <property name="text">
+                                          <string>Books Available</string>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                      </layout>
+                                     </widget>
+                                    </item>
+                                   </layout>
                                   </item>
-                                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                                   <widget class="QLabel" name="label_booksAvailableTitle">
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>18</height>
-                                     </size>
-                                    </property>
-                                    <property name="font">
-                                     <font>
-                                      <pointsize>10</pointsize>
-                                      <bold>true</bold>
-                                     </font>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">border:none;</string>
-                                    </property>
-                                    <property name="text">
-                                     <string>Books Available</string>
-                                    </property>
-                                   </widget>
+                                  <item>
+                                   <layout class="QHBoxLayout" name="horizontalLayout_10">
+                                    <item>
+                                     <widget class="QFrame" name="frame_totalUsersCard">
+                                      <property name="styleSheet">
+                                       <string notr="true">QFrame{
+border: 1px solid rgb(252, 251, 244);
+border-radius: 8px;}
+</string>
+                                      </property>
+                                      <property name="frameShape">
+                                       <enum>QFrame::Shape::StyledPanel</enum>
+                                      </property>
+                                      <property name="frameShadow">
+                                       <enum>QFrame::Shadow::Raised</enum>
+                                      </property>
+                                      <layout class="QVBoxLayout" name="verticalLayout_22">
+                                       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                                        <widget class="QLabel" name="label_totalUsersDisplay">
+                                         <property name="minimumSize">
+                                          <size>
+                                           <width>0</width>
+                                           <height>30</height>
+                                          </size>
+                                         </property>
+                                         <property name="maximumSize">
+                                          <size>
+                                           <width>16777215</width>
+                                           <height>30</height>
+                                          </size>
+                                         </property>
+                                         <property name="font">
+                                          <font>
+                                           <pointsize>15</pointsize>
+                                           <bold>true</bold>
+                                          </font>
+                                         </property>
+                                         <property name="styleSheet">
+                                          <string notr="true">border:none;</string>
+                                         </property>
+                                         <property name="text">
+                                          <string/>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                                        <widget class="QLabel" name="label_totalUsersTitle">
+                                         <property name="maximumSize">
+                                          <size>
+                                           <width>16777215</width>
+                                           <height>18</height>
+                                          </size>
+                                         </property>
+                                         <property name="font">
+                                          <font>
+                                           <pointsize>10</pointsize>
+                                           <bold>true</bold>
+                                          </font>
+                                         </property>
+                                         <property name="styleSheet">
+                                          <string notr="true">border:none;</string>
+                                         </property>
+                                         <property name="text">
+                                          <string>Total Users</string>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                      </layout>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QFrame" name="frame_BooksCurrentlyBorrowedCard">
+                                      <property name="styleSheet">
+                                       <string notr="true">QFrame{
+border: 1px solid rgb(252, 251, 244);
+border-radius: 8px;}
+</string>
+                                      </property>
+                                      <property name="frameShape">
+                                       <enum>QFrame::Shape::StyledPanel</enum>
+                                      </property>
+                                      <property name="frameShadow">
+                                       <enum>QFrame::Shadow::Raised</enum>
+                                      </property>
+                                      <layout class="QVBoxLayout" name="verticalLayout_23">
+                                       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                                        <widget class="QLabel" name="label_BooksCurrentlyBorrowedDisplay">
+                                         <property name="minimumSize">
+                                          <size>
+                                           <width>0</width>
+                                           <height>30</height>
+                                          </size>
+                                         </property>
+                                         <property name="maximumSize">
+                                          <size>
+                                           <width>16777215</width>
+                                           <height>30</height>
+                                          </size>
+                                         </property>
+                                         <property name="font">
+                                          <font>
+                                           <pointsize>15</pointsize>
+                                           <bold>true</bold>
+                                          </font>
+                                         </property>
+                                         <property name="styleSheet">
+                                          <string notr="true">border:none;</string>
+                                         </property>
+                                         <property name="text">
+                                          <string/>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                                        <widget class="QLabel" name="label_booksCurrentlyBorrowedTitle">
+                                         <property name="maximumSize">
+                                          <size>
+                                           <width>16777215</width>
+                                           <height>18</height>
+                                          </size>
+                                         </property>
+                                         <property name="font">
+                                          <font>
+                                           <pointsize>10</pointsize>
+                                           <bold>true</bold>
+                                          </font>
+                                         </property>
+                                         <property name="styleSheet">
+                                          <string notr="true">border:none;</string>
+                                         </property>
+                                         <property name="text">
+                                          <string>Books Currently Borrowed</string>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                      </layout>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QFrame" name="frame_overdueBooksCard">
+                                      <property name="styleSheet">
+                                       <string notr="true">QFrame{
+border: 1px solid rgb(252, 251, 244);
+border-radius: 8px;}
+</string>
+                                      </property>
+                                      <property name="frameShape">
+                                       <enum>QFrame::Shape::StyledPanel</enum>
+                                      </property>
+                                      <property name="frameShadow">
+                                       <enum>QFrame::Shadow::Raised</enum>
+                                      </property>
+                                      <layout class="QVBoxLayout" name="verticalLayout_24">
+                                       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                                        <widget class="QLabel" name="label_unreturnedBooksDisplay">
+                                         <property name="minimumSize">
+                                          <size>
+                                           <width>0</width>
+                                           <height>30</height>
+                                          </size>
+                                         </property>
+                                         <property name="maximumSize">
+                                          <size>
+                                           <width>16777215</width>
+                                           <height>30</height>
+                                          </size>
+                                         </property>
+                                         <property name="font">
+                                          <font>
+                                           <pointsize>15</pointsize>
+                                           <bold>true</bold>
+                                          </font>
+                                         </property>
+                                         <property name="styleSheet">
+                                          <string notr="true">border:none;</string>
+                                         </property>
+                                         <property name="text">
+                                          <string/>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                                        <widget class="QLabel" name="label_overdueBooksTitle">
+                                         <property name="maximumSize">
+                                          <size>
+                                           <width>16777215</width>
+                                           <height>18</height>
+                                          </size>
+                                         </property>
+                                         <property name="font">
+                                          <font>
+                                           <pointsize>10</pointsize>
+                                           <bold>true</bold>
+                                          </font>
+                                         </property>
+                                         <property name="styleSheet">
+                                          <string notr="true">border:none;</string>
+                                         </property>
+                                         <property name="text">
+                                          <string>Overdue Books</string>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                      </layout>
+                                     </widget>
+                                    </item>
+                                   </layout>
                                   </item>
                                  </layout>
-                                </widget>
-                               </item>
-                              </layout>
+                                </item>
+                               </layout>
+                              </widget>
                              </item>
                              <item>
-                              <layout class="QHBoxLayout" name="horizontalLayout_10">
+                              <widget class="QFrame" name="frame_chartContainer">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>400</height>
+                                </size>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">
+background-color:#011526;
+color:#fefefe;</string>
+                               </property>
+                               <property name="frameShape">
+                                <enum>QFrame::Shape::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Shadow::Raised</enum>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </item>
+                           <item>
+                            <layout class="QHBoxLayout" name="horizontalLayout_15">
+                             <property name="spacing">
+                              <number>0</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>20</number>
+                             </property>
+                             <item alignment="Qt::AlignmentFlag::AlignRight">
+                              <widget class="QLabel" name="label_quickButtonsTitle">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>50</width>
+                                 <height>20</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>150</width>
+                                 <height>15</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <pointsize>12</pointsize>
+                                 <fontweight>DemiBold</fontweight>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QLabel{
+padding-left:8px;
+color:#fefefe;}
+</string>
+                               </property>
+                               <property name="text">
+                                <string>Quick Buttons:</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_28">
                                <item>
-                                <widget class="QFrame" name="frame_totalUsersCard">
+                                <widget class="QPushButton" name="pushButton_addBookQuickButton">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>150</width>
+                                   <height>40</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>150</width>
+                                   <height>40</height>
+                                  </size>
+                                 </property>
+                                 <property name="font">
+                                  <font>
+                                   <fontweight>DemiBold</fontweight>
+                                  </font>
+                                 </property>
                                  <property name="styleSheet">
-                                  <string notr="true">QFrame{
-border: 1px solid rgb(252, 251, 244);
-border-radius: 8px;}
+                                  <string notr="true">QPushButton{
+background-color:#254559;
+color:#fefefe;}
+
+QPushButton:hover{
+background-color:#6093BF}
 </string>
                                  </property>
-                                 <property name="frameShape">
-                                  <enum>QFrame::Shape::StyledPanel</enum>
+                                 <property name="text">
+                                  <string>  Add Book</string>
                                  </property>
-                                 <property name="frameShadow">
-                                  <enum>QFrame::Shadow::Raised</enum>
+                                 <property name="icon">
+                                  <iconset resource="../resources.qrc">
+                                   <normaloff>:/icons/icons/Liquid glass/icons8-add-96.png</normaloff>:/icons/icons/Liquid glass/icons8-add-96.png</iconset>
                                  </property>
-                                 <layout class="QVBoxLayout" name="verticalLayout_22">
-                                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                                   <widget class="QLabel" name="label_totalUsersDisplay">
-                                    <property name="minimumSize">
-                                     <size>
-                                      <width>0</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="font">
-                                     <font>
-                                      <pointsize>15</pointsize>
-                                      <bold>true</bold>
-                                     </font>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">border:none;</string>
-                                    </property>
-                                    <property name="text">
-                                     <string/>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                                   <widget class="QLabel" name="label_totalUsersTitle">
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>18</height>
-                                     </size>
-                                    </property>
-                                    <property name="font">
-                                     <font>
-                                      <pointsize>10</pointsize>
-                                      <bold>true</bold>
-                                     </font>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">border:none;</string>
-                                    </property>
-                                    <property name="text">
-                                     <string>Total Users</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                 </layout>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>20</width>
+                                   <height>20</height>
+                                  </size>
+                                 </property>
                                 </widget>
                                </item>
                                <item>
-                                <widget class="QFrame" name="frame_BooksCurrentlyBorrowedCard">
+                                <widget class="QPushButton" name="pushButton_issueBookQuickButton">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>150</width>
+                                   <height>40</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>150</width>
+                                   <height>40</height>
+                                  </size>
+                                 </property>
                                  <property name="styleSheet">
-                                  <string notr="true">QFrame{
-border: 1px solid rgb(252, 251, 244);
-border-radius: 8px;}
+                                  <string notr="true">QPushButton{
+background-color:#254559;
+color:#fefefe;}
+
+QPushButton:hover{
+background-color:#6093BF}
 </string>
                                  </property>
-                                 <property name="frameShape">
-                                  <enum>QFrame::Shape::StyledPanel</enum>
+                                 <property name="text">
+                                  <string>  Issue Book</string>
                                  </property>
-                                 <property name="frameShadow">
-                                  <enum>QFrame::Shadow::Raised</enum>
+                                 <property name="icon">
+                                  <iconset resource="../resources.qrc">
+                                   <normaloff>:/icons/icons/Liquid glass/icons8-export-96.png</normaloff>:/icons/icons/Liquid glass/icons8-export-96.png</iconset>
                                  </property>
-                                 <layout class="QVBoxLayout" name="verticalLayout_23">
-                                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                                   <widget class="QLabel" name="label_BooksCurrentlyBorrowedDisplay">
-                                    <property name="minimumSize">
-                                     <size>
-                                      <width>0</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="font">
-                                     <font>
-                                      <pointsize>15</pointsize>
-                                      <bold>true</bold>
-                                     </font>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">border:none;</string>
-                                    </property>
-                                    <property name="text">
-                                     <string/>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                                   <widget class="QLabel" name="label_booksCurrentlyBorrowedTitle">
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>18</height>
-                                     </size>
-                                    </property>
-                                    <property name="font">
-                                     <font>
-                                      <pointsize>10</pointsize>
-                                      <bold>true</bold>
-                                     </font>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">border:none;</string>
-                                    </property>
-                                    <property name="text">
-                                     <string>Books Currently Borrowed</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                 </layout>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>20</width>
+                                   <height>20</height>
+                                  </size>
+                                 </property>
                                 </widget>
                                </item>
                                <item>
-                                <widget class="QFrame" name="frame_overdueBooksCard">
+                                <widget class="QPushButton" name="pushButton_returnBookQuickButton">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>150</width>
+                                   <height>40</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>150</width>
+                                   <height>40</height>
+                                  </size>
+                                 </property>
                                  <property name="styleSheet">
-                                  <string notr="true">QFrame{
-border: 1px solid rgb(252, 251, 244);
-border-radius: 8px;}
+                                  <string notr="true">QPushButton{
+background-color:#254559;
+color:#fefefe;}
+
+QPushButton:hover{
+background-color:#6093BF}
 </string>
                                  </property>
-                                 <property name="frameShape">
-                                  <enum>QFrame::Shape::StyledPanel</enum>
+                                 <property name="text">
+                                  <string>  Return Book</string>
                                  </property>
-                                 <property name="frameShadow">
-                                  <enum>QFrame::Shadow::Raised</enum>
+                                 <property name="icon">
+                                  <iconset resource="../resources.qrc">
+                                   <normaloff>:/icons/icons/Liquid glass/icons8-download-96.png</normaloff>:/icons/icons/Liquid glass/icons8-download-96.png</iconset>
                                  </property>
-                                 <layout class="QVBoxLayout" name="verticalLayout_24">
-                                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                                   <widget class="QLabel" name="label_unreturnedBooksDisplay">
-                                    <property name="minimumSize">
-                                     <size>
-                                      <width>0</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="font">
-                                     <font>
-                                      <pointsize>15</pointsize>
-                                      <bold>true</bold>
-                                     </font>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">border:none;</string>
-                                    </property>
-                                    <property name="text">
-                                     <string/>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                                   <widget class="QLabel" name="label_overdueBooksTitle">
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>18</height>
-                                     </size>
-                                    </property>
-                                    <property name="font">
-                                     <font>
-                                      <pointsize>10</pointsize>
-                                      <bold>true</bold>
-                                     </font>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">border:none;</string>
-                                    </property>
-                                    <property name="text">
-                                     <string>Overdue Books</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                 </layout>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>20</width>
+                                   <height>20</height>
+                                  </size>
+                                 </property>
                                 </widget>
                                </item>
                               </layout>
                              </item>
                             </layout>
                            </item>
-                          </layout>
-                         </widget>
-                        </item>
-                        <item>
-                         <layout class="QHBoxLayout" name="horizontalLayout_15">
-                          <property name="spacing">
-                           <number>0</number>
-                          </property>
-                          <property name="rightMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="bottomMargin">
-                           <number>20</number>
-                          </property>
-                          <item alignment="Qt::AlignmentFlag::AlignRight">
-                           <widget class="QLabel" name="label_quickButtonsTitle">
-                            <property name="minimumSize">
-                             <size>
-                              <width>50</width>
-                              <height>20</height>
-                             </size>
-                            </property>
-                            <property name="maximumSize">
-                             <size>
-                              <width>150</width>
-                              <height>15</height>
-                             </size>
-                            </property>
-                            <property name="font">
-                             <font>
-                              <pointsize>12</pointsize>
-                              <fontweight>DemiBold</fontweight>
-                             </font>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">QLabel{
-padding-left:8px;
-color:#fefefe;}
-</string>
-                            </property>
-                            <property name="text">
-                             <string>Quick Buttons:</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item>
-                           <layout class="QHBoxLayout" name="horizontalLayout_28">
-                            <item>
-                             <widget class="QPushButton" name="pushButton_addBookQuickButton">
-                              <property name="minimumSize">
-                               <size>
-                                <width>150</width>
-                                <height>40</height>
-                               </size>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>150</width>
-                                <height>40</height>
-                               </size>
-                              </property>
-                              <property name="font">
-                               <font>
-                                <fontweight>DemiBold</fontweight>
-                               </font>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">QPushButton{
-background-color:#254559;
-color:#fefefe;}
-
-QPushButton:hover{
-background-color:#6093BF}
-</string>
-                              </property>
-                              <property name="text">
-                               <string>  Add Book</string>
-                              </property>
-                              <property name="icon">
-                               <iconset resource="../resources.qrc">
-                                <normaloff>:/icons/icons/Liquid glass/icons8-add-96.png</normaloff>:/icons/icons/Liquid glass/icons8-add-96.png</iconset>
-                              </property>
-                              <property name="iconSize">
-                               <size>
-                                <width>20</width>
-                                <height>20</height>
-                               </size>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QPushButton" name="pushButton_issueBookQuickButton">
-                              <property name="minimumSize">
-                               <size>
-                                <width>150</width>
-                                <height>40</height>
-                               </size>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>150</width>
-                                <height>40</height>
-                               </size>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">QPushButton{
-background-color:#254559;
-color:#fefefe;}
-
-QPushButton:hover{
-background-color:#6093BF}
-</string>
-                              </property>
-                              <property name="text">
-                               <string>  Issue Book</string>
-                              </property>
-                              <property name="icon">
-                               <iconset resource="../resources.qrc">
-                                <normaloff>:/icons/icons/Liquid glass/icons8-export-96.png</normaloff>:/icons/icons/Liquid glass/icons8-export-96.png</iconset>
-                              </property>
-                              <property name="iconSize">
-                               <size>
-                                <width>20</width>
-                                <height>20</height>
-                               </size>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QPushButton" name="pushButton_returnBookQuickButton">
-                              <property name="minimumSize">
-                               <size>
-                                <width>150</width>
-                                <height>40</height>
-                               </size>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>150</width>
-                                <height>40</height>
-                               </size>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">QPushButton{
-background-color:#254559;
-color:#fefefe;}
-
-QPushButton:hover{
-background-color:#6093BF}
-</string>
-                              </property>
-                              <property name="text">
-                               <string>  Return Book</string>
-                              </property>
-                              <property name="icon">
-                               <iconset resource="../resources.qrc">
-                                <normaloff>:/icons/icons/Liquid glass/icons8-download-96.png</normaloff>:/icons/icons/Liquid glass/icons8-download-96.png</iconset>
-                              </property>
-                              <property name="iconSize">
-                               <size>
-                                <width>20</width>
-                                <height>20</height>
-                               </size>
-                              </property>
-                             </widget>
-                            </item>
-                           </layout>
-                          </item>
-                         </layout>
-                        </item>
-                        <item>
-                         <widget class="QLabel" name="label_recentTransactionsTitle">
-                          <property name="minimumSize">
-                           <size>
-                            <width>0</width>
-                            <height>15</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>15</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <pointsize>12</pointsize>
-                            <fontweight>DemiBold</fontweight>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QLabel{
-padding-left:8px;
-color:#fefefe;}
-</string>
-                          </property>
-                          <property name="text">
-                           <string>RECENT TRANSACTIONS</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QWidget" name="widget_tableBackground" native="true">
-                          <property name="styleSheet">
-                           <string notr="true">QWidget{
-background-color:#011526;
-color:#fefefe;}</string>
-                          </property>
-                          <layout class="QHBoxLayout" name="horizontalLayout_14">
-                           <property name="spacing">
-                            <number>6</number>
-                           </property>
-                           <property name="topMargin">
-                            <number>5</number>
-                           </property>
-                           <property name="bottomMargin">
-                            <number>5</number>
-                           </property>
                            <item>
-                            <widget class="QTableWidget" name="tableWidget_homeRecentTransactions">
+                            <widget class="QWidget" name="widget_tableBackground" native="true">
                              <property name="minimumSize">
                               <size>
-                               <width>500</width>
-                               <height>0</height>
+                               <width>0</width>
+                               <height>400</height>
                               </size>
                              </property>
                              <property name="maximumSize">
                               <size>
-                               <width>500</width>
-                               <height>16777215</height>
+                               <width>16777215</width>
+                               <height>800</height>
                               </size>
                              </property>
-                             <property name="alternatingRowColors">
-                              <bool>true</bool>
+                             <property name="styleSheet">
+                              <string notr="true">QWidget{
+background-color:#011526;
+color:#fefefe;}</string>
                              </property>
-                             <property name="sortingEnabled">
-                              <bool>false</bool>
-                             </property>
-                             <property name="rowCount">
-                              <number>0</number>
-                             </property>
-                             <attribute name="horizontalHeaderMinimumSectionSize">
-                              <number>32</number>
-                             </attribute>
-                             <attribute name="verticalHeaderDefaultSectionSize">
-                              <number>30</number>
-                             </attribute>
-                             <column>
-                              <property name="text">
-                               <string>Learner Name</string>
-                              </property>
-                             </column>
-                             <column>
-                              <property name="text">
-                               <string>Book Code</string>
-                              </property>
-                             </column>
-                             <column>
-                              <property name="text">
-                               <string>Title</string>
-                              </property>
-                             </column>
-                             <column>
-                              <property name="text">
-                               <string>Grade</string>
-                              </property>
-                             </column>
-                             <column>
-                              <property name="text">
-                               <string>Borrow Date</string>
-                              </property>
-                             </column>
-                             <column>
-                              <property name="text">
-                               <string>Due In</string>
-                              </property>
-                             </column>
-                             <column>
-                              <property name="text">
-                               <string>Status</string>
-                              </property>
-                             </column>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QLabel" name="label_mainChart">
-                             <property name="text">
-                              <string>Books by status label</string>
-                             </property>
+                             <layout class="QVBoxLayout" name="verticalLayout_132">
+                              <item>
+                               <widget class="QLabel" name="label_recentTransactionsTitle">
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>0</width>
+                                  <height>15</height>
+                                 </size>
+                                </property>
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>16777215</width>
+                                  <height>15</height>
+                                 </size>
+                                </property>
+                                <property name="font">
+                                 <font>
+                                  <pointsize>12</pointsize>
+                                  <fontweight>DemiBold</fontweight>
+                                 </font>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">QLabel{
+padding-left:8px;
+color:#fefefe;}
+</string>
+                                </property>
+                                <property name="text">
+                                 <string>RECENT TRANSACTIONS</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QTableWidget" name="tableWidget_homeRecentTransactions">
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>0</width>
+                                  <height>600</height>
+                                 </size>
+                                </property>
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>16777215</width>
+                                  <height>600</height>
+                                 </size>
+                                </property>
+                                <property name="alternatingRowColors">
+                                 <bool>true</bool>
+                                </property>
+                                <property name="sortingEnabled">
+                                 <bool>false</bool>
+                                </property>
+                                <property name="rowCount">
+                                 <number>0</number>
+                                </property>
+                                <attribute name="horizontalHeaderMinimumSectionSize">
+                                 <number>32</number>
+                                </attribute>
+                                <attribute name="verticalHeaderDefaultSectionSize">
+                                 <number>30</number>
+                                </attribute>
+                                <column>
+                                 <property name="text">
+                                  <string>Learner Name</string>
+                                 </property>
+                                </column>
+                                <column>
+                                 <property name="text">
+                                  <string>Book Code</string>
+                                 </property>
+                                </column>
+                                <column>
+                                 <property name="text">
+                                  <string>Title</string>
+                                 </property>
+                                </column>
+                                <column>
+                                 <property name="text">
+                                  <string>Grade</string>
+                                 </property>
+                                </column>
+                                <column>
+                                 <property name="text">
+                                  <string>Borrow Date</string>
+                                 </property>
+                                </column>
+                                <column>
+                                 <property name="text">
+                                  <string>Due In</string>
+                                 </property>
+                                </column>
+                                <column>
+                                 <property name="text">
+                                  <string>Status</string>
+                                 </property>
+                                </column>
+                               </widget>
+                              </item>
+                             </layout>
                             </widget>
                            </item>
                           </layout>
                          </widget>
                         </item>
                        </layout>
-                      </item>
-                     </layout>
+                      </widget>
+                     </widget>
                     </item>
                     <item>
                      <widget class="QLabel" name="label_tips">
@@ -5947,7 +5984,7 @@ background-color:#011526;
                                     <second>0</second>
                                     <year>2024</year>
                                     <month>12</month>
-                                    <day>2</day>
+                                    <day>1</day>
                                    </datetime>
                                   </property>
                                   <property name="displayFormat">
@@ -6010,7 +6047,7 @@ background-color:#011526;
                                     <second>0</second>
                                     <year>2025</year>
                                     <month>8</month>
-                                    <day>15</day>
+                                    <day>14</day>
                                    </datetime>
                                   </property>
                                   <property name="displayFormat">
@@ -7408,7 +7445,7 @@ QLabel{color:white;}
                                  <rect>
                                   <x>0</x>
                                   <y>0</y>
-                                  <width>266</width>
+                                  <width>1004</width>
                                   <height>1041</height>
                                  </rect>
                                 </property>
@@ -9261,7 +9298,7 @@ border-radius:3px;
                        <property name="geometry">
                         <rect>
                          <x>0</x>
-                         <y>-65</y>
+                         <y>0</y>
                          <width>1042</width>
                          <height>909</height>
                         </rect>
@@ -11217,8 +11254,8 @@ background-color:#6093BF;}</string>
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>1036</width>
-                             <height>592</height>
+                             <width>243</width>
+                             <height>512</height>
                             </rect>
                            </property>
                            <layout class="QVBoxLayout" name="verticalLayout_124">

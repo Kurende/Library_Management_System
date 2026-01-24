@@ -21,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
     , m_selectedLearnerId(-1)
     , m_selectedTransactionId(-1)
     , m_menuExpanded(true)
+    , m_chartView(nullptr)
 {
     ui->setupUi(this);
     initializeUI();
@@ -30,6 +31,10 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow() {
     delete ui;
+    if (m_chartView) {
+        delete m_chartView;
+    }
+
 }
 
 void MainWindow::navigateToPage(QWidget* targetPage) {
@@ -118,7 +123,7 @@ void MainWindow::setupConnections() {
             this, &MainWindow::updatePaymentSummary);
 }
 
-void MainWindow::setupComboBoxes() {
+void MainWindow::setupComboBoxes(){
     // Grade combo boxes
     QStringList grades = {"8", "9", "10", "11", "12"};
     
@@ -166,7 +171,9 @@ void MainWindow::setupComboBoxes() {
         "What is your favorite book?",
         "What was your first car?"
     };
+
     ui->QComboBox_securityQuestion->addItems(securityQuestions);
+
 }
 
 void MainWindow::setupTableHeaders() {
@@ -178,13 +185,17 @@ void MainWindow::setupTableHeaders() {
     ui->tableWidget_books->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget_books->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tableWidget_books->horizontalHeader()->setStretchLastSection(true);
-    ui->tableWidget_books->setColumnHidden(0, false); // Hide ID column
-    
+    ui->tableWidget_books->setColumnHidden(0, true);
+    ui->tableWidget_books->setColumnHidden(3, true);
+    ui->tableWidget_books->setColumnHidden(6, true);
+
+
     // Learners table
     ui->tableWidget_viewLearnersList->setColumnCount(6);
     ui->tableWidget_viewLearnersList->setHorizontalHeaderLabels({
         "ID", "Name", "Surname", "Grade", "DOB", "Contact"
     });
+
     ui->tableWidget_viewLearnersList->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget_viewLearnersList->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tableWidget_viewLearnersList->horizontalHeader()->setStretchLastSection(true);
@@ -220,6 +231,7 @@ void MainWindow::setupTableHeaders() {
         "Book Title", "Borrow Date", "Due Date", "Days Left", "Status"
     });
     ui->tableWidget_currentlyBorrowedBooks->horizontalHeader()->setStretchLastSection(true);
+
 }
 
 void MainWindow::applyPermissions() {
@@ -412,7 +424,7 @@ void MainWindow::on_pushButton_homeIconSection_clicked() {
 void MainWindow::on_pushButton_logoutSidebar_clicked() {
     AuthManager::instance().logout();
     showLoginPage();
-    showInfoMessage("You have been logged out successfully");
+    //showInfoMessage("You have been logged out successfully");
 }
 
 void MainWindow::on_pushButton_logoutTopBar_clicked() {
@@ -563,6 +575,7 @@ void MainWindow::showSettingsPage(){
 void MainWindow::loadDashboardData() {
     updateDashboardStats();
     loadRecentTransactions();
+    setupLibraryChart();
 }
 
 void MainWindow::updateDashboardStats() {
@@ -592,6 +605,64 @@ void MainWindow::on_pushButton_issueBookQuickButton_clicked() {
 
 void MainWindow::on_pushButton_returnBookQuickButton_clicked() {
     showReturnBookPage();
+}
+void MainWindow::setupLibraryChart() {
+    // 1. Fetch data from database
+    int lost = 0, borrowed = 0, available = 0;
+
+    QSqlQuery query;
+    if (query.exec("SELECT status, COUNT(*) FROM books GROUP BY status")) {
+        while (query.next()) {
+            QString status = query.value(0).toString();
+            int count = query.value(1).toInt();
+
+            if (status == "Lost") lost = count;
+            else if (status == "Borrowed") borrowed = count;
+            else if (status == "Available") available = count;
+        }
+    }
+
+    // 2. Create Pie Series
+    QPieSeries *series = new QPieSeries();
+    series->append("Lost", lost)->setBrush(QColor("#e74c3c"));
+    series->append("Borrowed", borrowed)->setBrush(QColor("#f39c12"));
+    series->append("Available", available)->setBrush(QColor("#27ae60"));
+
+    // Format labels
+    for (QPieSlice *slice : series->slices()) {
+        slice->setLabelVisible(true);
+        slice->setLabel(QString("%1: %2").arg(slice->label()).arg((int)slice->value()));
+    }
+
+    // 3. Create Chart
+    QChart *chart = new QChart();
+    chart->addSeries(series);
+    chart->setTitle("Library Status");
+    chart->legend()->setAlignment(Qt::AlignBottom);
+
+    // 4. Create Chart View
+    QChartView *chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+
+    QWidget *parent = ui->frame_chartContainer->parentWidget();
+    QRect labelGeometry = ui->frame_chartContainer->geometry();
+
+    //ui->frame_chartContainer->hide();
+
+    if (m_chartView) {
+        m_chartView->setChart(chart);
+    } else {
+        m_chartView = chartView;
+        m_chartView->setParent(parent);
+        m_chartView->setGeometry(labelGeometry);
+        m_chartView->show();
+    }
+}
+void MainWindow::displayUserTips()
+{
+    QStringList tips={"","","","","","","","",""};
+    //the list will contain user shortcuts and tips which will be randomly displayed on the label
+    //with object name label_tips
 }
 
 // ==================== Book Management ====================
