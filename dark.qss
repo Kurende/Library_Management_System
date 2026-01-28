@@ -155,6 +155,57 @@ QLineEdit:focus
 }
 
 /* ============================= */
+/* COMBO BOX                      */
+/* ============================= */
+
+QComboBox
+{
+    background-color: #011526;
+    color: white;
+    border: 1px solid #30588C;
+    border-radius: 6px;
+    padding: 5px 10px;
+    min-height: 28px;
+}
+
+QComboBox:hover
+{
+    border: 1px solid #6093BF;
+}
+
+QComboBox:focus
+{
+    border: 1px solid #BF3952;
+}
+
+/* Dropdown arrow button */
+QComboBox::drop-down
+{
+    border: none;
+    width: 24px;
+}
+
+QComboBox::down-arrow
+{
+    image: none;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid white;
+    margin-right: 8px;
+}
+
+/* Popup list */
+QComboBox QAbstractItemView {
+    background-color: #254559;
+    color: white;
+    border: 1px solid #30588C;
+    selection-background-color: #30588C;
+    selection-color: white;
+    outline: none;
+}
+
+
+/* ============================= */
 /* TABLES                        */
 /* ============================= */
 
@@ -300,17 +351,17 @@ QWidget #pushButton_toogleMenu
     background-color: white;
     border-radius: 8px;
 }
-QWidget #pushButton_toogleMenu:hover
+QWidget#pushButton_toogleMenu:hover
 {
     background-color: #6093BF
 }
-QWidget #label_greetingsDateTopBar
+QWidget#label_greetingsDateTopBar
 {
     background: transparent;
     color: black;
     font: 12px;
 }
-QWidget #lineEdit_quickSearch
+QWidget#lineEdit_quickSearch
 {
     border: 1px solid #011526;
     background-color: white;
@@ -325,7 +376,7 @@ QWidget #pushButton_profileTopBar
 }
 QWidget #pushButton_profileTopBar:hover
 {
-    background-color: #6093BF
+    background-color: #6093BF;
 }
 
 QWidget #frame_statisticsOverview
@@ -360,7 +411,7 @@ QWidget #label_totalBooksTitle,
 QWidget #label_totalUsersTitle,
 QWidget #label_booksCurrentlyBorrowedTitle,
 QWidget #label_booksAvailableTitle,
-QWidget #label_overdueBooksTitle,
+QWidget #label_overdueBooksTitle
 {
     background-color: transparent;
     color:white;
@@ -369,10 +420,6 @@ QWidget #label_overdueBooksTitle,
 QWidget #frame_mainFrame
 {
     border: 2px solid #30588C;
-}
-QWidget #label_greetingsDateTopBar
-{
-    color: #ffffff;
 }
 
 
@@ -383,21 +430,21 @@ QWidget #pushButton_addLearnerSidebar
 {
     background-color: #011526;
     border: none;
-    padding-left:8;
+    padding-left:8px;
     font:13px bold;
 }
 QWidget #pushButton_printReportSidebar
 {
     background-color: #011526;
     border: none;
-    padding-left:2;
+    padding-left:2px;
     font:13px bold;
 }
 QWidget #pushButton_viewTransactionsSidebar
 {
     background-color: #011526;
     border: none;
-    padding-left:41;
+    padding-left:41px;
     font:13px bold;
 }
 
@@ -406,14 +453,14 @@ QWidget #pushButton_updateBookInfoSidebar
 {
     background-color: #011526;
     border: none;
-    padding-left:37;
+    padding-left:37px;
     font:13px bold;
 }
 QWidget #pushButton_addBookSidebar
 {
     background-color: #011526;
     border: none;
-    padding-left:-7;
+    padding-left:-7px;
     font:13px bold;
 }
 
@@ -421,21 +468,21 @@ QWidget #pushButton_makePaymentSidebar
 {
     background-color: #011526;
     border: none;
-    padding-left:38;
+    padding-left:38px;
     font:13px bold;
 }
 QWidget #pushButton_returnBookSidebar
 {
     background-color: #011526;
     border: none;
-    padding-left:11;
+    padding-left:11px;
     font:13px bold;
 }
 QWidget #pushButton_borrowBookSidebar
 {
     background-color: #011526;
     border: none;
-    padding-left:15;
+    padding-left:15px;
     font:13px bold;
 }
 
