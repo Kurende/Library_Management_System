@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>4095</width>
+    <width>1403</width>
     <height>740</height>
    </rect>
   </property>
@@ -121,7 +121,7 @@
                      <enum>QFrame::Shadow::Plain</enum>
                     </property>
                     <property name="text">
-                     <string />
+                     <string/>
                     </property>
                     <property name="pixmap">
                      <pixmap resource="../resources.qrc">:/icons/icons/utils/security.png</pixmap>
@@ -434,7 +434,7 @@
                      </font>
                     </property>
                     <property name="text">
-                     <string />
+                     <string/>
                     </property>
                     <property name="pixmap">
                      <pixmap resource="../resources.qrc">:/icons/icons/utils/register.png</pixmap>
@@ -498,7 +498,7 @@
                 <item>
                  <widget class="QLineEdit" name="lineEdit_regEmail">
                   <property name="text">
-                   <string />
+                   <string/>
                   </property>
                   <property name="placeholderText">
                    <string>E-mail</string>
@@ -559,7 +559,7 @@
                     <height>30</height>
                    </size>
                   </property>
-                  </widget>
+                 </widget>
                 </item>
                 <item>
                  <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -610,7 +610,7 @@
                       <height>30</height>
                      </size>
                     </property>
-                    </widget>
+                   </widget>
                   </item>
                  </layout>
                 </item>
@@ -768,7 +768,7 @@
                        </size>
                       </property>
                       <property name="text">
-                       <string />
+                       <string/>
                       </property>
                       <property name="pixmap">
                        <pixmap resource="../resources.qrc">:/icons/icons/utils/memory.png</pixmap>
@@ -882,7 +882,7 @@
                         </size>
                        </property>
                        <property name="text">
-                        <string />
+                        <string/>
                        </property>
                       </widget>
                      </item>
@@ -1038,7 +1038,7 @@
               <cursorShape>PointingHandCursor</cursorShape>
              </property>
              <property name="text">
-              <string extracomment="menu" />
+              <string extracomment="menu"/>
              </property>
              <property name="icon">
               <iconset resource="../resources.qrc">
@@ -1069,7 +1069,7 @@
               <number>1</number>
              </property>
              <property name="text">
-              <string />
+              <string/>
              </property>
              <property name="textFormat">
               <enum>Qt::TextFormat::AutoText</enum>
@@ -1121,7 +1121,7 @@
                 </size>
                </property>
                <property name="text">
-                <string />
+                <string/>
                </property>
                <property name="pixmap">
                 <pixmap resource="../resources.qrc">:/icons/icons/utils/icons8-search-150.png</pixmap>
@@ -1170,7 +1170,7 @@
               <cursorShape>PointingHandCursor</cursorShape>
              </property>
              <property name="text">
-              <string />
+              <string/>
              </property>
              <property name="icon">
               <iconset resource="../resources.qrc">
@@ -1198,14 +1198,14 @@
              <item>
               <widget class="QLabel" name="label_usernameCurrentUser">
                <property name="text">
-                <string />
+                <string/>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QLabel" name="label_roleCurrentUser">
                <property name="text">
-                <string />
+                <string/>
                </property>
               </widget>
              </item>
@@ -1245,7 +1245,7 @@
               <cursorShape>PointingHandCursor</cursorShape>
              </property>
              <property name="text">
-              <string />
+              <string/>
              </property>
              <property name="icon">
               <iconset resource="../resources.qrc">
@@ -1329,7 +1329,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string />
+                  <string/>
                  </property>
                  <property name="icon">
                   <iconset resource="../resources.qrc">
@@ -1399,7 +1399,7 @@
                     <bool>false</bool>
                    </property>
                    <property name="text">
-                    <string />
+                    <string/>
                    </property>
                    <property name="icon">
                     <iconset resource="../resources.qrc">
@@ -1434,7 +1434,7 @@
                     <cursorShape>PointingHandCursor</cursorShape>
                    </property>
                    <property name="text">
-                    <string />
+                    <string/>
                    </property>
                    <property name="icon">
                     <iconset resource="../resources.qrc">
@@ -1469,7 +1469,7 @@
                     <cursorShape>PointingHandCursor</cursorShape>
                    </property>
                    <property name="text">
-                    <string />
+                    <string/>
                    </property>
                    <property name="icon">
                     <iconset resource="../resources.qrc">
@@ -1504,7 +1504,7 @@
                     <cursorShape>PointingHandCursor</cursorShape>
                    </property>
                    <property name="text">
-                    <string />
+                    <string/>
                    </property>
                    <property name="icon">
                     <iconset resource="../resources.qrc">
@@ -1556,7 +1556,7 @@
                     </size>
                    </property>
                    <property name="text">
-                    <string />
+                    <string/>
                    </property>
                    <property name="icon">
                     <iconset resource="../resources.qrc">
@@ -1588,7 +1588,7 @@
                     </size>
                    </property>
                    <property name="text">
-                    <string />
+                    <string/>
                    </property>
                    <property name="icon">
                     <iconset resource="../resources.qrc">
@@ -1620,7 +1620,7 @@
                     </size>
                    </property>
                    <property name="text">
-                    <string />
+                    <string/>
                    </property>
                    <property name="icon">
                     <iconset resource="../resources.qrc">
@@ -1688,7 +1688,7 @@
                     </font>
                    </property>
                    <property name="text">
-                    <string />
+                    <string/>
                    </property>
                    <property name="pixmap">
                     <pixmap resource="../resources.qrc">:/icons/icons/Liquid glass/icons8-home-96 (1).png</pixmap>
@@ -1787,7 +1787,7 @@
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
-                       <string />
+                       <string/>
                       </property>
                       <property name="icon">
                        <iconset resource="../resources.qrc">
@@ -1859,7 +1859,6 @@
                          <property name="font">
                           <font>
                            <family>13</family>
-                           <pointsize>-1</pointsize>
                            <italic>false</italic>
                            <bold>false</bold>
                           </font>
@@ -1880,7 +1879,6 @@
                          <property name="font">
                           <font>
                            <family>13</family>
-                           <pointsize>-1</pointsize>
                            <italic>false</italic>
                            <bold>false</bold>
                           </font>
@@ -1955,7 +1953,7 @@
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
-                       <string />
+                       <string/>
                       </property>
                       <property name="icon">
                        <iconset resource="../resources.qrc">
@@ -2107,7 +2105,7 @@
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
-                       <string />
+                       <string/>
                       </property>
                       <property name="icon">
                        <iconset resource="../resources.qrc">
@@ -2168,19 +2166,6 @@
                          </property>
                          <property name="text">
                           <string>Add Learner</string>
-                         </property>
-                         <property name="flat">
-                          <bool>true</bool>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QPushButton" name="pushButton_updateLearnerInfoSidebar">
-                         <property name="cursor">
-                          <cursorShape>PointingHandCursor</cursorShape>
-                         </property>
-                         <property name="text">
-                          <string>Update Learner Info</string>
                          </property>
                          <property name="flat">
                           <bool>true</bool>
@@ -2259,7 +2244,7 @@
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
-                       <string />
+                       <string/>
                       </property>
                       <property name="icon">
                        <iconset resource="../resources.qrc">
@@ -2506,7 +2491,7 @@
                    <enum>QFrame::Shadow::Raised</enum>
                   </property>
                   <property name="currentIndex">
-                   <number>1</number>
+                   <number>0</number>
                   </property>
                   <widget class="QWidget" name="page_dashboard">
                    <layout class="QVBoxLayout" name="verticalLayout_133">
@@ -2519,9 +2504,9 @@
                        <property name="geometry">
                         <rect>
                          <x>0</x>
-                         <y>0</y>
-                         <width>1151</width>
-                         <height>1218</height>
+                         <y>-416</y>
+                         <width>1044</width>
+                         <height>1228</height>
                         </rect>
                        </property>
                        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -2625,7 +2610,7 @@
                                           </font>
                                          </property>
                                          <property name="text">
-                                          <string />
+                                          <string/>
                                          </property>
                                         </widget>
                                        </item>
@@ -2684,7 +2669,7 @@
                                           </font>
                                          </property>
                                          <property name="text">
-                                          <string />
+                                          <string/>
                                          </property>
                                         </widget>
                                        </item>
@@ -2740,7 +2725,7 @@
                                           </font>
                                          </property>
                                          <property name="text">
-                                          <string />
+                                          <string/>
                                          </property>
                                         </widget>
                                        </item>
@@ -2800,7 +2785,7 @@
                                           </font>
                                          </property>
                                          <property name="text">
-                                          <string />
+                                          <string/>
                                          </property>
                                         </widget>
                                        </item>
@@ -2856,7 +2841,7 @@
                                           </font>
                                          </property>
                                          <property name="text">
-                                          <string />
+                                          <string/>
                                          </property>
                                         </widget>
                                        </item>
@@ -2912,7 +2897,7 @@
                                           </font>
                                          </property>
                                          <property name="text">
-                                          <string />
+                                          <string/>
                                          </property>
                                         </widget>
                                        </item>
@@ -2966,7 +2951,7 @@
                            <item>
                             <layout class="QHBoxLayout" name="horizontalLayout_15">
                              <property name="spacing">
-                              <number>0</number>
+                              <number>5</number>
                              </property>
                              <property name="rightMargin">
                               <number>0</number>
@@ -3001,6 +2986,9 @@
                              </item>
                              <item>
                               <layout class="QHBoxLayout" name="horizontalLayout_28">
+                               <property name="spacing">
+                                <number>15</number>
+                               </property>
                                <item>
                                 <widget class="QPushButton" name="pushButton_addBookQuickButton">
                                  <property name="minimumSize">
@@ -3228,7 +3216,7 @@
                        </size>
                       </property>
                       <property name="text">
-                       <string />
+                       <string/>
                       </property>
                       <property name="alignment">
                        <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
@@ -3247,7 +3235,7 @@
                       <property name="currentIndex">
                        <number>0</number>
                       </property>
-                      <widget class="QWidget" name="page_2" />
+                      <widget class="QWidget" name="page_2"/>
                       <widget class="QWidget" name="page_addViewBooks">
                        <layout class="QHBoxLayout" name="horizontalLayout_21">
                         <item>
@@ -3271,7 +3259,7 @@
                             </font>
                            </property>
                            <property name="title">
-                            <string />
+                            <string>Add Book</string>
                            </property>
                            <layout class="QVBoxLayout" name="verticalLayout_61">
                             <property name="spacing">
@@ -3304,7 +3292,7 @@
                                </size>
                               </property>
                               <property name="text">
-                               <string />
+                               <string/>
                               </property>
                               <property name="pixmap">
                                <pixmap resource="../resources.qrc">:/icons/icons/book/book_6_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</pixmap>
@@ -3339,7 +3327,7 @@
                             <item>
                              <widget class="QLineEdit" name="lineEdit_bookCode">
                               <property name="text">
-                               <string />
+                               <string/>
                               </property>
                               <property name="placeholderText">
                                <string>Book Code</string>
@@ -3349,7 +3337,7 @@
                             <item>
                              <widget class="QLineEdit" name="lineEdit_bookTitle">
                               <property name="text">
-                               <string />
+                               <string/>
                               </property>
                               <property name="placeholderText">
                                <string>Title</string>
@@ -3359,7 +3347,7 @@
                             <item>
                              <widget class="QLineEdit" name="lineEdit_bookAuthor">
                               <property name="text">
-                               <string />
+                               <string/>
                               </property>
                               <property name="placeholderText">
                                <string>Author</string>
@@ -3369,7 +3357,7 @@
                             <item>
                              <widget class="QLineEdit" name="lineEdit_bookISBN">
                               <property name="text">
-                               <string />
+                               <string/>
                               </property>
                               <property name="placeholderText">
                                <string>ISBN</string>
@@ -3404,8 +3392,7 @@
                                </widget>
                               </item>
                               <item>
-                               <widget class="QComboBox" name="comboBox_bookSubject">
-                                </widget>
+                               <widget class="QComboBox" name="comboBox_bookSubject"/>
                               </item>
                              </layout>
                             </item>
@@ -3437,8 +3424,7 @@
                                </widget>
                               </item>
                               <item>
-                               <widget class="QComboBox" name="comboBox_bookGrade">
-                                </widget>
+                               <widget class="QComboBox" name="comboBox_bookGrade"/>
                               </item>
                              </layout>
                             </item>
@@ -3485,7 +3471,7 @@
                               <item>
                                <widget class="QLabel" name="label_bookStatus">
                                 <property name="text">
-                                 <string />
+                                 <string/>
                                 </property>
                                </widget>
                               </item>
@@ -3542,7 +3528,7 @@
                             </size>
                            </property>
                            <property name="title">
-                            <string />
+                            <string>Book Utilities</string>
                            </property>
                            <layout class="QGridLayout" name="gridLayout_9">
                             <property name="leftMargin">
@@ -3598,7 +3584,7 @@
                                    </size>
                                   </property>
                                   <property name="text">
-                                   <string />
+                                   <string/>
                                   </property>
                                   <property name="pixmap">
                                    <pixmap resource="../resources.qrc">:/icons/icons/utils/search_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</pixmap>
@@ -3623,7 +3609,7 @@
                                    </size>
                                   </property>
                                   <property name="text">
-                                   <string />
+                                   <string/>
                                   </property>
                                   <property name="placeholderText">
                                    <string>Search for book</string>
@@ -3665,7 +3651,7 @@
                                    </size>
                                   </property>
                                   <property name="text">
-                                   <string />
+                                   <string/>
                                   </property>
                                   <property name="icon">
                                    <iconset resource="../resources.qrc">
@@ -3797,7 +3783,7 @@
                               </size>
                              </property>
                              <property name="text">
-                              <string />
+                              <string/>
                              </property>
                              <property name="pixmap">
                               <pixmap resource="../resources.qrc">:/icons/icons/book/book_6_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</pixmap>
@@ -3832,7 +3818,7 @@
                            <item>
                             <widget class="QLineEdit" name="label_editBookCode">
                              <property name="text">
-                              <string />
+                              <string/>
                              </property>
                              <property name="placeholderText">
                               <string>Book Code</string>
@@ -3842,7 +3828,7 @@
                            <item>
                             <widget class="QLineEdit" name="lineEdit_editBookTitle">
                              <property name="text">
-                              <string />
+                              <string/>
                              </property>
                              <property name="placeholderText">
                               <string>Title</string>
@@ -3859,7 +3845,7 @@
                            <item>
                             <widget class="QLineEdit" name="lineEdit_editBookISBN">
                              <property name="text">
-                              <string />
+                              <string/>
                              </property>
                              <property name="placeholderText">
                               <string>ISBN</string>
@@ -3894,8 +3880,7 @@
                               </widget>
                              </item>
                              <item>
-                              <widget class="QComboBox" name="comboBox_editBookSubject">
-                               </widget>
+                              <widget class="QComboBox" name="comboBox_editBookSubject"/>
                              </item>
                             </layout>
                            </item>
@@ -3927,8 +3912,7 @@
                               </widget>
                              </item>
                              <item>
-                              <widget class="QComboBox" name="comboBox_editBookGrade">
-                               </widget>
+                              <widget class="QComboBox" name="comboBox_editBookGrade"/>
                              </item>
                             </layout>
                            </item>
@@ -3999,8 +3983,7 @@
                               </widget>
                              </item>
                              <item>
-                              <widget class="QComboBox" name="comboBox_editBookStatus">
-                               </widget>
+                              <widget class="QComboBox" name="comboBox_editBookStatus"/>
                              </item>
                              <item>
                               <widget class="QLabel" name="label_copiesInfoDisplay">
@@ -4017,7 +4000,7 @@
                                 </size>
                                </property>
                                <property name="text">
-                                <string />
+                                <string/>
                                </property>
                                <property name="buddy">
                                 <cstring>comboBox_bookSubject</cstring>
@@ -4151,7 +4134,7 @@
                                  </size>
                                 </property>
                                 <property name="text">
-                                 <string />
+                                 <string/>
                                 </property>
                                 <property name="pixmap">
                                  <pixmap resource="../resources.qrc">:/icons/icons/Liquid glass/icons8-group-96.png</pixmap>
@@ -4191,7 +4174,7 @@
                             <item>
                              <widget class="QLineEdit" name="lineEdit_addLearnerName">
                               <property name="text">
-                               <string />
+                               <string/>
                               </property>
                               <property name="placeholderText">
                                <string>First Name(s)</string>
@@ -4201,7 +4184,7 @@
                             <item>
                              <widget class="QLineEdit" name="lineEdit_addLearnerSurname">
                               <property name="text">
-                               <string />
+                               <string/>
                               </property>
                               <property name="placeholderText">
                                <string>Surname</string>
@@ -4237,7 +4220,7 @@
                                 <property name="cursor">
                                  <cursorShape>PointingHandCursor</cursorShape>
                                 </property>
-                                </widget>
+                               </widget>
                               </item>
                              </layout>
                             </item>
@@ -4279,14 +4262,14 @@
                                   <height>25</height>
                                  </size>
                                 </property>
-                                </widget>
+                               </widget>
                               </item>
                              </layout>
                             </item>
                             <item>
                              <widget class="QLineEdit" name="lineEdit_addLearnerContact">
                               <property name="text">
-                               <string />
+                               <string/>
                               </property>
                               <property name="placeholderText">
                                <string>Contact Number</string>
@@ -4364,7 +4347,7 @@
                                    </size>
                                   </property>
                                   <property name="text">
-                                   <string />
+                                   <string/>
                                   </property>
                                   <property name="pixmap">
                                    <pixmap resource="../resources.qrc">:/icons/icons/utils/search_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</pixmap>
@@ -4389,7 +4372,7 @@
                                    </size>
                                   </property>
                                   <property name="text">
-                                   <string />
+                                   <string/>
                                   </property>
                                   <property name="placeholderText">
                                    <string>Search for learner</string>
@@ -4424,7 +4407,7 @@
                                    </size>
                                   </property>
                                   <property name="text">
-                                   <string />
+                                   <string/>
                                   </property>
                                   <property name="icon">
                                    <iconset resource="../resources.qrc">
@@ -4562,7 +4545,7 @@
                              </size>
                             </property>
                             <property name="text">
-                             <string />
+                             <string/>
                             </property>
                             <property name="pixmap">
                              <pixmap resource="../resources.qrc">:/icons/icons/Liquid glass/icons8-group-96.png</pixmap>
@@ -4659,7 +4642,7 @@
                                     <second>0</second>
                                     <year>2024</year>
                                     <month>11</month>
-                                    <day>29</day>
+                                    <day>26</day>
                                    </datetime>
                                   </property>
                                   <property name="displayFormat">
@@ -4714,7 +4697,7 @@
                                     <second>0</second>
                                     <year>2025</year>
                                     <month>8</month>
-                                    <day>12</day>
+                                    <day>9</day>
                                    </datetime>
                                   </property>
                                   <property name="displayFormat">
@@ -4791,7 +4774,7 @@
                               <property name="cursor">
                                <cursorShape>PointingHandCursor</cursorShape>
                               </property>
-                              </widget>
+                             </widget>
                             </item>
                            </layout>
                           </item>
@@ -5021,7 +5004,7 @@
                                   </font>
                                  </property>
                                  <property name="text">
-                                  <string />
+                                  <string/>
                                  </property>
                                  <property name="pixmap">
                                   <pixmap resource="../resources.qrc">:/icons/icons/utils/user.png</pixmap>
@@ -5169,7 +5152,7 @@
                                           </size>
                                          </property>
                                          <property name="text">
-                                          <string />
+                                          <string/>
                                          </property>
                                          <property name="pixmap">
                                           <pixmap resource="../resources.qrc">:/icons/icons/utils/profile-picture.png</pixmap>
@@ -5202,7 +5185,7 @@
                                             </size>
                                            </property>
                                            <property name="text">
-                                            <string />
+                                            <string/>
                                            </property>
                                           </widget>
                                          </item>
@@ -5221,7 +5204,7 @@
                                             </size>
                                            </property>
                                            <property name="text">
-                                            <string />
+                                            <string/>
                                            </property>
                                           </widget>
                                          </item>
@@ -5365,7 +5348,7 @@
                                        </size>
                                       </property>
                                       <property name="text">
-                                       <string />
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -5408,7 +5391,7 @@
                                        </size>
                                       </property>
                                       <property name="text">
-                                       <string />
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -5451,7 +5434,7 @@
                                        </size>
                                       </property>
                                       <property name="text">
-                                       <string />
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -5600,7 +5583,7 @@
                                      </font>
                                     </property>
                                     <property name="text">
-                                     <string />
+                                     <string/>
                                     </property>
                                     <property name="pixmap">
                                      <pixmap resource="../resources.qrc">:/icons/icons/Liquid glass/icons8-transaction-96.png</pixmap>
@@ -5640,7 +5623,7 @@
                                 <item>
                                  <widget class="QLineEdit" name="lineEdit_editLearnerFirstName">
                                   <property name="text">
-                                   <string />
+                                   <string/>
                                   </property>
                                   <property name="placeholderText">
                                    <string>First Name(s)</string>
@@ -5650,7 +5633,7 @@
                                 <item>
                                  <widget class="QLineEdit" name="lineEdit_editLearnerSurname">
                                   <property name="text">
-                                   <string />
+                                   <string/>
                                   </property>
                                   <property name="placeholderText">
                                    <string>Surname</string>
@@ -5683,14 +5666,14 @@
                                     <property name="cursor">
                                      <cursorShape>PointingHandCursor</cursorShape>
                                     </property>
-                                    </widget>
+                                   </widget>
                                   </item>
                                  </layout>
                                 </item>
                                 <item>
                                  <widget class="QLineEdit" name="lineEdit_editLearnerContact">
                                   <property name="text">
-                                   <string />
+                                   <string/>
                                   </property>
                                   <property name="placeholderText">
                                    <string>Contact Number</string>
@@ -5787,7 +5770,7 @@
                                 </size>
                                </property>
                                <property name="text">
-                                <string />
+                                <string/>
                                </property>
                                <property name="pixmap">
                                 <pixmap resource="../resources.qrc">:/icons/icons/Liquid glass/icons8-export-96.png</pixmap>
@@ -5832,8 +5815,8 @@
                                  <rect>
                                   <x>0</x>
                                   <y>0</y>
-                                  <width>266</width>
-                                  <height>1041</height>
+                                  <width>273</width>
+                                  <height>1091</height>
                                  </rect>
                                 </property>
                                 <layout class="QVBoxLayout" name="verticalLayout_107">
@@ -5890,7 +5873,7 @@
                                          </size>
                                         </property>
                                         <property name="text">
-                                         <string />
+                                         <string/>
                                         </property>
                                         <property name="placeholderText">
                                          <string>Learner ID</string>
@@ -5959,7 +5942,7 @@
                                            </font>
                                           </property>
                                           <property name="text">
-                                           <string />
+                                           <string/>
                                           </property>
                                          </widget>
                                         </item>
@@ -6014,7 +5997,7 @@
                                            </font>
                                           </property>
                                           <property name="text">
-                                           <string />
+                                           <string/>
                                           </property>
                                          </widget>
                                         </item>
@@ -6115,7 +6098,7 @@
                                          </size>
                                         </property>
                                         <property name="text">
-                                         <string />
+                                         <string/>
                                         </property>
                                         <property name="placeholderText">
                                          <string>Book Code</string>
@@ -6187,7 +6170,7 @@
                                            </font>
                                           </property>
                                           <property name="text">
-                                           <string />
+                                           <string/>
                                           </property>
                                          </widget>
                                         </item>
@@ -6239,7 +6222,7 @@
                                            </font>
                                           </property>
                                           <property name="text">
-                                           <string />
+                                           <string/>
                                           </property>
                                          </widget>
                                         </item>
@@ -6291,7 +6274,7 @@
                                            </font>
                                           </property>
                                           <property name="text">
-                                           <string />
+                                           <string/>
                                           </property>
                                          </widget>
                                         </item>
@@ -6343,7 +6326,7 @@
                                            </font>
                                           </property>
                                           <property name="text">
-                                           <string />
+                                           <string/>
                                           </property>
                                          </widget>
                                         </item>
@@ -6410,8 +6393,7 @@
                                          </widget>
                                         </item>
                                         <item>
-                                         <widget class="QDateEdit" name="dateEdit_borrowDate">
-                                          </widget>
+                                         <widget class="QDateEdit" name="dateEdit_borrowDate"/>
                                         </item>
                                        </layout>
                                       </item>
@@ -6442,13 +6424,12 @@
                                          </widget>
                                         </item>
                                         <item>
-                                         <widget class="QDateEdit" name="dateEdit_dueDate">
-                                          </widget>
+                                         <widget class="QDateEdit" name="dateEdit_dueDate"/>
                                         </item>
                                        </layout>
                                       </item>
                                       <item>
-                                       <layout class="QHBoxLayout" name="horizontalLayout_45" />
+                                       <layout class="QHBoxLayout" name="horizontalLayout_45"/>
                                       </item>
                                       <item>
                                        <widget class="QPushButton" name="pushButton_confirmBorrow">
@@ -6528,7 +6509,7 @@
                            </size>
                           </property>
                           <property name="text">
-                           <string />
+                           <string/>
                           </property>
                           <property name="pixmap">
                            <pixmap resource="../resources.qrc">:/icons/icons/Liquid glass/icons8-download-96.png</pixmap>
@@ -6573,8 +6554,8 @@
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>388</width>
-                             <height>795</height>
+                             <width>461</width>
+                             <height>833</height>
                             </rect>
                            </property>
                            <layout class="QVBoxLayout" name="verticalLayout_110">
@@ -6629,7 +6610,7 @@
                                       </font>
                                      </property>
                                      <property name="text">
-                                      <string />
+                                      <string/>
                                      </property>
                                     </widget>
                                    </item>
@@ -6664,7 +6645,7 @@
                                     </size>
                                    </property>
                                    <property name="text">
-                                    <string />
+                                    <string/>
                                    </property>
                                    <property name="placeholderText">
                                     <string>Book Code</string>
@@ -6800,7 +6781,7 @@
                                     </font>
                                    </property>
                                    <property name="text">
-                                    <string />
+                                    <string/>
                                    </property>
                                   </widget>
                                  </item>
@@ -6833,7 +6814,7 @@
                                   </widget>
                                  </item>
                                  <item>
-                                  <widget class="QDateEdit" name="dateEdit_returnDate" />
+                                  <widget class="QDateEdit" name="dateEdit_returnDate"/>
                                  </item>
                                 </layout>
                                </item>
@@ -6919,7 +6900,7 @@
                            </size>
                           </property>
                           <property name="text">
-                           <string />
+                           <string/>
                           </property>
                           <property name="pixmap">
                            <pixmap resource="../resources.qrc">:/icons/icons/Liquid glass/icons8-report-96.png</pixmap>
@@ -6964,8 +6945,8 @@
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>265</width>
-                             <height>1303</height>
+                             <width>339</width>
+                             <height>1331</height>
                             </rect>
                            </property>
                            <layout class="QVBoxLayout" name="verticalLayout_180">
@@ -6990,7 +6971,7 @@
                                   </size>
                                  </property>
                                  <property name="text">
-                                  <string />
+                                  <string/>
                                  </property>
                                  <property name="icon">
                                   <iconset resource="../resources.qrc">
@@ -7115,7 +7096,7 @@
                                   </size>
                                  </property>
                                  <property name="text">
-                                  <string />
+                                  <string/>
                                  </property>
                                  <property name="placeholderText">
                                   <string>Learner ID</string>
@@ -7190,7 +7171,7 @@
                                     </font>
                                    </property>
                                    <property name="text">
-                                    <string />
+                                    <string/>
                                    </property>
                                   </widget>
                                  </item>
@@ -7245,7 +7226,7 @@
                                     </font>
                                    </property>
                                    <property name="text">
-                                    <string />
+                                    <string/>
                                    </property>
                                   </widget>
                                  </item>
@@ -7302,7 +7283,7 @@
                                    <height>700</height>
                                   </size>
                                  </property>
-                                 </widget>
+                                </widget>
                                </item>
                                <item>
                                 <layout class="QHBoxLayout" name="horizontalLayout_35">
@@ -7348,7 +7329,7 @@
                                 </layout>
                                </item>
                                <item>
-                                <layout class="QVBoxLayout" name="verticalLayout_182" />
+                                <layout class="QVBoxLayout" name="verticalLayout_182"/>
                                </item>
                               </layout>
                              </widget>
@@ -7375,8 +7356,8 @@
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>459</width>
-                         <height>909</height>
+                         <width>570</width>
+                         <height>999</height>
                         </rect>
                        </property>
                        <layout class="QVBoxLayout" name="verticalLayout_63">
@@ -7451,7 +7432,7 @@
                                 <item>
                                  <widget class="QLabel" name="label_learnerInfo">
                                   <property name="text">
-                                   <string />
+                                   <string/>
                                   </property>
                                  </widget>
                                 </item>
@@ -7476,7 +7457,7 @@
                                   <item>
                                    <widget class="QLabel" name="label_totalOutstanding">
                                     <property name="text">
-                                     <string />
+                                     <string/>
                                     </property>
                                    </widget>
                                   </item>
@@ -7504,7 +7485,7 @@
                                   <height>500</height>
                                  </size>
                                 </property>
-                                </widget>
+                               </widget>
                               </item>
                              </layout>
                             </widget>
@@ -7542,7 +7523,7 @@
                                 <item>
                                  <widget class="QLabel" name="label_selectedItems">
                                   <property name="text">
-                                   <string />
+                                   <string/>
                                   </property>
                                  </widget>
                                 </item>
@@ -7569,7 +7550,7 @@
                                 <item>
                                  <widget class="QLabel" name="label_amountToPay">
                                   <property name="text">
-                                   <string />
+                                   <string/>
                                   </property>
                                  </widget>
                                 </item>
@@ -7645,8 +7626,8 @@
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>564</width>
-                             <height>790</height>
+                             <width>596</width>
+                             <height>817</height>
                             </rect>
                            </property>
                            <layout class="QVBoxLayout" name="verticalLayout_94">
@@ -7716,7 +7697,7 @@
                                    <item>
                                     <widget class="QLineEdit" name="lineEdit_editBookISBN_2">
                                      <property name="text">
-                                      <string />
+                                      <string/>
                                      </property>
                                      <property name="placeholderText">
                                       <string>Name</string>
@@ -7751,7 +7732,7 @@
                                      <height>250</height>
                                     </size>
                                    </property>
-                                   </widget>
+                                  </widget>
                                  </item>
                                  <item alignment="Qt::AlignmentFlag::AlignRight">
                                   <widget class="QLabel" name="label_summaryTitle_5">
@@ -8092,7 +8073,7 @@
                         </item>
                        </layout>
                       </widget>
-                      <widget class="QWidget" name="page" />
+                      <widget class="QWidget" name="page"/>
                       <widget class="QWidget" name="page_userProfile">
                        <layout class="QVBoxLayout" name="verticalLayout_92">
                         <item>
@@ -8142,7 +8123,7 @@
                              </font>
                             </property>
                             <property name="text">
-                             <string />
+                             <string/>
                             </property>
                             <property name="pixmap">
                              <pixmap resource="../resources.qrc">:/icons/icons/utils/user.png</pixmap>
@@ -8298,7 +8279,7 @@
                                        </size>
                                       </property>
                                       <property name="text">
-                                       <string />
+                                       <string/>
                                       </property>
                                       <property name="pixmap">
                                        <pixmap resource="../resources.qrc">:/icons/icons/utils/profile-picture.png</pixmap>
@@ -8331,7 +8312,7 @@
                                          </size>
                                         </property>
                                         <property name="text">
-                                         <string />
+                                         <string/>
                                         </property>
                                        </widget>
                                       </item>
@@ -8350,7 +8331,7 @@
                                          </size>
                                         </property>
                                         <property name="text">
-                                         <string />
+                                         <string/>
                                         </property>
                                        </widget>
                                       </item>
@@ -8496,7 +8477,7 @@
                                       </size>
                                      </property>
                                      <property name="text">
-                                      <string />
+                                      <string/>
                                      </property>
                                     </widget>
                                    </item>
@@ -8543,7 +8524,7 @@
                                       </size>
                                      </property>
                                      <property name="text">
-                                      <string />
+                                      <string/>
                                      </property>
                                     </widget>
                                    </item>
@@ -8590,7 +8571,7 @@
                                       </size>
                                      </property>
                                      <property name="text">
-                                      <string />
+                                      <string/>
                                      </property>
                                     </widget>
                                    </item>
@@ -8637,7 +8618,7 @@
                                       </size>
                                      </property>
                                      <property name="text">
-                                      <string />
+                                      <string/>
                                      </property>
                                     </widget>
                                    </item>
@@ -8684,7 +8665,7 @@
                                       </size>
                                      </property>
                                      <property name="text">
-                                      <string />
+                                      <string/>
                                      </property>
                                     </widget>
                                    </item>
@@ -8725,7 +8706,7 @@
                                       </size>
                                      </property>
                                      <property name="text">
-                                      <string />
+                                      <string/>
                                      </property>
                                     </widget>
                                    </item>
@@ -8772,7 +8753,7 @@
                                       </size>
                                      </property>
                                      <property name="text">
-                                      <string />
+                                      <string/>
                                      </property>
                                     </widget>
                                    </item>
@@ -8878,7 +8859,7 @@
                                   </font>
                                  </property>
                                  <property name="text">
-                                  <string />
+                                  <string/>
                                  </property>
                                  <property name="pixmap">
                                   <pixmap resource="../resources.qrc">:/icons/icons/utils/user.png</pixmap>
@@ -8982,7 +8963,7 @@
                       <property name="currentIndex">
                        <number>1</number>
                       </property>
-                      <widget class="QWidget" name="page_adminSettings" />
+                      <widget class="QWidget" name="page_adminSettings"/>
                       <widget class="QWidget" name="page_userSettings">
                        <layout class="QVBoxLayout" name="verticalLayout_125">
                         <item>
@@ -8995,8 +8976,8 @@
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>243</width>
-                             <height>512</height>
+                             <width>297</width>
+                             <height>570</height>
                             </rect>
                            </property>
                            <layout class="QVBoxLayout" name="verticalLayout_124">
@@ -9062,7 +9043,7 @@
                                      </widget>
                                     </item>
                                     <item>
-                                     <widget class="QComboBox" name="comboBox_fontSize" />
+                                     <widget class="QComboBox" name="comboBox_fontSize"/>
                                     </item>
                                    </layout>
                                   </item>
@@ -9337,7 +9318,7 @@
   </widget>
  </widget>
  <resources>
-  <include location="../resources.qrc" />
+  <include location="../resources.qrc"/>
  </resources>
  <connections>
   <connection>
