@@ -3,8 +3,7 @@
 #include <QApplication>
 #include <QMessageBox>
 #include <QFile>
-#include <QTextStream>
-#include <QDebug>
+
 
 int main(int argc, char *argv[])
 {
@@ -12,11 +11,11 @@ int main(int argc, char *argv[])
     
     // Set application information
     QApplication::setApplicationName("Library Management System");
-    QApplication::setOrganizationName("Makhutswe/Lepelle Circuits");
+    QApplication::setOrganizationName("Seagotle Secondary");
     QApplication::setApplicationVersion("1.0.0");
 
     //set stylesheet
-    QFile file(":Style/stylesheet.qss");
+    QFile file(":/theme/themes/dark.qss");
 
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
         qDebug() << "Failed to open stylesheet!";
