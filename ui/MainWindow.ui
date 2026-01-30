@@ -1249,12 +1249,12 @@
              </property>
              <property name="icon">
               <iconset resource="../resources.qrc">
-               <normaloff>:/icons/icons/utils/icons8-logout.gif</normaloff>:/icons/icons/utils/icons8-logout.gif</iconset>
+               <normaloff>:/icons/icons/utils/logout_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</normaloff>:/icons/icons/utils/logout_40dp_E3E3E3_FILL0_wght300_GRAD0_opsz40.svg</iconset>
              </property>
              <property name="iconSize">
               <size>
-               <width>25</width>
-               <height>25</height>
+               <width>30</width>
+               <height>30</height>
               </size>
              </property>
              <property name="autoRepeat">
@@ -1539,7 +1539,7 @@
                <item>
                 <layout class="QVBoxLayout" name="verticalLayout_41">
                  <property name="spacing">
-                  <number>2</number>
+                  <number>6</number>
                  </property>
                  <item>
                   <widget class="QPushButton" name="pushButton_usersIconSection">
@@ -2021,19 +2021,6 @@
                         </widget>
                        </item>
                        <item>
-                        <widget class="QPushButton" name="pushButton_updateBookInfoSidebar">
-                         <property name="cursor">
-                          <cursorShape>PointingHandCursor</cursorShape>
-                         </property>
-                         <property name="text">
-                          <string>Update Book Info</string>
-                         </property>
-                         <property name="flat">
-                          <bool>true</bool>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
                         <widget class="QPushButton" name="pushButton_availableBooksSidebar">
                          <property name="cursor">
                           <cursorShape>PointingHandCursor</cursorShape>
@@ -2332,7 +2319,7 @@
                <item>
                 <layout class="QVBoxLayout" name="verticalLayout_36">
                  <property name="spacing">
-                  <number>2</number>
+                  <number>6</number>
                  </property>
                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
                   <widget class="QPushButton" name="pushButton_usersSidebar">
@@ -2491,7 +2478,7 @@
                    <enum>QFrame::Shadow::Raised</enum>
                   </property>
                   <property name="currentIndex">
-                   <number>0</number>
+                   <number>4</number>
                   </property>
                   <widget class="QWidget" name="page_dashboard">
                    <layout class="QVBoxLayout" name="verticalLayout_133">
@@ -2504,9 +2491,9 @@
                        <property name="geometry">
                         <rect>
                          <x>0</x>
-                         <y>-416</y>
-                         <width>1044</width>
-                         <height>1228</height>
+                         <y>0</y>
+                         <width>1057</width>
+                         <height>1223</height>
                         </rect>
                        </property>
                        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -2514,24 +2501,15 @@
                          <widget class="QWidget" name="widget_dashboard" native="true">
                           <layout class="QVBoxLayout" name="verticalLayout_135">
                            <property name="spacing">
-                            <number>20</number>
+                            <number>25</number>
                            </property>
                            <item>
                             <layout class="QVBoxLayout" name="verticalLayout">
+                             <property name="spacing">
+                              <number>0</number>
+                             </property>
                              <item>
                               <widget class="QLabel" name="label_statisticsTitle">
-                               <property name="minimumSize">
-                                <size>
-                                 <width>0</width>
-                                 <height>15</height>
-                                </size>
-                               </property>
-                               <property name="maximumSize">
-                                <size>
-                                 <width>16777215</width>
-                                 <height>15</height>
-                                </size>
-                               </property>
                                <property name="font">
                                 <font>
                                  <pointsize>12</pointsize>
@@ -2568,7 +2546,7 @@
                                </property>
                                <layout class="QVBoxLayout" name="verticalLayout_17">
                                 <property name="spacing">
-                                 <number>4</number>
+                                 <number>6</number>
                                 </property>
                                 <property name="topMargin">
                                  <number>9</number>
@@ -3102,18 +3080,6 @@
                              <layout class="QVBoxLayout" name="verticalLayout_132">
                               <item>
                                <widget class="QLabel" name="label_recentTransactionsTitle">
-                                <property name="minimumSize">
-                                 <size>
-                                  <width>0</width>
-                                  <height>15</height>
-                                 </size>
-                                </property>
-                                <property name="maximumSize">
-                                 <size>
-                                  <width>16777215</width>
-                                  <height>15</height>
-                                 </size>
-                                </property>
                                 <property name="font">
                                  <font>
                                   <pointsize>12</pointsize>
@@ -3233,7 +3199,7 @@
                     <item>
                      <widget class="QStackedWidget" name="stackedWidget_bookManagement">
                       <property name="currentIndex">
-                       <number>0</number>
+                       <number>1</number>
                       </property>
                       <widget class="QWidget" name="page_2"/>
                       <widget class="QWidget" name="page_addViewBooks">
@@ -3599,13 +3565,13 @@
                                   <property name="minimumSize">
                                    <size>
                                     <width>0</width>
-                                    <height>30</height>
+                                    <height>32</height>
                                    </size>
                                   </property>
                                   <property name="maximumSize">
                                    <size>
                                     <width>16777215</width>
-                                    <height>30</height>
+                                    <height>32</height>
                                    </size>
                                   </property>
                                   <property name="text">
@@ -3748,6 +3714,19 @@
                                  </widget>
                                 </item>
                                </layout>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="pushButton_updateBookInfoSidebar">
+                                <property name="cursor">
+                                 <cursorShape>PointingHandCursor</cursorShape>
+                                </property>
+                                <property name="text">
+                                 <string>Update Book Info</string>
+                                </property>
+                                <property name="flat">
+                                 <bool>true</bool>
+                                </property>
+                               </widget>
                               </item>
                              </layout>
                             </item>
@@ -4074,8 +4053,15 @@
                     <item>
                      <widget class="QStackedWidget" name="stackedWidget_learnersPages">
                       <property name="currentIndex">
-                       <number>1</number>
+                       <number>0</number>
                       </property>
+                      <widget class="QWidget" name="page_3">
+                       <layout class="QVBoxLayout" name="verticalLayout_134">
+                        <item>
+                         <widget class="QWidget" name="widget_learnersbackgroundImage" native="true"/>
+                        </item>
+                       </layout>
+                      </widget>
                       <widget class="QWidget" name="page_addViewLearnerInfo">
                        <layout class="QVBoxLayout" name="verticalLayout_197">
                         <item>
@@ -4362,13 +4348,13 @@
                                   <property name="minimumSize">
                                    <size>
                                     <width>0</width>
-                                    <height>30</height>
+                                    <height>32</height>
                                    </size>
                                   </property>
                                   <property name="maximumSize">
                                    <size>
                                     <width>16777215</width>
-                                    <height>30</height>
+                                    <height>32</height>
                                    </size>
                                   </property>
                                   <property name="text">
@@ -4642,7 +4628,7 @@
                                     <second>0</second>
                                     <year>2024</year>
                                     <month>11</month>
-                                    <day>26</day>
+                                    <day>23</day>
                                    </datetime>
                                   </property>
                                   <property name="displayFormat">
@@ -4697,7 +4683,7 @@
                                     <second>0</second>
                                     <year>2025</year>
                                     <month>8</month>
-                                    <day>9</day>
+                                    <day>6</day>
                                    </datetime>
                                   </property>
                                   <property name="displayFormat">
@@ -5815,14 +5801,17 @@
                                  <rect>
                                   <x>0</x>
                                   <y>0</y>
-                                  <width>273</width>
-                                  <height>1091</height>
+                                  <width>1019</width>
+                                  <height>1039</height>
                                  </rect>
                                 </property>
                                 <layout class="QVBoxLayout" name="verticalLayout_107">
                                  <item>
                                   <widget class="QWidget" name="widget_borrowBookScrollAreaBackground" native="true">
                                    <layout class="QVBoxLayout" name="verticalLayout_109">
+                                    <property name="spacing">
+                                     <number>15</number>
+                                    </property>
                                     <property name="leftMargin">
                                      <number>9</number>
                                     </property>
@@ -5884,7 +5873,7 @@
                                        <widget class="QPushButton" name="pushButton_findLearner">
                                         <property name="maximumSize">
                                          <size>
-                                          <width>100</width>
+                                          <width>150</width>
                                           <height>16777215</height>
                                          </size>
                                         </property>
@@ -6003,58 +5992,6 @@
                                         </item>
                                        </layout>
                                       </item>
-                                      <item>
-                                       <layout class="QVBoxLayout" name="verticalLayout_106">
-                                        <item>
-                                         <widget class="QLabel" name="label_borrowBookCountTitle">
-                                          <property name="minimumSize">
-                                           <size>
-                                            <width>0</width>
-                                            <height>20</height>
-                                           </size>
-                                          </property>
-                                          <property name="maximumSize">
-                                           <size>
-                                            <width>16777215</width>
-                                            <height>20</height>
-                                           </size>
-                                          </property>
-                                          <property name="font">
-                                           <font>
-                                            <bold>true</bold>
-                                           </font>
-                                          </property>
-                                          <property name="text">
-                                           <string>Count                    :</string>
-                                          </property>
-                                         </widget>
-                                        </item>
-                                        <item>
-                                         <widget class="QLabel" name="label_borrowBookCount">
-                                          <property name="minimumSize">
-                                           <size>
-                                            <width>0</width>
-                                            <height>20</height>
-                                           </size>
-                                          </property>
-                                          <property name="maximumSize">
-                                           <size>
-                                            <width>16777215</width>
-                                            <height>20</height>
-                                           </size>
-                                          </property>
-                                          <property name="font">
-                                           <font>
-                                            <bold>true</bold>
-                                           </font>
-                                          </property>
-                                          <property name="text">
-                                           <string>a</string>
-                                          </property>
-                                         </widget>
-                                        </item>
-                                       </layout>
-                                      </item>
                                      </layout>
                                     </item>
                                     <item>
@@ -6109,7 +6046,7 @@
                                        <widget class="QPushButton" name="pushButton_findBook">
                                         <property name="maximumSize">
                                          <size>
-                                          <width>100</width>
+                                          <width>150</width>
                                           <height>16777215</height>
                                          </size>
                                         </property>
@@ -6229,6 +6166,58 @@
                                        </layout>
                                       </item>
                                       <item>
+                                       <layout class="QHBoxLayout" name="horizontalLayout_36">
+                                        <item>
+                                         <widget class="QLabel" name="label_borrowBookStatusTitle">
+                                          <property name="minimumSize">
+                                           <size>
+                                            <width>0</width>
+                                            <height>20</height>
+                                           </size>
+                                          </property>
+                                          <property name="maximumSize">
+                                           <size>
+                                            <width>120</width>
+                                            <height>20</height>
+                                           </size>
+                                          </property>
+                                          <property name="font">
+                                           <font>
+                                            <bold>true</bold>
+                                           </font>
+                                          </property>
+                                          <property name="text">
+                                           <string>Status                   :</string>
+                                          </property>
+                                         </widget>
+                                        </item>
+                                        <item>
+                                         <widget class="QLabel" name="label_borrowBookStatusDisplay">
+                                          <property name="minimumSize">
+                                           <size>
+                                            <width>0</width>
+                                            <height>20</height>
+                                           </size>
+                                          </property>
+                                          <property name="maximumSize">
+                                           <size>
+                                            <width>16777215</width>
+                                            <height>20</height>
+                                           </size>
+                                          </property>
+                                          <property name="font">
+                                           <font>
+                                            <bold>true</bold>
+                                           </font>
+                                          </property>
+                                          <property name="text">
+                                           <string/>
+                                          </property>
+                                         </widget>
+                                        </item>
+                                       </layout>
+                                      </item>
+                                      <item>
                                        <layout class="QHBoxLayout" name="horizontalLayout_33">
                                         <item>
                                          <widget class="QLabel" name="label_borrowBookISBNTitle">
@@ -6281,56 +6270,28 @@
                                        </layout>
                                       </item>
                                       <item>
-                                       <layout class="QHBoxLayout" name="horizontalLayout_36">
-                                        <item>
-                                         <widget class="QLabel" name="label_borrowBookStatusTitle">
-                                          <property name="minimumSize">
-                                           <size>
-                                            <width>0</width>
-                                            <height>20</height>
-                                           </size>
-                                          </property>
-                                          <property name="maximumSize">
-                                           <size>
-                                            <width>120</width>
-                                            <height>20</height>
-                                           </size>
-                                          </property>
-                                          <property name="font">
-                                           <font>
-                                            <bold>true</bold>
-                                           </font>
-                                          </property>
-                                          <property name="text">
-                                           <string>Status                   :</string>
-                                          </property>
-                                         </widget>
-                                        </item>
-                                        <item>
-                                         <widget class="QLabel" name="label_borrowBookStatusDisplay">
-                                          <property name="minimumSize">
-                                           <size>
-                                            <width>0</width>
-                                            <height>20</height>
-                                           </size>
-                                          </property>
-                                          <property name="maximumSize">
-                                           <size>
-                                            <width>16777215</width>
-                                            <height>20</height>
-                                           </size>
-                                          </property>
-                                          <property name="font">
-                                           <font>
-                                            <bold>true</bold>
-                                           </font>
-                                          </property>
-                                          <property name="text">
-                                           <string/>
-                                          </property>
-                                         </widget>
-                                        </item>
-                                       </layout>
+                                       <widget class="QLabel" name="label_borrowBookCount">
+                                        <property name="minimumSize">
+                                         <size>
+                                          <width>0</width>
+                                          <height>20</height>
+                                         </size>
+                                        </property>
+                                        <property name="maximumSize">
+                                         <size>
+                                          <width>16777215</width>
+                                          <height>20</height>
+                                         </size>
+                                        </property>
+                                        <property name="font">
+                                         <font>
+                                          <bold>true</bold>
+                                         </font>
+                                        </property>
+                                        <property name="text">
+                                         <string/>
+                                        </property>
+                                       </widget>
                                       </item>
                                      </layout>
                                     </item>
@@ -6368,6 +6329,9 @@
                                       </item>
                                       <item>
                                        <layout class="QHBoxLayout" name="horizontalLayout_46">
+                                        <property name="spacing">
+                                         <number>0</number>
+                                        </property>
                                         <item>
                                          <widget class="QLabel" name="label_borrowBookBorrowDateDisplay">
                                           <property name="minimumSize">
@@ -6399,6 +6363,9 @@
                                       </item>
                                       <item>
                                        <layout class="QHBoxLayout" name="horizontalLayout_44">
+                                        <property name="spacing">
+                                         <number>0</number>
+                                        </property>
                                         <item>
                                          <widget class="QLabel" name="label_borrowBookDueDateTitle">
                                           <property name="minimumSize">
@@ -6435,7 +6402,7 @@
                                        <widget class="QPushButton" name="pushButton_confirmBorrow">
                                         <property name="maximumSize">
                                          <size>
-                                          <width>100</width>
+                                          <width>150</width>
                                           <height>16777215</height>
                                          </size>
                                         </property>
@@ -6554,16 +6521,25 @@
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>461</width>
-                             <height>833</height>
+                             <width>408</width>
+                             <height>1011</height>
                             </rect>
                            </property>
                            <layout class="QVBoxLayout" name="verticalLayout_110">
                             <item>
                              <widget class="QWidget" name="widget_returnBookBackground" native="true">
                               <layout class="QVBoxLayout" name="verticalLayout_56">
+                               <property name="spacing">
+                                <number>25</number>
+                               </property>
                                <item>
                                 <layout class="QVBoxLayout" name="verticalLayout_129">
+                                 <property name="spacing">
+                                  <number>25</number>
+                                 </property>
+                                 <property name="topMargin">
+                                  <number>15</number>
+                                 </property>
                                  <item>
                                   <widget class="QLabel" name="label_searchMethodTitle">
                                    <property name="minimumSize">
@@ -6656,7 +6632,7 @@
                                   <widget class="QPushButton" name="pushButton_searchReturn">
                                    <property name="maximumSize">
                                     <size>
-                                     <width>80</width>
+                                     <width>150</width>
                                      <height>16777215</height>
                                     </size>
                                    </property>
@@ -6675,6 +6651,12 @@
                                </item>
                                <item>
                                 <layout class="QVBoxLayout" name="verticalLayout_128">
+                                 <property name="spacing">
+                                  <number>15</number>
+                                 </property>
+                                 <property name="topMargin">
+                                  <number>35</number>
+                                 </property>
                                  <item>
                                   <widget class="QLabel" name="label_returnTableTitle">
                                    <property name="minimumSize">
@@ -6945,8 +6927,8 @@
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>339</width>
-                             <height>1331</height>
+                             <width>293</width>
+                             <height>1309</height>
                             </rect>
                            </property>
                            <layout class="QVBoxLayout" name="verticalLayout_180">
@@ -7356,14 +7338,17 @@
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>570</width>
-                         <height>999</height>
+                         <width>1057</width>
+                         <height>1105</height>
                         </rect>
                        </property>
                        <layout class="QVBoxLayout" name="verticalLayout_63">
                         <item>
                          <widget class="QWidget" name="widget_paymentsBackground" native="true">
                           <layout class="QVBoxLayout" name="verticalLayout_86">
+                           <property name="spacing">
+                            <number>35</number>
+                           </property>
                            <item>
                             <layout class="QVBoxLayout" name="verticalLayout_67">
                              <item>
@@ -7401,7 +7386,13 @@
                                </property>
                                <layout class="QVBoxLayout" name="verticalLayout_70">
                                 <property name="spacing">
-                                 <number>15</number>
+                                 <number>20</number>
+                                </property>
+                                <property name="topMargin">
+                                 <number>25</number>
+                                </property>
+                                <property name="bottomMargin">
+                                 <number>25</number>
                                 </property>
                                 <item>
                                  <widget class="QLineEdit" name="lineEdit_paymentLearnerId">
@@ -7477,6 +7468,9 @@
                               <property name="spacing">
                                <number>15</number>
                               </property>
+                              <property name="topMargin">
+                               <number>25</number>
+                              </property>
                               <item alignment="Qt::AlignmentFlag::AlignTop">
                                <widget class="QTableWidget" name="tableWidget_lostBooks">
                                 <property name="minimumSize">
@@ -7500,7 +7494,10 @@
                                <number>15</number>
                               </property>
                               <property name="topMargin">
-                               <number>9</number>
+                               <number>25</number>
+                              </property>
+                              <property name="bottomMargin">
+                               <number>15</number>
                               </property>
                               <item>
                                <layout class="QHBoxLayout" name="horizontalLayout_47">
@@ -7612,7 +7609,7 @@
                     <item>
                      <widget class="QStackedWidget" name="stackedWidget_usersPages">
                       <property name="currentIndex">
-                       <number>1</number>
+                       <number>2</number>
                       </property>
                       <widget class="QWidget" name="page_adminSettings">
                        <layout class="QVBoxLayout" name="verticalLayout_93">
@@ -7626,8 +7623,8 @@
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>596</width>
-                             <height>817</height>
+                             <width>564</width>
+                             <height>790</height>
                             </rect>
                            </property>
                            <layout class="QVBoxLayout" name="verticalLayout_94">
@@ -8761,6 +8758,19 @@
                                  </item>
                                 </layout>
                                </item>
+                               <item>
+                                <spacer name="verticalSpacer_2">
+                                 <property name="orientation">
+                                  <enum>Qt::Orientation::Vertical</enum>
+                                 </property>
+                                 <property name="sizeHint" stdset="0">
+                                  <size>
+                                   <width>14</width>
+                                   <height>40</height>
+                                  </size>
+                                 </property>
+                                </spacer>
+                               </item>
                               </layout>
                              </widget>
                             </item>
@@ -8826,7 +8836,26 @@
                            </layout>
                           </item>
                           <item>
+                           <spacer name="horizontalSpacer">
+                            <property name="orientation">
+                             <enum>Qt::Orientation::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                          <item>
                            <widget class="QWidget" name="widget_editProfile" native="true">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
                             <layout class="QVBoxLayout" name="verticalLayout_91">
                              <property name="spacing">
                               <number>20</number>
@@ -8976,11 +9005,11 @@
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>297</width>
-                             <height>570</height>
+                             <width>96</width>
+                             <height>102</height>
                             </rect>
                            </property>
-                           <layout class="QVBoxLayout" name="verticalLayout_124">
+                           <layout class="QVBoxLayout" name="verticalLayout_106">
                             <item>
                              <widget class="QLabel" name="label_settings">
                               <property name="minimumSize">
@@ -9007,287 +9036,336 @@
                              </widget>
                             </item>
                             <item>
-                             <widget class="QWidget" name="widget_adminUserPage_2" native="true">
-                              <layout class="QVBoxLayout" name="verticalLayout_127">
-                               <item>
-                                <widget class="QGroupBox" name="groupBox_theme">
-                                 <property name="title">
-                                  <string>GroupBox</string>
-                                 </property>
-                                 <layout class="QVBoxLayout" name="verticalLayout_131">
-                                  <item>
-                                   <layout class="QHBoxLayout" name="horizontalLayout_66">
-                                    <item>
-                                     <widget class="QLabel" name="label_fontSize">
-                                      <property name="minimumSize">
-                                       <size>
-                                        <width>0</width>
-                                        <height>20</height>
-                                       </size>
+                             <widget class="QScrollArea" name="scrollArea">
+                              <property name="widgetResizable">
+                               <bool>true</bool>
+                              </property>
+                              <widget class="QWidget" name="scrollAreaWidgetContents_8">
+                               <property name="geometry">
+                                <rect>
+                                 <x>0</x>
+                                 <y>0</y>
+                                 <width>243</width>
+                                 <height>712</height>
+                                </rect>
+                               </property>
+                               <layout class="QVBoxLayout" name="verticalLayout_124">
+                                <item>
+                                 <widget class="QWidget" name="widget_adminUserPage_2" native="true">
+                                  <layout class="QVBoxLayout" name="verticalLayout_127">
+                                   <property name="spacing">
+                                    <number>25</number>
+                                   </property>
+                                   <item>
+                                    <widget class="QGroupBox" name="groupBox_theme">
+                                     <property name="title">
+                                      <string>GroupBox</string>
+                                     </property>
+                                     <layout class="QVBoxLayout" name="verticalLayout_131">
+                                      <property name="spacing">
+                                       <number>25</number>
                                       </property>
-                                      <property name="maximumSize">
-                                       <size>
-                                        <width>16777215</width>
-                                        <height>20</height>
-                                       </size>
+                                      <property name="topMargin">
+                                       <number>15</number>
                                       </property>
-                                      <property name="font">
-                                       <font>
-                                        <bold>false</bold>
-                                        <underline>false</underline>
-                                       </font>
+                                      <property name="bottomMargin">
+                                       <number>15</number>
                                       </property>
-                                      <property name="text">
-                                       <string>Font Size </string>
+                                      <item>
+                                       <layout class="QHBoxLayout" name="horizontalLayout_66">
+                                        <item>
+                                         <widget class="QLabel" name="label_fontSize">
+                                          <property name="minimumSize">
+                                           <size>
+                                            <width>0</width>
+                                            <height>20</height>
+                                           </size>
+                                          </property>
+                                          <property name="maximumSize">
+                                           <size>
+                                            <width>16777215</width>
+                                            <height>20</height>
+                                           </size>
+                                          </property>
+                                          <property name="font">
+                                           <font>
+                                            <bold>false</bold>
+                                            <underline>false</underline>
+                                           </font>
+                                          </property>
+                                          <property name="text">
+                                           <string>Font Size </string>
+                                          </property>
+                                         </widget>
+                                        </item>
+                                        <item>
+                                         <widget class="QComboBox" name="comboBox_fontSize"/>
+                                        </item>
+                                       </layout>
+                                      </item>
+                                      <item>
+                                       <layout class="QHBoxLayout" name="horizontalLayout_67">
+                                        <item>
+                                         <widget class="QLabel" name="label_themeSelect">
+                                          <property name="minimumSize">
+                                           <size>
+                                            <width>0</width>
+                                            <height>20</height>
+                                           </size>
+                                          </property>
+                                          <property name="maximumSize">
+                                           <size>
+                                            <width>16777215</width>
+                                            <height>20</height>
+                                           </size>
+                                          </property>
+                                          <property name="font">
+                                           <font>
+                                            <bold>false</bold>
+                                            <underline>false</underline>
+                                           </font>
+                                          </property>
+                                          <property name="text">
+                                           <string>Theme</string>
+                                          </property>
+                                         </widget>
+                                        </item>
+                                        <item>
+                                         <widget class="QRadioButton" name="radioButton_darkMode">
+                                          <property name="text">
+                                           <string>Dark</string>
+                                          </property>
+                                         </widget>
+                                        </item>
+                                        <item>
+                                         <widget class="QRadioButton" name="radioButton_lightMode">
+                                          <property name="text">
+                                           <string>Light</string>
+                                          </property>
+                                         </widget>
+                                        </item>
+                                       </layout>
+                                      </item>
+                                      <item>
+                                       <widget class="QPushButton" name="pushButton_applyTheme">
+                                        <property name="font">
+                                         <font>
+                                          <italic>false</italic>
+                                          <bold>false</bold>
+                                          <underline>false</underline>
+                                          <kerning>true</kerning>
+                                         </font>
+                                        </property>
+                                        <property name="text">
+                                         <string>Apply Theme</string>
+                                        </property>
+                                        <property name="flat">
+                                         <bool>false</bool>
+                                        </property>
+                                       </widget>
+                                      </item>
+                                     </layout>
+                                    </widget>
+                                   </item>
+                                   <item>
+                                    <widget class="QGroupBox" name="groupBox_reportsExport">
+                                     <property name="title">
+                                      <string>GroupBox</string>
+                                     </property>
+                                     <layout class="QVBoxLayout" name="verticalLayout_130">
+                                      <property name="spacing">
+                                       <number>25</number>
                                       </property>
-                                     </widget>
-                                    </item>
-                                    <item>
-                                     <widget class="QComboBox" name="comboBox_fontSize"/>
-                                    </item>
-                                   </layout>
-                                  </item>
-                                  <item>
-                                   <layout class="QHBoxLayout" name="horizontalLayout_67">
-                                    <item>
-                                     <widget class="QLabel" name="label_themeSelect">
-                                      <property name="minimumSize">
-                                       <size>
-                                        <width>0</width>
-                                        <height>20</height>
-                                       </size>
+                                      <property name="topMargin">
+                                       <number>15</number>
                                       </property>
-                                      <property name="maximumSize">
-                                       <size>
-                                        <width>16777215</width>
-                                        <height>20</height>
-                                       </size>
+                                      <property name="bottomMargin">
+                                       <number>15</number>
                                       </property>
-                                      <property name="font">
-                                       <font>
-                                        <bold>false</bold>
-                                        <underline>false</underline>
-                                       </font>
+                                      <item>
+                                       <widget class="QPushButton" name="pushButton_exportBooks">
+                                        <property name="font">
+                                         <font>
+                                          <italic>false</italic>
+                                          <bold>false</bold>
+                                          <underline>false</underline>
+                                          <kerning>true</kerning>
+                                         </font>
+                                        </property>
+                                        <property name="text">
+                                         <string>Export All Books To CSV</string>
+                                        </property>
+                                        <property name="flat">
+                                         <bool>true</bool>
+                                        </property>
+                                       </widget>
+                                      </item>
+                                      <item>
+                                       <widget class="QPushButton" name="pushButton_exportLearners">
+                                        <property name="font">
+                                         <font>
+                                          <italic>false</italic>
+                                          <bold>false</bold>
+                                          <underline>false</underline>
+                                          <kerning>true</kerning>
+                                         </font>
+                                        </property>
+                                        <property name="text">
+                                         <string>Export All Learners To CSV</string>
+                                        </property>
+                                        <property name="flat">
+                                         <bool>true</bool>
+                                        </property>
+                                       </widget>
+                                      </item>
+                                      <item>
+                                       <widget class="QPushButton" name="pushButton_exportTransactions">
+                                        <property name="font">
+                                         <font>
+                                          <italic>false</italic>
+                                          <bold>false</bold>
+                                          <underline>false</underline>
+                                          <kerning>true</kerning>
+                                         </font>
+                                        </property>
+                                        <property name="text">
+                                         <string>Export Transaction History</string>
+                                        </property>
+                                        <property name="flat">
+                                         <bool>true</bool>
+                                        </property>
+                                       </widget>
+                                      </item>
+                                      <item>
+                                       <widget class="QPushButton" name="pushButton_generateSystemReport">
+                                        <property name="font">
+                                         <font>
+                                          <italic>false</italic>
+                                          <bold>false</bold>
+                                          <underline>false</underline>
+                                          <kerning>true</kerning>
+                                         </font>
+                                        </property>
+                                        <property name="text">
+                                         <string>Generate System Report</string>
+                                        </property>
+                                        <property name="flat">
+                                         <bool>true</bool>
+                                        </property>
+                                       </widget>
+                                      </item>
+                                     </layout>
+                                    </widget>
+                                   </item>
+                                   <item>
+                                    <widget class="QGroupBox" name="groupBox_about">
+                                     <property name="title">
+                                      <string>GroupBox</string>
+                                     </property>
+                                     <layout class="QVBoxLayout" name="verticalLayout_126">
+                                      <property name="spacing">
+                                       <number>25</number>
                                       </property>
-                                      <property name="text">
-                                       <string>Theme</string>
+                                      <property name="topMargin">
+                                       <number>15</number>
                                       </property>
-                                     </widget>
-                                    </item>
-                                    <item>
-                                     <widget class="QRadioButton" name="radioButton_darkMode">
-                                      <property name="text">
-                                       <string>Dark</string>
+                                      <property name="bottomMargin">
+                                       <number>15</number>
                                       </property>
-                                     </widget>
-                                    </item>
-                                    <item>
-                                     <widget class="QRadioButton" name="radioButton_lightMode">
-                                      <property name="text">
-                                       <string>Light</string>
-                                      </property>
-                                     </widget>
-                                    </item>
-                                   </layout>
-                                  </item>
-                                  <item>
-                                   <widget class="QPushButton" name="pushButton_applyTheme">
-                                    <property name="font">
-                                     <font>
-                                      <italic>false</italic>
-                                      <bold>false</bold>
-                                      <underline>false</underline>
-                                      <kerning>true</kerning>
-                                     </font>
-                                    </property>
-                                    <property name="text">
-                                     <string>Apply Theme</string>
-                                    </property>
-                                    <property name="flat">
-                                     <bool>false</bool>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                 </layout>
-                                </widget>
-                               </item>
-                               <item>
-                                <widget class="QGroupBox" name="groupBox_reportsExport">
-                                 <property name="title">
-                                  <string>GroupBox</string>
-                                 </property>
-                                 <layout class="QVBoxLayout" name="verticalLayout_130">
-                                  <item>
-                                   <widget class="QPushButton" name="pushButton_exportBooks">
-                                    <property name="font">
-                                     <font>
-                                      <italic>false</italic>
-                                      <bold>false</bold>
-                                      <underline>false</underline>
-                                      <kerning>true</kerning>
-                                     </font>
-                                    </property>
-                                    <property name="text">
-                                     <string>Export All Books To CSV</string>
-                                    </property>
-                                    <property name="flat">
-                                     <bool>true</bool>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QPushButton" name="pushButton_exportLearners">
-                                    <property name="font">
-                                     <font>
-                                      <italic>false</italic>
-                                      <bold>false</bold>
-                                      <underline>false</underline>
-                                      <kerning>true</kerning>
-                                     </font>
-                                    </property>
-                                    <property name="text">
-                                     <string>Export All Learners To CSV</string>
-                                    </property>
-                                    <property name="flat">
-                                     <bool>true</bool>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QPushButton" name="pushButton_exportTransactions">
-                                    <property name="font">
-                                     <font>
-                                      <italic>false</italic>
-                                      <bold>false</bold>
-                                      <underline>false</underline>
-                                      <kerning>true</kerning>
-                                     </font>
-                                    </property>
-                                    <property name="text">
-                                     <string>Export Transaction History</string>
-                                    </property>
-                                    <property name="flat">
-                                     <bool>true</bool>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QPushButton" name="pushButton_generateSystemReport">
-                                    <property name="font">
-                                     <font>
-                                      <italic>false</italic>
-                                      <bold>false</bold>
-                                      <underline>false</underline>
-                                      <kerning>true</kerning>
-                                     </font>
-                                    </property>
-                                    <property name="text">
-                                     <string>Generate System Report</string>
-                                    </property>
-                                    <property name="flat">
-                                     <bool>true</bool>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                 </layout>
-                                </widget>
-                               </item>
-                               <item>
-                                <widget class="QGroupBox" name="groupBox_about">
-                                 <property name="title">
-                                  <string>GroupBox</string>
-                                 </property>
-                                 <layout class="QVBoxLayout" name="verticalLayout_126">
-                                  <item>
-                                   <widget class="QLabel" name="label_appVersion">
-                                    <property name="minimumSize">
-                                     <size>
-                                      <width>0</width>
-                                      <height>20</height>
-                                     </size>
-                                    </property>
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>20</height>
-                                     </size>
-                                    </property>
-                                    <property name="font">
-                                     <font>
-                                      <bold>false</bold>
-                                      <underline>false</underline>
-                                     </font>
-                                    </property>
-                                    <property name="text">
-                                     <string>v1.0.0 Library Management System</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QLabel" name="label_summaryTitle_19">
-                                    <property name="minimumSize">
-                                     <size>
-                                      <width>0</width>
-                                      <height>20</height>
-                                     </size>
-                                    </property>
-                                    <property name="maximumSize">
-                                     <size>
-                                      <width>16777215</width>
-                                      <height>20</height>
-                                     </size>
-                                    </property>
-                                    <property name="font">
-                                     <font>
-                                      <bold>false</bold>
-                                      <underline>false</underline>
-                                     </font>
-                                    </property>
-                                    <property name="text">
-                                     <string>© 2026 Project K </string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QPushButton" name="pushButton_credits">
-                                    <property name="font">
-                                     <font>
-                                      <italic>false</italic>
-                                      <bold>false</bold>
-                                      <underline>false</underline>
-                                      <kerning>true</kerning>
-                                     </font>
-                                    </property>
-                                    <property name="text">
-                                     <string>Credits</string>
-                                    </property>
-                                    <property name="flat">
-                                     <bool>false</bool>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QPushButton" name="pushButton_viewLicense">
-                                    <property name="font">
-                                     <font>
-                                      <italic>false</italic>
-                                      <bold>false</bold>
-                                      <underline>false</underline>
-                                      <kerning>true</kerning>
-                                     </font>
-                                    </property>
-                                    <property name="text">
-                                     <string>View Licence</string>
-                                    </property>
-                                    <property name="flat">
-                                     <bool>false</bool>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                 </layout>
-                                </widget>
-                               </item>
-                              </layout>
+                                      <item>
+                                       <widget class="QLabel" name="label_appVersion">
+                                        <property name="minimumSize">
+                                         <size>
+                                          <width>0</width>
+                                          <height>20</height>
+                                         </size>
+                                        </property>
+                                        <property name="maximumSize">
+                                         <size>
+                                          <width>16777215</width>
+                                          <height>20</height>
+                                         </size>
+                                        </property>
+                                        <property name="font">
+                                         <font>
+                                          <bold>false</bold>
+                                          <underline>false</underline>
+                                         </font>
+                                        </property>
+                                        <property name="text">
+                                         <string>v1.0.0 Library Management System</string>
+                                        </property>
+                                       </widget>
+                                      </item>
+                                      <item>
+                                       <widget class="QLabel" name="label_summaryTitle_19">
+                                        <property name="minimumSize">
+                                         <size>
+                                          <width>0</width>
+                                          <height>20</height>
+                                         </size>
+                                        </property>
+                                        <property name="maximumSize">
+                                         <size>
+                                          <width>16777215</width>
+                                          <height>20</height>
+                                         </size>
+                                        </property>
+                                        <property name="font">
+                                         <font>
+                                          <bold>false</bold>
+                                          <underline>false</underline>
+                                         </font>
+                                        </property>
+                                        <property name="text">
+                                         <string>© 2026 Project K </string>
+                                        </property>
+                                       </widget>
+                                      </item>
+                                      <item>
+                                       <widget class="QPushButton" name="pushButton_credits">
+                                        <property name="font">
+                                         <font>
+                                          <italic>false</italic>
+                                          <bold>false</bold>
+                                          <underline>false</underline>
+                                          <kerning>true</kerning>
+                                         </font>
+                                        </property>
+                                        <property name="text">
+                                         <string>Credits</string>
+                                        </property>
+                                        <property name="flat">
+                                         <bool>false</bool>
+                                        </property>
+                                       </widget>
+                                      </item>
+                                      <item>
+                                       <widget class="QPushButton" name="pushButton_viewLicense">
+                                        <property name="font">
+                                         <font>
+                                          <italic>false</italic>
+                                          <bold>false</bold>
+                                          <underline>false</underline>
+                                          <kerning>true</kerning>
+                                         </font>
+                                        </property>
+                                        <property name="text">
+                                         <string>View Licence</string>
+                                        </property>
+                                        <property name="flat">
+                                         <bool>false</bool>
+                                        </property>
+                                       </widget>
+                                      </item>
+                                     </layout>
+                                    </widget>
+                                   </item>
+                                  </layout>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </widget>
                              </widget>
                             </item>
                            </layout>

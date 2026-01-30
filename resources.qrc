@@ -1,4 +1,5 @@
 <RCC>
+
     <qresource prefix="/icons">
         <file>icons/Liquid glass/icons8-add-trash-100.png</file>
         <file>icons/Liquid glass/icons8-clear-symbol-100.png</file>
@@ -125,7 +126,14 @@
         <file>icons/utils/user (1).png</file>
         <file>icons/utils/user.png</file>
     </qresource>
-    <qresource prefix="/Style">
-        <file>stylesheet.qss</file>
+    <qresource prefix="/images">
+        <file>images/book.jpg</file>
+        <file>images/learners.jpg</file>
+        <file>images/pexels-dilara-albamya-59969382-11454871.jpg</file>
+        <file>images/reports.jpg</file>
+    </qresource>
+    <qresource prefix="/theme">
+        <file>themes/dark.qss</file>
+        <file>themes/light.qss</file>
     </qresource>
 </RCC>
