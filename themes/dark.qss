@@ -109,6 +109,8 @@ QPushButton #pushButton_logoutTopBar:hover {
     background-color: #d94a63;
 }
 
+
+
 /* ============================= */
 /* RADIO BUTTONS                        */
 /* ============================= */
@@ -222,6 +224,7 @@ QTableWidget::item,
 QTableView::item {
     border: none;
     padding: 6px;
+    background-color: #011526;
 }
 
 /* Header styling */
@@ -240,6 +243,11 @@ QTableView::item:selected
     background-color: #30588C;
     color: white;
 }
+
+QTableView::item:alternate {
+    background-color: #071F34;
+}
+
 
 
 /* ============================= */
@@ -339,6 +347,22 @@ QGroupBox::title {
 /* (Use objectName in Designer)   */
 /* ============================= */
 
+QWidget #pushButton_register,#pushButton_forgotPassword,
+#pushButton_editLearnerProfile,#pushButton_viewTransactionRecord,
+#pushButton_editUserProfile, #pushButton_changeUserPassword
+{
+background-color: transparent;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+}
+
+QWidget #pushButton_register:hover,#pushButton_forgotPassword:hover,
+#pushButton_editLearnerProfile:hover,#pushButton_viewTransactionRecord:hover,
+#pushButton_editUserProfile:hover, #pushButton_changeUserPassword:hover
+{
+    color: #6093BF;
+}
 /* Top bar */
 QWidget #frame_topBar
 {
