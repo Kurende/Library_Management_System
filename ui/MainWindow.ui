@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1403</width>
-    <height>740</height>
+    <width>1382</width>
+    <height>660</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -2478,7 +2478,7 @@
                    <enum>QFrame::Shadow::Raised</enum>
                   </property>
                   <property name="currentIndex">
-                   <number>4</number>
+                   <number>7</number>
                   </property>
                   <widget class="QWidget" name="page_dashboard">
                    <layout class="QVBoxLayout" name="verticalLayout_133">
@@ -2492,8 +2492,8 @@
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>1057</width>
-                         <height>1223</height>
+                         <width>575</width>
+                         <height>1222</height>
                         </rect>
                        </property>
                        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -4628,7 +4628,7 @@
                                     <second>0</second>
                                     <year>2024</year>
                                     <month>11</month>
-                                    <day>23</day>
+                                    <day>22</day>
                                    </datetime>
                                   </property>
                                   <property name="displayFormat">
@@ -4683,7 +4683,7 @@
                                     <second>0</second>
                                     <year>2025</year>
                                     <month>8</month>
-                                    <day>6</day>
+                                    <day>5</day>
                                    </datetime>
                                   </property>
                                   <property name="displayFormat">
@@ -4940,7 +4940,7 @@
                        <item>
                         <widget class="QStackedWidget" name="stackedWidget_learnersProfile">
                          <property name="currentIndex">
-                          <number>1</number>
+                          <number>0</number>
                          </property>
                          <widget class="QWidget" name="page_profile">
                           <layout class="QVBoxLayout" name="verticalLayout_190">
@@ -5801,8 +5801,8 @@
                                  <rect>
                                   <x>0</x>
                                   <y>0</y>
-                                  <width>1019</width>
-                                  <height>1039</height>
+                                  <width>1001</width>
+                                  <height>1029</height>
                                  </rect>
                                 </property>
                                 <layout class="QVBoxLayout" name="verticalLayout_107">
@@ -6521,53 +6521,44 @@
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>408</width>
-                             <height>1011</height>
+                             <width>1021</width>
+                             <height>865</height>
                             </rect>
                            </property>
                            <layout class="QVBoxLayout" name="verticalLayout_110">
                             <item>
                              <widget class="QWidget" name="widget_returnBookBackground" native="true">
-                              <layout class="QVBoxLayout" name="verticalLayout_56">
-                               <property name="spacing">
-                                <number>25</number>
-                               </property>
+                              <layout class="QVBoxLayout" name="verticalLayout_136">
+                               <item>
+                                <widget class="QLabel" name="label_searchMethodTitle">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>0</width>
+                                   <height>20</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>16777215</width>
+                                   <height>20</height>
+                                  </size>
+                                 </property>
+                                 <property name="font">
+                                  <font>
+                                   <bold>true</bold>
+                                  </font>
+                                 </property>
+                                 <property name="text">
+                                  <string>SEARCH METHOD</string>
+                                 </property>
+                                </widget>
+                               </item>
                                <item>
                                 <layout class="QVBoxLayout" name="verticalLayout_129">
-                                 <property name="spacing">
-                                  <number>25</number>
-                                 </property>
-                                 <property name="topMargin">
-                                  <number>15</number>
-                                 </property>
-                                 <item>
-                                  <widget class="QLabel" name="label_searchMethodTitle">
-                                   <property name="minimumSize">
-                                    <size>
-                                     <width>0</width>
-                                     <height>20</height>
-                                    </size>
-                                   </property>
-                                   <property name="maximumSize">
-                                    <size>
-                                     <width>16777215</width>
-                                     <height>20</height>
-                                    </size>
-                                   </property>
-                                   <property name="font">
-                                    <font>
-                                     <bold>true</bold>
-                                    </font>
-                                   </property>
-                                   <property name="text">
-                                    <string>SEARCH METHOD</string>
-                                   </property>
-                                  </widget>
-                                 </item>
                                  <item>
                                   <layout class="QHBoxLayout" name="horizontalLayout_7">
                                    <item>
-                                    <widget class="QLabel" name="label_searchBy">
+                                    <widget class="QLabel" name="label_searchByTitle">
                                      <property name="minimumSize">
                                       <size>
                                        <width>0</width>
@@ -6576,7 +6567,7 @@
                                      </property>
                                      <property name="maximumSize">
                                       <size>
-                                       <width>150</width>
+                                       <width>75</width>
                                        <height>20</height>
                                       </size>
                                      </property>
@@ -6586,7 +6577,7 @@
                                       </font>
                                      </property>
                                      <property name="text">
-                                      <string/>
+                                      <string>Search By:</string>
                                      </property>
                                     </widget>
                                    </item>
@@ -6613,20 +6604,48 @@
                                   </layout>
                                  </item>
                                  <item>
-                                  <widget class="QLineEdit" name="lineEdit_returnSearch">
-                                   <property name="maximumSize">
-                                    <size>
-                                     <width>400</width>
-                                     <height>16777215</height>
-                                    </size>
-                                   </property>
-                                   <property name="text">
-                                    <string/>
-                                   </property>
-                                   <property name="placeholderText">
-                                    <string>Book Code</string>
-                                   </property>
-                                  </widget>
+                                  <layout class="QVBoxLayout" name="verticalLayout_56">
+                                   <item>
+                                    <widget class="QLabel" name="label_searchBy">
+                                     <property name="minimumSize">
+                                      <size>
+                                       <width>0</width>
+                                       <height>20</height>
+                                      </size>
+                                     </property>
+                                     <property name="maximumSize">
+                                      <size>
+                                       <width>150</width>
+                                       <height>20</height>
+                                      </size>
+                                     </property>
+                                     <property name="font">
+                                      <font>
+                                       <bold>true</bold>
+                                      </font>
+                                     </property>
+                                     <property name="text">
+                                      <string/>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                   <item>
+                                    <widget class="QLineEdit" name="lineEdit_returnSearch">
+                                     <property name="maximumSize">
+                                      <size>
+                                       <width>400</width>
+                                       <height>16777215</height>
+                                      </size>
+                                     </property>
+                                     <property name="text">
+                                      <string/>
+                                     </property>
+                                     <property name="placeholderText">
+                                      <string>Book Code</string>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                  </layout>
                                  </item>
                                  <item>
                                   <widget class="QPushButton" name="pushButton_searchReturn">
@@ -6927,8 +6946,8 @@
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>293</width>
-                             <height>1309</height>
+                             <width>1021</width>
+                             <height>1300</height>
                             </rect>
                            </property>
                            <layout class="QVBoxLayout" name="verticalLayout_180">
@@ -7338,8 +7357,8 @@
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>1057</width>
-                         <height>1105</height>
+                         <width>1039</width>
+                         <height>1113</height>
                         </rect>
                        </property>
                        <layout class="QVBoxLayout" name="verticalLayout_63">
@@ -7355,13 +7374,25 @@
                               <layout class="QVBoxLayout" name="verticalLayout_57">
                                <item alignment="Qt::AlignmentFlag::AlignHCenter">
                                 <widget class="QLabel" name="label_paymentsIcon">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                   <horstretch>40</horstretch>
+                                   <verstretch>40</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>40</width>
+                                   <height>40</height>
+                                  </size>
+                                 </property>
                                  <property name="font">
                                   <font>
                                    <pointsize>12</pointsize>
                                   </font>
                                  </property>
                                  <property name="text">
-                                  <string>PAYMENT MANAGEMENT</string>
+                                  <string>Icon</string>
                                  </property>
                                 </widget>
                                </item>
@@ -7609,7 +7640,7 @@
                     <item>
                      <widget class="QStackedWidget" name="stackedWidget_usersPages">
                       <property name="currentIndex">
-                       <number>2</number>
+                       <number>0</number>
                       </property>
                       <widget class="QWidget" name="page_adminSettings">
                        <layout class="QVBoxLayout" name="verticalLayout_93">
@@ -7623,8 +7654,8 @@
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>564</width>
-                             <height>790</height>
+                             <width>1021</width>
+                             <height>784</height>
                             </rect>
                            </property>
                            <layout class="QVBoxLayout" name="verticalLayout_94">
@@ -9005,8 +9036,8 @@
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>96</width>
-                             <height>102</height>
+                             <width>1038</width>
+                             <height>516</height>
                             </rect>
                            </property>
                            <layout class="QVBoxLayout" name="verticalLayout_106">
@@ -9045,8 +9076,8 @@
                                 <rect>
                                  <x>0</x>
                                  <y>0</y>
-                                 <width>243</width>
-                                 <height>712</height>
+                                 <width>1001</width>
+                                 <height>684</height>
                                 </rect>
                                </property>
                                <layout class="QVBoxLayout" name="verticalLayout_124">
