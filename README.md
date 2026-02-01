@@ -275,7 +275,17 @@ Library_Management_System/
 - `role` (Admin/Librarian/Finance)
 - `security_question`, `security_answer`
 - `created_at`
+- `password_changed_at`
+- `last_login`
 
+#### user activity logs
+- `id` (PRIMARY KEY)
+- `user_id` (FOREIGN KEY)
+- `action_type`
+- `action_details`
+- `created_at`
+
+- 
 #### learners
 - `id` (PRIMARY KEY)
 - `name`, `surname`, `grade`
@@ -289,6 +299,22 @@ Library_Management_System/
 - `title`, `author`, `subject`, `grade`
 - `price`, `status` (Available/Borrowed/Lost)
 - `created_at`
+
+#### payments
+- `id` (PRIMARY KEY)
+-  `receipt_no` 
+-  `learner_id` (FOREIGN KEY)
+-  `amount`
+-  `processed_by` (FOREIGN KEY)
+-  `payment_date`
+-  `notes`
+
+#### payments items
+-  `id` (PRIMARY KEY)
+-  `payment_id` (FOREIGN KEY)
+-  `transaction_id` (FOREIGN KEY)
+-  `book_id` (FOREIGN KEY)
+-  `amount` 
 
 #### transactions
 - `id` (PRIMARY KEY)
